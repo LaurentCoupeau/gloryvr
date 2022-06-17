@@ -21,11 +21,16 @@
 
       <a-entity movement-controls position="0 1 0">
         <!--camera-->
-        <!-- <a-entity camera position="0 0 0" rotation="0 0 0"></a-entity>  -->
+        <!-- <a-entity camera position="0 1 0" rotation="0 0 0"></a-entity>  -->
         <!--controlers-->
         <a-entity>
-          <a-entity laser-controls="hand: left"  raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"></a-entity>
-          <a-entity laser-controls="hand: right" raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"></a-entity>
+          <a-entity laser-controls="hand: left"  
+                    raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4">
+            <a-plane width="0.5" height="0.5" color="white" position="0.5 0 0"></a-plane>
+          </a-entity>
+          <a-entity laser-controls="hand: right" 
+                    raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4">
+          </a-entity>
         </a-entity>       
       </a-entity>  
       <a-entity>
