@@ -17,12 +17,21 @@
         <img id="laurent" src="assets/img/laurent.jpg"></img>
         <!---------------------logo glorydev--------------------->
         <img id="logo" src="assets/img/logo-glorydev.png"></img>
+        <!---------------------ltexture bois bureau--------------------->
+        <img id="bois" src="assets/textures/bois_crade.jpg"></img>
+        <!---------------------laptop--------------------->
+        <a-asset-item id="laptop-obj" src="assets/3d/laptop/Laptop_High-Polay_HP_BI_2_obj.obj"></a-asset-item>
+        <a-asset-item id="laptop-mtl" src="assets/3d/laptop/Laptop_High-Polay_HP_BI_2_obj.mtl"></a-asset-item>
       </a-assets>
 
-
+      
+  <!-- Using the asset management system. -->
+  <a-obj-model src="#laptop-obj" mtl="#laptop-mtl" 
+               scale="0.1 0.1 0.1" position="3 2.1 -1"
+               rotation="0 -90 0"></a-obj-model>
       <a-entity movement-controls position="0 1 0">
         <!--camera-->
-        <a-entity camera position="0 1 0" rotation="0 0 0"></a-entity> 
+        <!-- <a-entity camera position="0 1 0" rotation="0 0 0"></a-entity>  -->
 
         <!--controlers-->
         <a-entity>
@@ -54,7 +63,7 @@
         width="100"
         rotation="-90 0 0"
         repeat="100 100"
-        material="opacity:0.8; transparent:true">
+        material="opacity:0.55; transparent:true">
       </a-plane>
 
       <!--feuille de presentation Laurent-->
@@ -87,6 +96,125 @@
           </a-img>            
              
         </a-plane>
+      </a-entity>
+
+      <!---------------------Bureau----------------------> 
+      <a-entity position="3 0.1 -0.9" rotation="0 -90 0">       
+        <!---------------------plateau du dessus----------------------> 
+        <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#bois"  shadow="receive:true"
+                metalness="0.5"></a-box>
+        <!---------------------Collision du plateau du bureau----------------------> 
+        <a-box body="type: static; shape: box" width=1.999 height=0.001 depth=0.999 
+                position="0 1.024 0" visible="false"></a-box>
+        <!---------------------plateau arriere----------------------> 
+        <a-box width="1.8" height="0.05" depth="1" rotation="90 90 90" position="0 0.5 -0.43" src="#bois" 
+        shadow="receive:true"  metalness="0.5"></a-box>
+        <!---------------------pieds de gauche à droite----------------------> 
+        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="-0.9 0.5 0" src="#bois"  
+        shadow="receive:true" metalness="0.5"></a-box>
+        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="-0.4 0.5 0" src="#bois"  
+        shadow="receive:true" metalness="0.5"></a-box>
+        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="0.4 0.5 0" src="#bois"  
+        shadow="receive:true" metalness="0.5"></a-box>
+        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="0.9 0.5 0" src="#bois"  
+        shadow="receive:true" metalness="0.5"></a-box>
+        <!---------------------tiroirs de gauche: 1er tiroir---------------------->
+        <a-entity position="-0.65 -0.76 0.214" id="tiroir1">
+          <!---------------------fond de tiroir---------------------->          
+          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  
+                  shadow="receive:true"></a-box>
+          <!---------------------coté gauche de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  
+                  shadow="receive:true"></a-box>
+          <!---------------------coté droit de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  
+                  shadow="receive:true"></a-box>
+          <!---------------------arriere de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  
+                  shadow="receive:true"></a-box>
+          <!---------------------facade de tiroir---------------------->          
+          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  
+                  shadow="receive:true"></a-box>
+          <!---------------------bouton de tiroir---------------------->          
+          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  
+                  shadow="receive:true" id="boutonTiroir1"></a-box>
+        </a-entity>
+        <!---------------------tiroirs de gauche: 2eme tiroir---------------------->
+        <a-entity position="-0.65 -1.06 0.214" id="tiroir2">
+          <!---------------------fond de tiroir---------------------->          
+          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 -0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté gauche de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté droit de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------arriere de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------facade de tiroir---------------------->          
+          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------bouton de tiroir---------------------->          
+          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
+        </a-entity>
+        <!---------------------tiroirs de gauche: 3eme tiroir---------------------->
+        <a-entity position="-0.65 -1.36 0.214" id="tiroir3">
+          <!---------------------fond de tiroir---------------------->          
+          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté gauche de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté droit de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------arriere de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------facade de tiroir---------------------->          
+          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------bouton de tiroir---------------------->          
+          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
+        </a-entity>
+        <!---------------------tiroirs de droite: 1eme tiroir---------------------->
+        <a-entity position="0.65 -0.76 0.214"  id="tiroir4">
+          <!---------------------fond de tiroir---------------------->          
+          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté gauche de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté droit de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------arriere de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------facade de tiroir---------------------->          
+          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------bouton de tiroir---------------------->          
+          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
+        </a-entity>
+        <!---------------------tiroirs de droite: 2eme tiroir---------------------->
+        <a-entity position="0.65 -1.06 0.214"  id="tiroir5">
+          <!---------------------fond de tiroir---------------------->          
+          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté gauche de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté droit de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------arriere de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------facade de tiroir---------------------->          
+          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------bouton de tiroir---------------------->          
+          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
+        </a-entity>
+        <!---------------------tiroirs de droite: 3eme tiroir---------------------->
+        <a-entity position="0.65 -1.36 0.214"  id="tiroir6">
+          <!---------------------fond de tiroir---------------------->          
+          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté gauche de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------coté droit de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------arriere de tiroir---------------------->          
+          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------facade de tiroir---------------------->          
+          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
+          <!---------------------bouton de tiroir---------------------->          
+          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
+        </a-entity>
+
       </a-entity>
 
     </a-scene>
