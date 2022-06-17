@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta charset="UTF-8">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
   </head>
 
@@ -9,22 +10,25 @@
       <a-assets>
         <!---------------------textures du sol--------------------->
         <img id="plancher" src="assets/img/floor.png"></img>
-        <!---------------------textures du sol--------------------->
-        <img id="papier-peint" src="assets/textures/papier-peint.jpg"></img>
-        <!---------------------textures du plafond--------------------->
+        <!---------------------ciel--------------------->
         <img id="plafond" src="assets/img/mountain.jpg"></img>
+        <!---------------------photo de Laurent--------------------->
+        <img id="laurent" src="assets/img/laurent.jpg"></img>
+        <!---------------------logo glorydev--------------------->
+        <img id="logo" src="assets/img/logo-glorydev.png"></img>
+
       </a-assets>
 
-      <a-entity movement-controls position="0 1 0">
+      <!-- <a-entity movement-controls position="0 1 0"> -->
         <!--camera-->
-        <a-entity camera position="0 0 0" rotation="0 90 0"></a-entity> 
+        <!-- <a-entity camera position="0 0 0" rotation="0 90 0"></a-entity>  -->
         <!--controlers-->
-        <a-entity>
+        <!-- <a-entity>
           <a-entity laser-controls="hand: left"  raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"></a-entity>
           <a-entity laser-controls="hand: right" raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"></a-entity>
         </a-entity>       
       </a-entity>  
-      <a-entity>
+      <a-entity> -->
 
         <!--lumiere-->
         <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light>
@@ -40,6 +44,39 @@
           repeat="10 10"
           material="opacity:0.8; transparent:true">
         </a-plane>
+
+        <!--feuille de presentation Laurent-->
+        <a-entity rotation="0 90 0" position="-2 2.5 0">
+          <a-plane width="2.7" height="0.9" position="0 -1 0"
+                    color="#3D79A4" opacity="0.7">
+          
+            <a-text value="Laurent Coupeau
+                          
+                          Formateur freelance
+                          (administrateur de systèmes / Wordpress / réseaux sociaux)
+                          Sujets de prédilection :
+                          #emploi #insertion #numerique #entreprenariat #nouvellestechnologies
+                          
+                          DIRIGEANT DE GLORYDEV"
+
+                          
+                    font="assets/font/custom-msdf.json" font-image="assets/font/custom.png"
+                    negate="false"
+                    position="-0.5 0.05 0"
+                    scale="0.25 0.25 0.25"></a-text>
+
+            <a-image src="#laurent"
+              width="0.6" height="0.9"
+              position="-0.95 0 0.001"></a-img>
+            <a-image src="#logo"
+            width="0.70" height="0.58"
+            position="2 -0.2 0.001"></a-img>
+
+               
+               
+          </a-plane>
+
+        </a-entity>
         
 
       </a-entity>
