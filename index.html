@@ -21,7 +21,7 @@
 
       <a-entity movement-controls position="0 1 0">
         <!--camera-->
-        <a-entity camera position="0 0 0" rotation="0 90 0"></a-entity> 
+        <!-- <a-entity camera position="0 0 0" rotation="0 0 0"></a-entity>  -->
         <!--controlers-->
         <a-entity>
           <a-entity laser-controls="hand: left"  raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"></a-entity>
@@ -33,7 +33,7 @@
         <!--lumiere-->
         <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light>
         <!--ciel -->
-        <a-sky src="#plafond"></a-sky>
+        <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
         <!--sol-->
         <a-plane  
           src="#plancher"
@@ -46,9 +46,9 @@
         </a-plane>
 
         <!--feuille de presentation Laurent-->
-        <a-entity rotation="0 90 0" position="-2 2.5 0">
+        <a-entity rotation="0 0 0" position="0 3 -2">
           <a-plane width="2.7" height="0.9" position="0 -1 0"
-                    color="#3D79A4" opacity="0.7">
+                    color="white" opacity="0.7">
           
             <a-text value="Laurent Coupeau
                           
