@@ -7,6 +7,7 @@
   <body>
     
     <a-scene>
+
       <a-assets>
         <!---------------------textures du sol--------------------->
         <img id="plancher" src="assets/img/floor.png"></img>
@@ -16,74 +17,76 @@
         <img id="laurent" src="assets/img/laurent.jpg"></img>
         <!---------------------logo glorydev--------------------->
         <img id="logo" src="assets/img/logo-glorydev.png"></img>
-
       </a-assets>
+
 
       <a-entity movement-controls position="0 1 0">
         <!--camera-->
-        <a-entity camera position="0 1 0" rotation="0 0 0"></a-entity> 
+        <!-- <a-entity camera position="0 1 0" rotation="0 0 0"></a-entity>  -->
+
         <!--controlers-->
         <a-entity>
+
           <a-entity laser-controls="hand: left"  
                     raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4">
-            <a-plane width="0.15" height="0.3" color="white" position="0.1 0 0" rotation="45 0 0"></a-plane>
+            <a-plane width="0.15" height="0.3" color="white" position="0.1 0 0" rotation="-45 0 0"></a-plane>
           </a-entity>
+
           <a-entity laser-controls="hand: right" 
                     raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4">
           </a-entity>
-        </a-entity>       
-      </a-entity>  
+
+        </a-entity>  
+
       <a-entity>
 
-        <!--lumiere-->
-        <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light>
-        <!--ciel -->
-        <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
-        <!--sol-->
-        <a-plane  
-          src="#plancher"
-          color="darkgrey"
-          height="100"
-          width="100"
-          rotation="-90 0 0"
-          repeat="10 10"
-          material="opacity:0.8; transparent:true">
-        </a-plane>
+      <!--lumiere-->
+      <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light> 
 
-        <!--feuille de presentation Laurent-->
-        <a-entity rotation="0 0 0" position="0 3 -2">
-          <a-plane width="2.7" height="0.9" position="0 -1 0"
-                    color="white" opacity="0.7">
-          
-            <a-text value="Laurent Coupeau
-                          
-                          Formateur freelance
-                          (administrateur de systèmes / Wordpress / réseaux sociaux)
-                          Sujets de prédilection :
-                          #emploi #insertion #numerique #entreprenariat #nouvellestechnologies
-                          
-                          DIRIGEANT DE GLORYDEV"
+      <!--ciel -->
+      <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
 
-                          
-                    font="assets/font/custom-msdf.json" font-image="assets/font/custom.png"
-                    negate="false"
-                    position="-0.5 0.05 0.001"
-                    scale="0.25 0.25 0.25"></a-text>
+      <!--sol-->
+      <a-plane  
+        src="#plancher"
+        color="darkgrey"
+        height="100"
+        width="100"
+        rotation="-90 0 0"
+        repeat="100 100"
+        material="opacity:0.8; transparent:true">
+      </a-plane>
 
-            <a-image src="#laurent"
-              width="0.6" height="0.9"
-              position="-0.95 0 0.001"></a-img>
-            <a-image src="#logo"
-            width="0.70" height="0.58"
-            position="2 -0.2 0.001"></a-img>
-
-               
-               
-          </a-plane>
-
-        </a-entity>
+      <!--feuille de presentation Laurent-->
+      <a-entity rotation="0 0 0" position="0 3 -2">
+        <a-plane width="2.7" height="0.9" position="0 -1 0"
+                  color="white" opacity="0.7">
         
+          <a-text value="Laurent Coupeau
+                        
+                        Formateur freelance
+                        (administrateur de systèmes / Wordpress / réseaux sociaux)
+                        Sujets de prédilection :
+                        #emploi #insertion #numerique #entreprenariat #nouvellestechnologies
+                        
+                        DIRIGEANT DE GLORYDEV"
+                       
+                  font="assets/font/custom-msdf.json" font-image="assets/font/custom.png"
+                  negate="false"
+                  position="-0.5 0.05 0.001"
+                  scale="0.25 0.25 0.25">
+          </a-text>
 
+          <a-image src="#laurent"
+            width="0.6" height="0.9"
+            position="-0.95 0 0.001">
+          </a-img>
+          <a-image src="#logo"
+            width="0.70" height="0.58"
+            position="2 -0.2 0.001">
+          </a-img>            
+             
+        </a-plane>
       </a-entity>
 
     </a-scene>
