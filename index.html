@@ -6,9 +6,33 @@
   <body>
     
     <a-scene>
+      <a-assets>
+        <!---------------------textures du sol--------------------->
+        <img id="plancher" src="assets/textures/plancher-bois-clair.jpg"></img>
+        <!---------------------textures du sol--------------------->
+        <img id="papier-peint" src="assets/textures/papier-peint.jpg"></img>
+        <!---------------------textures du plafond--------------------->
+        <img id="plafond" src="assets/img/mountain.jpg"></img>
+      </a-assets>
 
       <a-entity>
-        <a-plane  color="darkgrey" height="10" width="10" rotation="-90 0 0"></a-plane>
+
+        <!--LUMIERE-->
+        <a-light type="point" color="#222" position="0 2 0" intensity="10"></a-light>
+        <!--LE CIEL -->
+        <a-sky src="#plafond"></a-sky>
+        <!--LE SOL-->
+        <a-plane  
+          src="#plancher"
+          color="darkgrey"
+          height="10"
+          width="10"
+          rotation="-90 0 0"
+          roughness="1"
+          repeat="10 10">
+        </a-plane>
+        
+
       </a-entity>
 
     </a-scene>
