@@ -5,7 +5,7 @@
     <title>GLORYDEV VR</title>
     <meta name="description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://unpkg.com/aframe-teleport-controls@0.3.x/dist/aframe-teleport-controls.min.js"></script>
   </head>
 
   <body>
@@ -31,18 +31,19 @@
         <a-mixin id="sphere" geometry="primitive: sphere; radius: 0.5" randomcolor></a-mixin>
       </a-assets>
 
-      
+      <a-entity id="teleHand" hand-controls="hand: left" teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground"></a-entity>
+      <a-entity id="blockHand" hand-controls="hand: right" laser-controls></a-entity>   
   <!-- Using the asset management system. -->
   <!-- <a-obj-model src="#laptop-obj" mtl="#laptop-mtl" 
                scale="0.1 0.1 0.1" position="3 2.1 -1"
                rotation="0 -90 0"></a-obj-model> -->
-      <a-mixin id="teleport" teleport-controls="type: parabolic; cameraRig: #cameraRig; collisionEntities: [mixin='box'], [mixin='sphere']"></a-mixin>
-      <a-entity id="cameraRig">
+      <!-- <a-mixin id="teleport" teleport-controls="type: parabolic; cameraRig: #cameraRig; collisionEntities: [mixin='box'], [mixin='sphere']"></a-mixin>
+      <a-entity id="cameraRig"> -->
         <!--camera-->
         <a-entity id="head" camera movement-controls look-controls position="0 0 6"></a-entity> 
 
         <!--controlers-->
-        <a-entity>
+        <!-- <a-entity>
 
           <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
@@ -69,7 +70,7 @@
 
       <a-entity>
 
-        
+      <a-mixin id="cube" geometry="primitive:box; width:10; height:10; depth:10; color:green"></a-mixin>   -->
   
 
       <!--lumiere-->
