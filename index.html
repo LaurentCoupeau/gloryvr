@@ -41,12 +41,14 @@
         <a-entity>
 
           <a-entity laser-controls="hand: left"
-                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" 
+                    raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4">
             <a-plane width="0.15" height="0.3" color="white" position="0.3 0 0" rotation="-45 0 0"></a-plane>
           </a-entity>
 
           <a-entity laser-controls="hand: right"
-                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"
+                    raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4">
           </a-entity>
 
         </a-entity>  
