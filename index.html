@@ -6,6 +6,7 @@
     <meta name="description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-teleport-controls@0.3.x/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
   </head>
 
   <body>
@@ -83,7 +84,9 @@
         <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 "></a-image>
         <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 ">
           <!-- Play/Pause -->
-          <a-image id="videoControls" src="#play" position="0 -0.5 0" scale="0.1 0.1 0.5" hoverable play-pause></a-image>
+          <a-image id="videoControls" src="#play" position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
+                   event-set__enter="_event: mouseenter; material.color: #FF0000"
+                   event-set__leave="_event: mouseleave; material.color: #FFFFFF"></a-image>
         </a-video>
         
       </a-entity>
