@@ -10,7 +10,7 @@
 
   <body>
     
-    <a-scene renderer="antialias: true">
+    <a-scene renderer="antialias: true" debug>
 
       <a-assets>
         <!---------------------textures du sol--------------------->
@@ -18,36 +18,30 @@
         <!---------------------ciel--------------------->
         <img id="plafond" src="assets/img/mountain.jpg"></img>
         <!---------------------photo de Laurent--------------------->
-        <img id="laurent" src="assets/img/laurent.jpg"></img>
+        <img id="fiche-presentation" src="assets/img/fiche-presentation.png"></img>
+        <!---------------------video de publicite----------------------->
+        <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video>
         <!---------------------logo glorydev--------------------->
         <img id="logo" src="assets/img/logo-glorydev.png"></img>
-        <!---------------------ltexture bois bureau--------------------->
+        <!---------------------icones--------------------->
+        <img id="play" src="assets/icones/play.png"></img>
+        <img id="pause" src="assets/icones/stop.png"></img>
+
+        <!---------------------texture bois bureau--------------------->
         <img id="bois" src="assets/textures/bois_crade.jpg"></img>
         <!---------------------laptop--------------------->
-            <img id="texture_laptop" src="assets/textures/inox.jpg"></img>
-            <img id="windows" src="assets/img/win_10.jpg"></img>
-
-            <a-mixin id="box" geometry="primitive: box; width: 2; height: 0.5; depth: 0.5" randomcolor></a-mixin>
-        <a-mixin id="sphere" geometry="primitive: sphere; radius: 0.5" randomcolor></a-mixin>
+        <img id="texture_laptop" src="assets/textures/inox.jpg"></img>
+        <img id="windows" src="assets/img/win_10.jpg"></img>
       </a-assets>
 
-      <a-entity id="teleHand" hand-controls="hand: left" teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground"></a-entity>
-      <a-entity id="blockHand" hand-controls="hand: right" laser-controls></a-entity>   
-  <!-- Using the asset management system. -->
-  <!-- <a-obj-model src="#laptop-obj" mtl="#laptop-mtl" 
-               scale="0.1 0.1 0.1" position="3 2.1 -1"
-               rotation="0 -90 0"></a-obj-model> -->
-      <!-- <a-mixin id="teleport" teleport-controls="type: parabolic; cameraRig: #cameraRig; collisionEntities: [mixin='box'], [mixin='sphere']"></a-mixin>
+      <!----------camera---------->
       <a-entity id="cameraRig"> -->
-        <!--camera-->
-        <a-entity id="head" camera movement-controls look-controls position="0 0 6"></a-entity> 
-
+        <a-entity id="head" movement-controls look-controls position="0 0 6"></a-entity> 
         <!--controlers-->
-        <!-- <a-entity>
-
+        <a-entity>
           <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
-                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" 
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; " 
                     raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"
                     vive-controls="hand: left"
                     oculus-touch-controls="hand: left"
@@ -55,7 +49,6 @@
                     daydream-controls="left" gearvr-controls="left">
             <a-plane width="0.15" height="0.3" color="white" position="0.09 0 0" rotation="-45 0 0"></a-plane>
           </a-entity>
-
           <a-entity id="right-hand" 
                     laser-controls="hand: right"
                     teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"
@@ -65,21 +58,16 @@
                     microsoft-motion-controls="hand: left"
                     daydream-controls="left" gearvr-controls="left">>
           </a-entity>
-
         </a-entity>  
+      <a-entity>  
 
-      <a-entity>
-
-      <a-mixin id="cube" geometry="primitive:box; width:10; height:10; depth:10; color:green"></a-mixin>   -->
-  
-
-      <!--lumiere-->
+      <!----------lumiere---------->
       <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light> 
 
-      <!--ciel -->
+      <!----------ciel---------->
       <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
 
-      <!--sol-->
+      <!----------sol---------->
       <a-plane  
         src="#plancher"
         color="darkgrey"
@@ -90,36 +78,15 @@
         material="opacity:0.55; transparent:true">
       </a-plane>
 
-      <!--feuille de presentation Laurent-->
-      <a-entity rotation="0 0 0" position="0 3 -2">
-        <a-plane width="2.7" height="0.9" position="0 -1 0"
-                  color="white" opacity="0.7">
+      <!----------feuille de presentation Laurent---------->
+      <a-entity>
+        <a-image src="#fiche-presentation" width="1.28" height="0.72"
+                 position="-0.7 2 -1"></a-image>
+        <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 2 -1">
+          <!-- Play/Pause -->
+          <a-image id="videoControls" src="#play" position="0 -0.5 0" scale="0.2 0.2 1" play-pause></a-image>
+        </a-video>
         
-          <a-text value="Laurent Coupeau
-                        
-                        Formateur freelance
-                        (administrateur de systèmes / Wordpress / réseaux sociaux)
-                        Sujets de prédilection :
-                        #emploi #insertion #numerique #entreprenariat #nouvellestechnologies
-                        
-                        DIRIGEANT DE GLORYDEV"
-                       
-                  font="assets/font/custom-msdf.json" font-image="assets/font/custom.png"
-                  negate="false"
-                  position="-0.5 0.05 0.001"
-                  scale="0.25 0.25 0.25">
-          </a-text>
-
-          <a-image src="#laurent"
-            width="0.6" height="0.9"
-            position="-0.95 0 0.001">
-          </a-img>
-          <a-image src="#logo"
-            width="0.70" height="0.58"
-            position="2 -0.2 0.001">
-          </a-img>            
-             
-        </a-plane>
       </a-entity>
 
       <!---------------------Bureau----------------------> 
@@ -240,7 +207,8 @@
         </a-entity>
 
       </a-entity>
-      <!--laptop-->
+
+      <!----------laptop---------->
       <a-entity position="1.5 0.2 -1" rotation="-25 -90 0">
         <!--haut du pc-->
         <a-entity position="0 1.7 -1.18">       
@@ -777,5 +745,6 @@
       </a-entity>
 
     </a-scene>
+    <script src="assets/js/fonction.js"></script>
   </body>
 </html>
