@@ -6,7 +6,6 @@
     <meta name="description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script> 
   </head>
 
   <body>
@@ -43,7 +42,7 @@
           <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
                     raycaster="objects: [mixin='image'], .links; lineColor: red; lineOpacity: 0.6;far:4">
-            <a-plane width="0.15" height="0.3" color="white" position="0.09 0 0" rotation="-45 0 0"></a-plane>
+            <a-plane width="0.15" height="0.3" color="white" position="0.06 0 0" rotation="-45 0 0"></a-plane>
           </a-entity>
           <a-entity id="right-hand" 
                     laser-controls="hand: right"
@@ -70,13 +69,15 @@
       </a-plane>
 
       <!----------feuille de presentation Laurent---------->
-      <a-entity position="0 2 -1.5" scale="2 2 2">
-        <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0" look-at="#cameraRig"></a-image>
-        <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0" look-at="#cameraRig" >
+      <a-entity position="0 2 -2.2" scale="2 2 2">
+        <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0"></a-image>
+        <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0">
           <!-- Play/Pause -->
           <a-image id="videoControls" src="#play" position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
-                   event-set__enter="_event: mouseenter; material.color: #FF0000"
-                   event-set__leave="_event: mouseleave; material.color: #FFFFFF"></a-image>
+                   event-set__enter="_event: hover-start; material.color: #FF0000"
+                   event-set__leave="_event: hover-end; material.color: #FFFFFF"
+                   event-set__tarcol="_event: click; _target: #pub-glorydev; play()">
+          </a-image>
         </a-video>
         
       </a-entity>
