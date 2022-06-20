@@ -35,16 +35,18 @@
                rotation="0 -90 0"></a-obj-model> -->
       <a-entity id="cameraRig">
         <!--camera-->
-        <a-entity id="head" camera wasd-controls look-controls></a-entity> 
+        <a-entity id="head" movement-controls position="0 0 6"></a-entity> 
 
         <!--controlers-->
         <a-entity>
 
-          <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
+          <a-entity laser-controls="hand: left"
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
             <a-plane width="0.15" height="0.3" color="white" position="0.3 0 0" rotation="-45 0 0"></a-plane>
           </a-entity>
 
-          <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
+          <a-entity laser-controls="hand: right"
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;">
           </a-entity>
 
         </a-entity>  
