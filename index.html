@@ -36,14 +36,15 @@
   <!-- <a-obj-model src="#laptop-obj" mtl="#laptop-mtl" 
                scale="0.1 0.1 0.1" position="3 2.1 -1"
                rotation="0 -90 0"></a-obj-model> -->
-      <!-- <a-entity id="cameraRig"> -->
+      <a-mixin id="teleport" teleport-controls="type: parabolic; cameraRig: #cameraRig; collisionEntities: [mixin='box'], [mixin='sphere']"></a-mixin>
+      <a-entity id="cameraRig">
         <!--camera-->
-        <!-- <a-entity id="head" camera movement-controls look-controls position="0 0 6"></a-entity>  -->
+        <a-entity id="head" camera movement-controls look-controls position="0 0 6"></a-entity> 
 
         <!--controlers-->
-        <!-- <a-entity>
+        <a-entity>
 
-          <a-entity id="left-hand"
+          <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
                     teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" 
                     raycaster="objects: [mixin='cube'], .links; lineColor: red; lineOpacity: 0.6;far:4"
@@ -66,15 +67,9 @@
 
         </a-entity>  
 
-      <a-entity> -->
+      <a-entity>
 
-        <a-mixin id="teleport" teleport-controls="type: parabolic; cameraRig: #cameraRig; collisionEntities: [mixin='box'], [mixin='sphere']"></a-mixin>
-        <a-entity id="cameraRig">
-          <a-entity camera wasd-controls look-controls></a-entity>
-          <!-- hand controls -->
-          <a-entity id="leftHand" mixin="teleport" vive-controls="hand: left"></a-entity>
-          <a-entity id="rightHand" mixin="teleport" vive-controls="hand: right"></a-entity>
-        </a-entity>
+        
   
 
       <!--lumiere-->
