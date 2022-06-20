@@ -35,7 +35,7 @@
                rotation="0 -90 0"></a-obj-model> -->
       <a-entity id="cameraRig">
         <!--camera-->
-        <a-entity id="head" movement-controls position="0 0 6"></a-entity> 
+        <a-entity id="head" camera movement-controls look-controls position="0 0 6"></a-entity> 
 
         <!--controlers-->
         <a-entity>
@@ -48,7 +48,7 @@
                     oculus-touch-controls="hand: left"
                     microsoft-motion-controls="hand: left"
                     daydream-controls="left" gearvr-controls="left">
-            <a-plane width="0.15" height="0.3" color="white" position="0.3 0 0" rotation="-45 0 0"></a-plane>
+            <a-plane width="0.15" height="0.3" color="white" position="0.15 0 0" rotation="-45 0 0"></a-plane>
           </a-entity>
 
           <a-entity id="right-hand" 
