@@ -15,12 +15,15 @@
       <a-assets>
         <!---------------------textures du sol--------------------->
         <img id="plancher" src="assets/img/floor.png"></img>
+        
+        <img id="grass" src="assets/textures/grass.jpg"></img>
+
         <!---------------------ciel--------------------->
         <img id="plafond" src="assets/img/mountain.jpg"></img>
         <!---------------------photo de Laurent--------------------->
         <img id="fiche-presentation" src="assets/img/fiche-presentation.png"></img>
         <!---------------------video de publicite----------------------->
-        <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video>
+        <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
         <!---------------------logo glorydev--------------------->
         <img id="logo" src="assets/img/logo-glorydev.png"></img>
         <!---------------------icones--------------------->
@@ -35,17 +38,16 @@
 
       <!----------camera---------->
       <a-entity id="cameraRig"> -->
-        <a-entity id="head" movement-controls look-controls position="0 0 6"></a-entity> 
+        <a-entity id="head"  movement-controls look-controls position="0 1.5 -0.7"></a-entity> 
         <!--controlers-->
         <a-entity>
           <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
-                    raycaster="objects: [mixin='image'], .links; lineColor: red; lineOpacity: 0.6;far:4">
-            <a-plane width="0.15" height="0.3" color="white" position="0.06 0 0" rotation="-45 0 0"></a-plane>
+                    raycaster="objects: [mixin='#ring'], .links; lineColor: red; lineOpacity: 0.6;far:4">
           </a-entity>
           <a-entity id="right-hand" 
                     laser-controls="hand: right"
-                    raycaster="objects: [mixin='image'], .links; lineColor: red; lineOpacity: 0.6;far:4">
+                    raycaster="objects: [mixin='#ring'], .links; lineColor: red; lineOpacity: 0.6;far:4">
           </a-entity>
         </a-entity>  
       <a-entity>  
@@ -68,21 +70,44 @@
       </a-plane>
 
       <!----------feuille de presentation Laurent---------->
-      <a-entity position="0 2 -2.2" scale="2 2 2">
-        <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0"></a-image>
-        <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0">
+      <a-entity position="4 2 0"
+                scale="2 2 2"
+                rotation="0 -90 0">
+        <a-image src="#fiche-presentation" 
+                 width="1.28" 
+                 height="0.72" 
+                 position="-0.7 0 0"></a-image>
+        <a-video src="assets/video/pub-glorydev.mp4" 
+                 width="1.28" 
+                 height="0.72" 
+                 position="0.7 0 0">
+
           <!-- Play/Pause -->
-          <a-image id="videoControls" src="#play" position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
-                   event-set__enter="_event: hover-start; material.transparent: true"
-                   event-set__leave="_event: hover-end; material.transparent: true"
-                   event-set__tarcol="_event: click; _target: #pub-glorydev; play()">
-          </a-image>
+          <a-image id="videoControls" 
+                   src="#play" 
+                   position="0 -0.5 0" 
+                   scale="0.1 0.1 0.5" 
+                   play-pause></a-image>
+
         </a-video>
         
       </a-entity>
 
       <!---------------------Bureau----------------------> 
-      <a-entity position="3 0.1 -0.9" rotation="0 -90 0">       
+      <a-entity position="0 0.1 -2">
+        <!--repere téléportation--> 
+        <a-ring id="ring"
+                color="aqua"
+                radius-inner="0.1"
+                radius-outer="0.2"
+                rotation="90 0 0"
+                position="0 0.011 1"
+                side="double"
+                opacity="0.5"
+                event-set__mouseenter="material.color: blue"
+                event-set__click="material.color: red">
+
+        </a-ring>      
         <!---------------------plateau du dessus----------------------> 
         <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#bois"  shadow="receive:true"
                 metalness="0.5"></a-box>
@@ -201,540 +226,551 @@
       </a-entity>
 
       <!----------laptop---------->
-      <a-entity position="1.5 0.2 -1" rotation="-25 -90 0">
+      <a-entity position="0 2.2 -0.2" rotation="-90 0 0">
+
         <!--haut du pc-->
-        <a-entity position="0 1.7 -1.18">       
-          <a-box width="0.49" height="0.27" depth="0.02" src="#texture_laptop"
-                 rotation="-200 0 0" metalness="1"></a-box>            
-          <a-image src="#windows" width="0.45" height="0.23" color="aqua"
-                   position="0 0.01 0.01" rotation="-20 0 0">
-          </a-image>
+        <a-entity position="0 1.73 -0.9" rotation="50 0 0">       
+          <a-box src="#texture_laptop" width="0.49" height="0.27" depth="0.02" metalness="0"></a-box>            
+          <a-image src="#windows" width="0.45" height="0.23" color="aqua" position="0 0.01 0.011"></a-image>
         </a-entity>
+
         <!--bas du pc portable-->
         <a-entity position="0 0 -0.008">
-          <a-box width="0.49" height="0.27" depth="0.02" src="#texture_laptop"
-              position="0 1.5 -1" rotation="120 0 0" metalness="1"></a-box>
+          <a-box width="0.49" 
+                 height="0.27" 
+                 depth="0.02" 
+                 src="#texture_laptop"
+                 position="0 1.5 -1" 
+                 rotation="0 0 0" 
+                 metalness="1"></a-box>
+
           <!--clavier-->
-          <a-entity position="-0.2 1.55 -1.07" rotation="0 90 -60" scale="1 1 1">
+          <a-entity position="-0.2 1.595 -0.992" 
+                    scale="1 1 1">
               <!--echap-->   
               <a-entity>
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Echap" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.009 0.002 0.011"></a-text>
               </a-entity>            
               <!--F1-->   
-              <a-entity position="0 0 0.044">
+              <a-entity position="0.044 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F1" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F2-->   
-              <a-entity position="0 0 0.066">
+              <a-entity position="0.066 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F2" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F3-->   
-              <a-entity position="0 0 0.088">
+              <a-entity position="0.088 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F3" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F4-->   
-              <a-entity position="0 0 0.11">
+              <a-entity position="0.11 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F4" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F5-->   
-              <a-entity position="0 0 0.143">
+              <a-entity position="0.143 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F5" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F6-->   
-              <a-entity position="0 0 0.165">
+              <a-entity position="0.165 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F6" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F7-->   
-              <a-entity position="0 0 0.187">
+              <a-entity position="0.187 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F7" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F8-->   
-              <a-entity position="0 0 0.209">
+              <a-entity position="0.209 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F8" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F9-->   
-              <a-entity position="0 0 0.242">
+              <a-entity position="0.242 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F9" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F10-->   
-              <a-entity position="0 0 0.264">
+              <a-entity position="0.264 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F10" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F11-->   
-              <a-entity position="0 0 0.286">
+              <a-entity position="0.286 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F11" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F12-->   
-              <a-entity position="0 0 0.308">
+              <a-entity position="0.308 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F12" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--imp ecran-->   
-              <a-entity position="0 0 0.341">
+              <a-entity position="0.341 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Impr
                                  ecran" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--arret defil-->   
-              <a-entity position="0 0 0.363">
+              <a-entity position="0.363 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Arret
                                  Defil" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--pause-->   
-              <a-entity position="0 0 0.385">
+              <a-entity position="0.385 0 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Pause" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0 0.011"></a-text>
               </a-entity>            
               <!--n-->   
               <a-entity position="0 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="n
                                  2" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--1-->   
-              <a-entity position="0 -0.024 0.022">
+              <a-entity position="0.022 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="1" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--2-->   
-              <a-entity position="0 -0.024 0.044">
+              <a-entity position="0.044 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="2 ~" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--3-->   
-              <a-entity position="0 -0.024 0.066">
+              <a-entity position="0.066 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="3 #" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--4-->   
-              <a-entity position="0 -0.024 0.088">
+              <a-entity position="0.088 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="4 {" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--5-->   
-              <a-entity position="0 -0.024 0.11">
+              <a-entity position="0.11 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="5 [" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--6-->   
-              <a-entity position="0 -0.024 0.132">
+              <a-entity position="0.132 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="6 |" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--7-->   
-              <a-entity position="0 -0.024 0.154">
+              <a-entity position="0.154 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="7 `" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--8-->   
-              <a-entity position="0 -0.024 0.176">
+              <a-entity position="0.176 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="8 \" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--9-->   
-              <a-entity position="0 -0.024 0.198">
+              <a-entity position="0.198 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="9 ^" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--0-->   
-              <a-entity position="0 -0.024 0.22">
+              <a-entity position="0.22 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="0 @" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--°]-->   
-              <a-entity position="0 -0.024 0.242">
+              <a-entity position="0.242 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="]" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--+}-->   
-              <a-entity position="0 -0.024 0.264">
+              <a-entity position="0.264 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="+ }" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>            
               <!--<---->   
-              <a-entity position="0 -0.024 0.297">
-                  <a-box width="0.02" height="0.02" depth="0.042" color="lightgrey"></a-box>     
+              <a-entity position="0.297 -0.024 0">
+                  <a-box width="0.042" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="<--" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>                   
               <!--TAB---->   
-              <a-entity position="0 -0.048 0.006">
-                  <a-box width="0.02" height="0.02" depth="0.033" color="lightgrey"></a-box>     
+              <a-entity position="0.006 -0.048 0">
+                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="TAB" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--A-->   
-              <a-entity position="0 -0.048 0.034">
+              <a-entity position="0.034 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="A" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--Z-->   
-              <a-entity position="0 -0.048 0.056">
+              <a-entity position="0.056 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Z" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--E-->   
-              <a-entity position="0 -0.048 0.078">
+              <a-entity position="0.078 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="E" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--R-->   
-              <a-entity position="0 -0.048 0.1">
+              <a-entity position="0.1 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="R" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--T-->   
-              <a-entity position="0 -0.048 0.122">
+              <a-entity position="0.122 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="T" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--Y-->   
-              <a-entity position="0 -0.048 0.144">
+              <a-entity position="0.144 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Y" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--U-->   
-              <a-entity position="0 -0.048 0.166">
+              <a-entity position="0.166 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="U" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--I-->   
-              <a-entity position="0 -0.048 0.188">
+              <a-entity position="0.188 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="I" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--O-->   
-              <a-entity position="0 -0.048 0.21">
+              <a-entity position="0.21 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="O" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--P-->   
-              <a-entity position="0 -0.048 0.232">
+              <a-entity position="0.232 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="P" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--^-->   
-              <a-entity position="0 -0.048 0.254">
+              <a-entity position="0.254 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="^" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>            
               <!--$-->   
-              <a-entity position="0 -0.048 0.276">
+              <a-entity position="0.276 -0.048 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="$" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>     
               <!--Enter-->   
-              <a-entity position="0 -0.059 0.303">
-                  <a-box width="0.02" height="0.042" depth="0.03" color="lightgrey"></a-box>     
+              <a-entity position="0.303 -0.059 0">
+                  <a-box width="0.02" height="0.042" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Enter" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>                   
               <!--Caps lock---->   
-              <a-entity position="0 -0.07 0.006">
-                  <a-box width="0.02" height="0.02" depth="0.033" color="lightgrey"></a-box>     
+              <a-entity position="0.006 -0.07 0">
+                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Caps lock" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.013" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Q-->   
-              <a-entity position="0 -0.07 0.034">
+              <a-entity position="0.034 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Q" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--S-->   
-              <a-entity position="0 -0.07 0.056">
+              <a-entity position="0.056 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="S" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--D-->   
-              <a-entity position="0 -0.07 0.078">
+              <a-entity position="0.078 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="D" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--F-->   
-              <a-entity position="0 -0.07 0.1">
+              <a-entity position="0.1 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="F" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--G-->   
-              <a-entity position="0 -0.07 0.122">
+              <a-entity position="0.122 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="G" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--H-->   
-              <a-entity position="0 -0.07 0.144">
+              <a-entity position="0.144 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="H" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--J-->   
-              <a-entity position="0 -0.07 0.166">
+              <a-entity position="0.166 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="J" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--K-->   
-              <a-entity position="0 -0.07 0.188">
+              <a-entity position="0.188 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="K" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--L-->   
-              <a-entity position="0 -0.07 0.21">
+              <a-entity position="0.21 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="L" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--M-->   
-              <a-entity position="0 -0.07 0.232">
+              <a-entity position="0.232 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="M" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--%-->   
-              <a-entity position="0 -0.07 0.254">
+              <a-entity position="0.254 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="%" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>            
               <!--*-->   
-              <a-entity position="0 -0.07 0.276">
+              <a-entity position="0.276 -0.07 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="*" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>            
               <!--Shift---->   
-              <a-entity position="0 -0.092 0.006">
-                  <a-box width="0.02" height="0.02" depth="0.033" color="lightgrey"></a-box>     
+              <a-entity position="0.006 -0.092 0">
+                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Shift" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.013" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--<>-->   
-              <a-entity position="0 -0.092 0.034">
+              <a-entity position="0.034 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="<
                                  >" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--W-->   
-              <a-entity position="0 -0.092 0.056">
+              <a-entity position="0.056 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="W" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--X-->   
-              <a-entity position="0 -0.092 0.078">
+              <a-entity position="0.078 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="X" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--C-->   
-              <a-entity position="0 -0.092 0.1">
+              <a-entity position="0.1 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="C" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--V-->   
-              <a-entity position="0 -0.092 0.122">
+              <a-entity position="0.122 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="V" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--B-->   
-              <a-entity position="0 -0.092 0.144">
+              <a-entity position="0.144 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="B" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--N-->   
-              <a-entity position="0 -0.092 0.166">
+              <a-entity position="0.166 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="N" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--?-->   
-              <a-entity position="0 -0.092 0.188">
+              <a-entity position="0.188 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="?" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--. ;-->   
-              <a-entity position="0 -0.092 0.21">
+              <a-entity position="0.21 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value=".
                                  ;" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--/ :-->   
-              <a-entity position="0 -0.092 0.232">
+              <a-entity position="0.232 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="/
                                  :" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>
               <!--§ !-->   
-              <a-entity position="0 -0.092 0.254">
+              <a-entity position="0.254 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="§
                                  !" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.003 0.002 0.011"></a-text>
               </a-entity>            
               <!--Shift-->   
-              <a-entity position="0 -0.092 0.292">
-                  <a-box width="0.02" height="0.02" depth="0.052" color="lightgrey"></a-box>     
+              <a-entity position="0.292 -0.092 0">
+                  <a-box width="0.052" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Shift" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>             
               <!--Ctrl---->   
-              <a-entity position="0 -0.114 0.006">
-                  <a-box width="0.02" height="0.02" depth="0.033" color="lightgrey"></a-box>     
+              <a-entity position="0.006 -0.114 0">
+                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Ctrl" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.013" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Win-->   
-              <a-entity position="0 -0.114 0.034">
+              <a-entity position="0.034 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Win" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.005 0.002 0.011"></a-text>
               </a-entity>
               <!--Alt-->   
-              <a-entity position="0 -0.114 0.056">
+              <a-entity position="0.056 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Alt" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.005 0.002 0.011"></a-text>
               </a-entity>
               <!--Space-->   
-              <a-entity position="0 -0.114 0.16">
-                  <a-box width="0.02" height="0.02" depth="0.15" color="lightgrey"></a-box>     
+              <a-entity position="0.16 -0.114 0">
+                  <a-box width="0.15" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Space" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.003" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Alt Gr-->   
-              <a-entity position="0 -0.114 0.264">
+              <a-entity position="0.264 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Alt Gr" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Fn-->   
-              <a-entity position="0 -0.114 0.286">
+              <a-entity position="0.286 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Fn" color="red" scale="0.025 0.025 2"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.007 0.002 0.011"></a-text>
               </a-entity>
               <!--Ctrl-->   
-              <a-entity position="0 -0.114 0.308">
+              <a-entity position="0.308 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Ctrl" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>            
               <!--Inser-->   
-              <a-entity position="0 -0.024 0.341">
+              <a-entity position="0.341 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Inser" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Suppr-->   
-              <a-entity position="0 -0.024 0.363">
+              <a-entity position="0.363 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Suppr" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Ver Num-->   
-              <a-entity position="0 -0.024 0.385">
+              <a-entity position="0.385 -0.024 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Ver
                                  Num" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Top-->   
-              <a-entity position="0 -0.092 0.363">
+              <a-entity position="0.363 -0.092 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Haut" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Left-->   
-              <a-entity position="0 -0.114 0.341">
+              <a-entity position="0.341 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Gauche" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.01" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Down-->   
-              <a-entity position="0 -0.114 0.363">
+              <a-entity position="0.363 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Bas" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
               <!--Right-->   
-              <a-entity position="0 -0.114 0.385">
+              <a-entity position="0.385 -0.114 0">
                   <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
                   <a-text value="Droite" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 -0.007" rotation="0 -90 0"></a-text>
+                          position="-0.01 0.002 0.011"></a-text>
               </a-entity>
           </a-entity>
+
           <!--souris-->
-          <a-plane position="0 1.468 -.92" rotation="-60 0 0" width="0.16" height="0.08" color="#00656F"></a-plane>
-          <a-box width="0.06" height="0.002" depth="0.01" color="darkgrey" position="-0.04 1.456 -.9" rotation="-145 0 0"></a-box>
-          <a-box width="0.06" height="0.002" depth="0.01" color="darkgrey" position="0.04 1.456 -.9" rotation="-145 0 0"></a-box>
+          <a-entity position="0 1.42 -0.989">
+                <a-plane width="0.16" height="0.08" color="grey"></a-plane>
+                <a-box width="0.06" height="0.02" depth="0.001" color="darkgrey" position="-0.04 -0.03 0.001"></a-box>
+                <a-box width="0.06" height="0.02" depth="0.001" color="darkgrey" position="0.04 -0.03 0.001"></a-box>
+          </a-entity>
+
         </a-entity>
-      </a-entity>
+
+       </a-entity>
 
     </a-scene>
     <script src="assets/js/fonctions.js"></script>
