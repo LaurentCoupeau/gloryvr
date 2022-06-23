@@ -6,6 +6,7 @@
     <meta name="description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   </head>
 
   <body>
@@ -14,10 +15,7 @@
 
       <a-assets>
         <!---------------------textures du sol--------------------->
-        <img id="plancher" src="assets/img/floor.png"></img>
-        
-        <img id="grass" src="assets/textures/grass.jpg"></img>
-
+        <img id="floor" src="assets/img/floor.png"></img>
         <!---------------------ciel--------------------->
         <img id="plafond" src="assets/img/mountain.jpg"></img>
         <!---------------------photo de Laurent--------------------->
@@ -30,7 +28,7 @@
         <img id="play" src="assets/icones/play.png"></img>
         <img id="pause" src="assets/icones/pause.png"></img>
         <!---------------------icone pour socle téléportation--------------------->
-        <img id="foot" src="assets/icones/foot.png"></img>
+        <img id="footsteps" src="assets/icones/foot.png"></img>
         <!---------------------texture bois bureau--------------------->
         <img id="bois" src="assets/textures/bois_crade.jpg"></img>
         <!---------------------laptop--------------------->
@@ -51,22 +49,25 @@
         </a-entity>
       </a-entity> -->
 
-      <a-entity id="cameraRig"> 
-        <a-entity id="head"  movement-controls look-controls position="0 1.5 -0.7"></a-entity> 
-        <!--controlers-->
-        <a-entity>
-          <a-entity id="left-hand"
-                    laser-controls="hand: left"
-                    raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
-                    defaultModelColor="black">
-          </a-entity>
-          <a-entity id="right-hand" 
-                    laser-controls="hand: right"
-                    raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
-                    defaultModelColor="black">
-          </a-entity>
-        </a-entity>  
-      <a-entity>  
+      
+        <a-entity movement-controls="controls: checkpoint"
+                  checkpoint-controle="mode: animate"
+                look-controls position="0 1.5 -0.7">
+                <!--controlers-->
+                <a-entity progressive-controls>
+                  <a-entity id="left-hand"
+                            laser-controls="hand: left"
+                            raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
+                            defaultModelColor="black">
+                  </a-entity>
+                  <a-entity id="right-hand" 
+                            laser-controls="hand: right"
+                            raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
+                            defaultModelColor="black">
+                  </a-entity>
+                </a-entity>  
+        </a-entity> 
+    
 
       <!----------lumiere---------->
       <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light> 
@@ -76,7 +77,7 @@
 
       <!----------sol---------->
       <a-plane  
-        src="#plancher"
+        src="#floor"
         color="darkgrey"
         height="100"
         width="100"
@@ -119,14 +120,16 @@
       </a-entity>
 
       <!---------------------Bureau----------------------> 
-      <a-entity position="0 0.1 -2" >
+      <a-entity position="0 0.01 -2" >
         <!--repere téléportation--> 
-        <a-image src="#foot"
+        <a-image src="#footsteps"
+                checkpoint="offset: 0 0 0.5"
                  class="clickable"
                  color="aqua"
                  rotation="-90 0 0"
-                 position="0 0.011 1"
+                 position="0 0.01 0.7"
                  opacity="0.5"
+                 scale="0.5 0.5 0.5"
                  event-set__mouseenter="material.color: blue"
                  event-set__mouseleave="material.color: aqua">
 
@@ -249,7 +252,7 @@
       </a-entity>
 
       <!----------laptop---------->
-      <a-entity position="0 2.2 -0.2" rotation="-90 0 0">
+      <a-entity position="0 2.05 -0.2" rotation="-90 0 0">
 
         <!--haut du pc-->
         <a-entity position="0 1.73 -0.9" rotation="50 0 0">       
