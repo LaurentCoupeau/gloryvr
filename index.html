@@ -53,14 +53,14 @@
         <a-entity id="head"  movement-controls look-controls position="0 1.5 -0.7"></a-entity> 
         <!--controlers-->
         <a-entity>
-          <a-entity id="left-hand" mixin="teleport"
+          <a-entity id="left-hand"
                     laser-controls="hand: left"
-                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4"
+                    raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
                     defaultModelColor="black">
           </a-entity>
           <a-entity id="right-hand" 
                     laser-controls="hand: right"
-                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4"
+                    raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
                     defaultModelColor="black">
           </a-entity>
         </a-entity>  
@@ -86,8 +86,7 @@
       <!----------feuille de presentation Laurent---------->
       <a-entity position="4 2 0"
                 scale="2 2 2"
-                rotation="0 -90 0"                
-                collider-check>
+                rotation="0 -90 0">
         <a-image src="#fiche-presentation" 
                  width="1.28" 
                  height="0.72" 
@@ -99,7 +98,7 @@
 
           <!-- Play/Pause -->
           <a-image id="videoControls" 
-                   class="collidable"
+                   class="clickable"
                    src="#play" 
                    position="0 -0.5 0" 
                    scale="0.1 0.1 0.5" 
@@ -113,10 +112,10 @@
       </a-entity>
 
       <!---------------------Bureau----------------------> 
-      <a-entity position="0 0.1 -2" collider-check>
+      <a-entity position="0 0.1 -2">
         <!--repere téléportation--> 
         <a-ring id="ring"
-                class="collidable"
+                class="clickable"
                 color="aqua"
                 radius-inner="0.1"
                 radius-outer="0.2"
