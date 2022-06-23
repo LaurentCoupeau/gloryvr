@@ -37,7 +37,7 @@
       </a-assets>
 
       <!----------camera---------->
-      <a-entity position="0 1.2 -0.7">
+      <!-- <a-entity position="0 1.2 -0.7">
         <a-entity camera position="0 0 -0.5"
                   look-controls>
                 <a-cursor></a-cursor>
@@ -47,22 +47,22 @@
                 <a-entity id="right-hand"
                 laser-controls="hand: right"></a-entity>
         </a-entity>
-      </a-entity>
+      </a-entity> -->
 
-      <!-- <a-entity id="cameraRig"> 
-        <a-entity id="head"  movement-controls look-controls position="0 1.5 -0.7"></a-entity>  -->
+      <a-entity id="cameraRig"> 
+        <a-entity id="head"  movement-controls look-controls position="0 1.5 -0.7"></a-entity> 
         <!--controlers-->
-        <!-- <a-entity>
+        <a-entity>
           <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
-                    raycaster="objects: [mixin='ring'], .links; lineColor: red; lineOpacity: 0.6;far:4">
+                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4">
           </a-entity>
           <a-entity id="right-hand" 
                     laser-controls="hand: right"
-                    raycaster="objects: [mixin='ring'], .links; lineColor: red; lineOpacity: 0.6;far:4">
+                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4">
           </a-entity>
         </a-entity>  
-      <a-entity>   -->
+      <a-entity>  
 
       <!----------lumiere---------->
       <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light> 
