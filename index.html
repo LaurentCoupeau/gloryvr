@@ -55,11 +55,13 @@
         <a-entity>
           <a-entity id="left-hand" mixin="teleport"
                     laser-controls="hand: left"
-                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4">
+                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4"
+                    defaultModelColor="black">
           </a-entity>
           <a-entity id="right-hand" 
                     laser-controls="hand: right"
-                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4">
+                    raycaster="objects: .links; lineColor: red; lineOpacity: 0.6;far:4"
+                    defaultModelColor="black">
           </a-entity>
         </a-entity>  
       <a-entity>  
@@ -96,6 +98,7 @@
 
           <!-- Play/Pause -->
           <a-image id="videoControls" 
+                   collider-check
                    src="#play" 
                    position="0 -0.5 0" 
                    scale="0.1 0.1 0.5" 
@@ -112,6 +115,7 @@
       <a-entity position="0 0.1 -2">
         <!--repere téléportation--> 
         <a-ring id="ring"
+                collider-check
                 color="aqua"
                 radius-inner="0.1"
                 radius-outer="0.2"
