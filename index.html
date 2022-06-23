@@ -121,19 +121,7 @@
 
       <!---------------------Bureau----------------------> 
       <a-entity position="0 0.01 -2" >
-        <!--repere téléportation--> 
-        <a-image src="#footsteps"
-                checkpoint="offset: 0 0 0.5"
-                 class="clickable"
-                 color="aqua"
-                 rotation="-90 0 0"
-                 position="0 0.01 0.7"
-                 opacity="0.5"
-                 scale="0.5 0.5 0.5"
-                 event-set__mouseenter="material.color: blue"
-                 event-set__mouseleave="material.color: aqua">
-
-        </a-image>      
+        
         <!---------------------plateau du dessus----------------------> 
         <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#bois"  shadow="receive:true"
                 metalness="0.5"></a-box>
@@ -250,6 +238,19 @@
         </a-entity>
 
       </a-entity>
+      <!--repere téléportation--> 
+      <a-image src="#footsteps"
+        position="0 0.01 -1.5"
+        checkpoint="offset: 0 0 0.5"
+       class="clickable"
+       color="aqua"
+       rotation="-90 0 0"
+       opacity="0.5"
+       scale="0.5 0.5 0.5"
+       event-set__mouseenter="material.color: blue"
+       event-set__mouseleave="material.color: aqua">
+
+</a-image>      
 
       <!----------laptop---------->
       <a-entity position="0 2.05 -0.2" rotation="-90 0 0">
