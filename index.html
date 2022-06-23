@@ -23,12 +23,14 @@
         <!---------------------photo de Laurent--------------------->
         <img id="fiche-presentation" src="assets/img/fiche-presentation.png"></img>
         <!---------------------video de publicite----------------------->
-        <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
+        <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video>
         <!---------------------logo glorydev--------------------->
         <img id="logo" src="assets/img/logo-glorydev.png"></img>
-        <!---------------------icones--------------------->
+        <!---------------------icones pour videos--------------------->
         <img id="play" src="assets/icones/play.png"></img>
         <img id="pause" src="assets/icones/pause.png"></img>
+        <!---------------------icone pour socle téléportation--------------------->
+        <img id="foot" src="assets/icones/foot.png"></img>
         <!---------------------texture bois bureau--------------------->
         <img id="bois" src="assets/textures/bois_crade.jpg"></img>
         <!---------------------laptop--------------------->
@@ -87,46 +89,48 @@
       <a-entity position="4 2 0"
                 scale="2 2 2"
                 rotation="0 -90 0">
-        <a-image src="#fiche-presentation" 
-                 width="1.28" 
-                 height="0.72" 
-                 position="-0.7 0 0"></a-image>
-        <a-video src="assets/video/pub-glorydev.mp4" 
-                 width="1.28" 
-                 height="0.72" 
-                 position="0.7 0 0">
 
-          <!-- Play/Pause -->
-          <a-image id="videoControls" 
-                   class="clickable"
-                   src="#play" 
-                   position="0 -0.5 0" 
-                   scale="0.1 0.1 0.5" 
-                   play-pause
-                   event-set__enter="_event: mouseenter; material.color: #afafaf"
-                   event-set__leave="_event: mouseleave; material.color: #FFFFFF"
-                   ></a-image>
+                <!--Feuille de présentation Laurent Coupeau-->
+                <a-image src="#fiche-presentation" 
+                         width="1.28" 
+                         height="0.72" 
+                         position="-0.7 0 0">
+                </a-image>
+                <!--Encart pour la vidéo de pub-->
+                <a-video src="#pub-glorydev" 
+                         width="1.28" 
+                         height="0.72" 
+                         position="0.7 0 0">
 
-        </a-video>
+                        <!-- Controles Play/Pause -->
+                        <a-image id="videoControls" 
+                                class="clickable"
+                                src="#play"
+                                color="aqua"
+                                position="0 -0.5 0"
+                                scale="0.1 0.1 0.5"
+                                play-pause
+                                event-set__mouseenter="material.color: blue"
+                                event-set__mouseleave="material.color: aqua">
+                        </a-image>
+
+                </a-video>
         
       </a-entity>
 
       <!---------------------Bureau----------------------> 
-      <a-entity position="0 0.1 -2">
+      <a-entity position="0 0.1 -2" >
         <!--repere téléportation--> 
-        <a-ring id="ring"
-                class="clickable"
-                color="aqua"
-                radius-inner="0.1"
-                radius-outer="0.2"
-                rotation="90 0 0"
-                position="0 0.011 1"
-                side="double"
-                opacity="0.5"
-                event-set__mouseenter="material.color: blue"
-                event-set__click="material.color: red">
+        <a-image src="#foot"
+                 class="clickable"
+                 color="aqua"
+                 rotation="-90 0 0"
+                 position="0 0.011 1"
+                 opacity="0.5"
+                 event-set__mouseenter="material.color: blue"
+                 event-set__mouseleave="material.color: aqua">
 
-        </a-ring>      
+        </a-image>      
         <!---------------------plateau du dessus----------------------> 
         <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#bois"  shadow="receive:true"
                 metalness="0.5"></a-box>
