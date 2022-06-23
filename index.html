@@ -1,43 +1,50 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="index, follow"/>
-    <title>GLORYDEV VR</title>
-    <meta name="description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-  </head>
 
-  <body>
-    
-    <a-scene renderer="antialias: true" debug>
+<head>
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow" />
+        <title>GLORYDEV VR</title>
+        <meta name="description"
+                content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <script
+                src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+</head>
 
-      <a-assets>
-        <!---------------------textures du sol--------------------->
-        <img id="floor" src="assets/img/floor.png"></img>
-        <!---------------------ciel--------------------->
-        <img id="plafond" src="assets/img/mountain.jpg"></img>
-        <!---------------------photo de Laurent--------------------->
-        <img id="fiche-presentation" src="assets/img/fiche-presentation.png"></img>
-        <!---------------------video de publicite----------------------->
-        <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video>
-        <!---------------------logo glorydev--------------------->
-        <img id="logo" src="assets/img/logo-glorydev.png"></img>
-        <!---------------------icones pour videos--------------------->
-        <img id="play" src="assets/icones/play.png"></img>
-        <img id="pause" src="assets/icones/pause.png"></img>
-        <!---------------------icone pour socle téléportation--------------------->
-        <img id="footsteps" src="assets/icones/foot.png"></img>
-        <!---------------------texture bois bureau--------------------->
-        <img id="bois" src="assets/textures/bois_crade.jpg"></img>
-        <!---------------------laptop--------------------->
-        <img id="texture_laptop" src="assets/textures/inox.jpg"></img>
-        <img id="windows" src="assets/img/win_10.jpg"></img>
-      </a-assets>
+<body>
 
-      <!----------camera---------->
-      <!-- <a-entity position="0 1.2 -0.7">
+        <a-scene renderer="antialias: true" debug stats>
+
+                <a-assets>
+                        <!---------------------textures du sol--------------------->
+                        <img id="floor" src="assets/img/floor.png"></img>
+                        <!---------------------ciel--------------------->
+                        <img id="plafond" src="assets/img/mountain.jpg"></img>
+                        <!---------------------photo de Laurent--------------------->
+                        <img id="fiche-presentation" src="assets/img/fiche-presentation.png"></img>
+                        <!---------------------video de publicite----------------------->
+                        <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video>
+                        <!---------------------logo glorydev--------------------->
+                        <img id="logo" src="assets/img/logo-glorydev.png"></img>
+                        <!---------------------icones pour videos--------------------->
+                        <img id="play" src="assets/icones/play.png"></img>
+                        <img id="pause" src="assets/icones/pause.png"></img>
+                        <!---------------------icone pour socle téléportation--------------------->
+                        <img id="footsteps" src="assets/icones/foot.png"></img>
+                        <!---------------------texture bois bureau--------------------->
+                        <img id="bois" src="assets/textures/bois_crade.jpg"></img>
+                        <!---------------------laptop--------------------->
+                        <img id="texture_laptop" src="assets/textures/inox.jpg"></img>
+                        <img id="windows" src="assets/img/win_10.jpg"></img>
+                        <!---------------------statue--------------------->
+                        <a-asset-item id="statue" src="assets/3d/discobole.obj"></a-asset-item>
+                        <!---------------------texture statue--------------------->
+                        <img id="marbre" src="assets/textures/marbre.jpg"></img>
+                </a-assets>
+
+                <!----------camera---------->
+                <!-- <a-entity position="0 1.2 -0.7">
         <a-entity camera position="0 0 -0.5"
                   look-controls>
                 <a-cursor></a-cursor>
@@ -49,759 +56,836 @@
         </a-entity>
       </a-entity> -->
 
-      
-        <a-entity movement-controls="controls: checkpoint"
-                  checkpoint-controle="mode: animate"
-                look-controls position="0 1.5 -0.7">
-                <!--controlers-->
-                <a-entity>
-                  <a-entity id="left-hand"
-                            laser-controls="hand: left"
-                            raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
-                            defaultModelColor="black">
-                  </a-entity>
-                  <a-entity id="right-hand" 
-                            laser-controls="hand: right"
-                            raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
-                            defaultModelColor="black">
-                  </a-entity>
-                </a-entity>  
-        </a-entity> 
-    
 
-      <!----------lumiere---------->
-      <a-light type="point" color="#222" position="0 10 0" intensity="10"></a-light> 
+                <a-entity movement-controls="controls: checkpoint" checkpoint-controle="mode: animate" look-controls
+                        position="0 1.5 -0.7">
+                        <!--controlers-->
+                        <a-entity>
+                                <a-entity id="left-hand" laser-controls="hand: left"
+                                        raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
+                                        defaultModelColor="black">
+                                </a-entity>
+                                <a-entity id="right-hand" laser-controls="hand: right"
+                                        raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
+                                        defaultModelColor="black">
+                                </a-entity>
+                        </a-entity>
+                </a-entity>
 
-      <!----------ciel---------->
-      <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
 
-      <!----------sol---------->
-      <a-plane  
-        src="#floor"
-        color="darkgrey"
-        height="100"
-        width="100"
-        rotation="-90 0 0"
-        repeat="100 100"
-        material="opacity:0.55; transparent:true">
-      </a-plane>
+                <!----------lumiere---------->
+                <a-light type="point" color="#222" position="-100 100 0" intensity="10"></a-light>
 
-      <!----------feuille de presentation Laurent---------->
-      <a-entity position="4 2 0"
-                scale="2 2 2"
-                rotation="0 -90 0">
+                <!----------ciel---------->
+                <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
 
-                <!--Feuille de présentation Laurent Coupeau-->
-                <a-image src="#fiche-presentation" 
-                         width="1.28" 
-                         height="0.72" 
-                         position="-0.7 0 0">
-                </a-image>
-                <!--Encart pour la vidéo de pub-->
-                <a-video src="#pub-glorydev" 
-                         width="1.28" 
-                         height="0.72" 
-                         position="0.7 0 0">
+                <!----------sol---------->
+                <a-plane src="#floor" color="darkgrey" height="100" width="100" rotation="-90 0 0" repeat="100 100"
+                        material="opacity:0.55; transparent:true">
+                </a-plane>
 
-                        <!-- Controles Play/Pause -->
-                        <a-image id="videoControls" 
-                                class="clickable"
-                                src="#play"
-                                color="aqua"
-                                position="0 -0.5 0"
-                                scale="0.1 0.1 0.5"
-                                play-pause
-                                event-set__mouseenter="material.color: blue"
-                                event-set__mouseleave="material.color: aqua">
+                <!----------statue---------->
+                <a-obj-model src="#statue" scale="0.01 0.01 0.01" rotation="0 -60 0" position="6 0 -10">
+                </a-obj-model>
+                <!----------feuille de presentation Laurent---------->
+                <a-entity position="4 2 0" scale="2 2 2" rotation="0 -90 0">
+
+                        <!--Feuille de présentation Laurent Coupeau-->
+                        <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0">
                         </a-image>
+                        <!--Encart pour la vidéo de pub-->
+                        <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0">
 
-                </a-video>
-        
-      </a-entity>
+                                <!-- Controles Play/Pause -->
+                                <a-image id="videoControls" class="clickable" src="#play" color="aqua"
+                                        position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
+                                        event-set__mouseenter="material.color: blue"
+                                        event-set__mouseleave="material.color: aqua">
+                                </a-image>
 
-      <!---------------------Bureau----------------------> 
-      <a-entity position="0 0.01 -2" >
-        
-        <!---------------------plateau du dessus----------------------> 
-        <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#bois"  shadow="receive:true"
-                metalness="0.5"></a-box>
-        <!---------------------Collision du plateau du bureau----------------------> 
-        <a-box body="type: static; shape: box" width=1.999 height=0.001 depth=0.999 
-                position="0 1.024 0" visible="false"></a-box>
-        <!---------------------plateau arriere----------------------> 
-        <a-box width="1.8" height="0.05" depth="1" rotation="90 90 90" position="0 0.5 -0.43" src="#bois" 
-        shadow="receive:true"  metalness="0.5"></a-box>
-        <!---------------------pieds de gauche à droite----------------------> 
-        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="-0.9 0.5 0" src="#bois"  
-        shadow="receive:true" metalness="0.5"></a-box>
-        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="-0.4 0.5 0" src="#bois"  
-        shadow="receive:true" metalness="0.5"></a-box>
-        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="0.4 0.5 0" src="#bois"  
-        shadow="receive:true" metalness="0.5"></a-box>
-        <a-box width="1" height="0.05" depth="0.9"  rotation="0 0 90" position="0.9 0.5 0" src="#bois"  
-        shadow="receive:true" metalness="0.5"></a-box>
-        <!---------------------tiroirs de gauche: 1er tiroir---------------------->
-        <a-entity position="-0.65 -0.76 0.214" id="tiroir1">
-          <!---------------------fond de tiroir---------------------->          
-          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  
-                  shadow="receive:true"></a-box>
-          <!---------------------coté gauche de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  
-                  shadow="receive:true"></a-box>
-          <!---------------------coté droit de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  
-                  shadow="receive:true"></a-box>
-          <!---------------------arriere de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  
-                  shadow="receive:true"></a-box>
-          <!---------------------facade de tiroir---------------------->          
-          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  
-                  shadow="receive:true"></a-box>
-          <!---------------------bouton de tiroir---------------------->          
-          <a-box width="0.05" height="0.02" depth="0.07"  
-                rotation="0 90 90" position="0 1.6 0.26" src="#bois"  
-                shadow="receive:true" id="boutonTiroir1" class="clickable"   
-                ></a-box>
-        </a-entity>
-        <!---------------------tiroirs de gauche: 2eme tiroir---------------------->
-        <a-entity position="-0.65 -1.06 0.214" id="tiroir2">
-          <!---------------------fond de tiroir---------------------->          
-          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 -0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté gauche de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté droit de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------arriere de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------facade de tiroir---------------------->          
-          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------bouton de tiroir---------------------->          
-          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
-        </a-entity>
-        <!---------------------tiroirs de gauche: 3eme tiroir---------------------->
-        <a-entity position="-0.65 -1.36 0.214" id="tiroir3">
-          <!---------------------fond de tiroir---------------------->          
-          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté gauche de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté droit de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------arriere de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------facade de tiroir---------------------->          
-          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------bouton de tiroir---------------------->          
-          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
-        </a-entity>
-        <!---------------------tiroirs de droite: 1eme tiroir---------------------->
-        <a-entity position="0.65 -0.76 0.214"  id="tiroir4">
-          <!---------------------fond de tiroir---------------------->          
-          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté gauche de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté droit de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------arriere de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------facade de tiroir---------------------->          
-          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------bouton de tiroir---------------------->          
-          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
-        </a-entity>
-        <!---------------------tiroirs de droite: 2eme tiroir---------------------->
-        <a-entity position="0.65 -1.06 0.214"  id="tiroir5">
-          <!---------------------fond de tiroir---------------------->          
-          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté gauche de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté droit de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------arriere de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------facade de tiroir---------------------->          
-          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------bouton de tiroir---------------------->          
-          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
-        </a-entity>
-        <!---------------------tiroirs de droite: 3eme tiroir---------------------->
-        <a-entity position="0.65 -1.36 0.214"  id="tiroir6">
-          <!---------------------fond de tiroir---------------------->          
-          <a-box width="0.4" height="0.02" depth="0.5"   position="0 1.5 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté gauche de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="-0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------coté droit de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.5"  rotation="0 0 90" position="0.19 1.61 0" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------arriere de tiroir---------------------->          
-          <a-box width="0.2" height="0.02" depth="0.40"  rotation="0 90 90" position="0 1.6 -0.241" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------facade de tiroir---------------------->          
-          <a-box width="0.26" height="0.02" depth="0.5"  rotation="0 90 90" position="0 1.6 0.25" src="#bois"  shadow="receive:true"></a-box>
-          <!---------------------bouton de tiroir---------------------->          
-          <a-box width="0.05" height="0.02" depth="0.07"  rotation="0 90 90" position="0 1.6 0.26" src="#bois"  shadow="receive:true"></a-box>
-        </a-entity>
+                        </a-video>
 
-      </a-entity>
-      <!--repere téléportation--> 
-      <a-image src="#footsteps"
-        position="0 0.01 -1.5"
-        checkpoint="offset: 0 0 0.5"
-       class="clickable"
-       color="aqua"
-       rotation="-90 0 0"
-       opacity="0.5"
-       scale="0.5 0.5 0.5"
-       event-set__mouseenter="material.color: blue"
-       event-set__mouseleave="material.color: aqua">
+                </a-entity>
 
-      </a-image>      
+                <!---------------------Bureau---------------------->
+                <a-entity position="0 0.01 -2">
 
-      <!----------laptop---------->
-      <a-entity position="0 2.05 -0.2" rotation="-90 0 0">
+                        <!---------------------plateau du dessus---------------------->
+                        <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#bois" shadow="receive:true"
+                                metalness="0.5"></a-box>
+                        <!---------------------Collision du plateau du bureau---------------------->
+                        <a-box body="type: static; shape: box" width=1.999 height=0.001 depth=0.999 position="0 1.024 0"
+                                visible="false"></a-box>
+                        <!---------------------plateau arriere---------------------->
+                        <a-box width="1.8" height="0.05" depth="1" rotation="90 90 90" position="0 0.5 -0.43"
+                                src="#bois" shadow="receive:true" metalness="0.5"></a-box>
+                        <!---------------------pieds de gauche à droite---------------------->
+                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90" position="-0.9 0.5 0" src="#bois"
+                                shadow="receive:true" metalness="0.5"></a-box>
+                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90" position="-0.4 0.5 0" src="#bois"
+                                shadow="receive:true" metalness="0.5"></a-box>
+                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90" position="0.4 0.5 0" src="#bois"
+                                shadow="receive:true" metalness="0.5"></a-box>
+                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90" position="0.9 0.5 0" src="#bois"
+                                shadow="receive:true" metalness="0.5"></a-box>
+                        <!---------------------tiroirs de gauche: 1er tiroir---------------------->
+                        <a-entity position="-0.65 -0.76 0.214" id="tiroir1">
+                                <!---------------------fond de tiroir---------------------->
+                                <a-box width="0.4" height="0.02" depth="0.5" position="0 1.5 0" src="#bois"
+                                        shadow="receive:true"></a-box>
+                                <!---------------------coté gauche de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="-0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------coté droit de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------arriere de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.40" rotation="0 90 90" position="0 1.6 -0.241"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------facade de tiroir---------------------->
+                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90" position="0 1.6 0.25"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------bouton de tiroir---------------------->
+                                <a-box width="0.05" height="0.02" depth="0.07" rotation="0 90 90" position="0 1.6 0.26"
+                                        src="#bois" shadow="receive:true" id="boutonTiroir1" class="clickable"></a-box>
+                        </a-entity>
+                        <!---------------------tiroirs de gauche: 2eme tiroir---------------------->
+                        <a-entity position="-0.65 -1.06 0.214" id="tiroir2">
+                                <!---------------------fond de tiroir---------------------->
+                                <a-box width="0.4" height="0.02" depth="0.5" position="0 1.5 -0" src="#bois"
+                                        shadow="receive:true"></a-box>
+                                <!---------------------coté gauche de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="-0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------coté droit de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------arriere de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.40" rotation="0 90 90" position="0 1.6 -0.241"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------facade de tiroir---------------------->
+                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90" position="0 1.6 0.25"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------bouton de tiroir---------------------->
+                                <a-box width="0.05" height="0.02" depth="0.07" rotation="0 90 90" position="0 1.6 0.26"
+                                        src="#bois" shadow="receive:true"></a-box>
+                        </a-entity>
+                        <!---------------------tiroirs de gauche: 3eme tiroir---------------------->
+                        <a-entity position="-0.65 -1.36 0.214" id="tiroir3">
+                                <!---------------------fond de tiroir---------------------->
+                                <a-box width="0.4" height="0.02" depth="0.5" position="0 1.5 0" src="#bois"
+                                        shadow="receive:true"></a-box>
+                                <!---------------------coté gauche de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="-0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------coté droit de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------arriere de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.40" rotation="0 90 90" position="0 1.6 -0.241"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------facade de tiroir---------------------->
+                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90" position="0 1.6 0.25"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------bouton de tiroir---------------------->
+                                <a-box width="0.05" height="0.02" depth="0.07" rotation="0 90 90" position="0 1.6 0.26"
+                                        src="#bois" shadow="receive:true"></a-box>
+                        </a-entity>
+                        <!---------------------tiroirs de droite: 1eme tiroir---------------------->
+                        <a-entity position="0.65 -0.76 0.214" id="tiroir4">
+                                <!---------------------fond de tiroir---------------------->
+                                <a-box width="0.4" height="0.02" depth="0.5" position="0 1.5 0" src="#bois"
+                                        shadow="receive:true"></a-box>
+                                <!---------------------coté gauche de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="-0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------coté droit de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------arriere de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.40" rotation="0 90 90" position="0 1.6 -0.241"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------facade de tiroir---------------------->
+                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90" position="0 1.6 0.25"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------bouton de tiroir---------------------->
+                                <a-box width="0.05" height="0.02" depth="0.07" rotation="0 90 90" position="0 1.6 0.26"
+                                        src="#bois" shadow="receive:true"></a-box>
+                        </a-entity>
+                        <!---------------------tiroirs de droite: 2eme tiroir---------------------->
+                        <a-entity position="0.65 -1.06 0.214" id="tiroir5">
+                                <!---------------------fond de tiroir---------------------->
+                                <a-box width="0.4" height="0.02" depth="0.5" position="0 1.5 0" src="#bois"
+                                        shadow="receive:true"></a-box>
+                                <!---------------------coté gauche de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="-0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------coté droit de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------arriere de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.40" rotation="0 90 90" position="0 1.6 -0.241"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------facade de tiroir---------------------->
+                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90" position="0 1.6 0.25"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------bouton de tiroir---------------------->
+                                <a-box width="0.05" height="0.02" depth="0.07" rotation="0 90 90" position="0 1.6 0.26"
+                                        src="#bois" shadow="receive:true"></a-box>
+                        </a-entity>
+                        <!---------------------tiroirs de droite: 3eme tiroir---------------------->
+                        <a-entity position="0.65 -1.36 0.214" id="tiroir6">
+                                <!---------------------fond de tiroir---------------------->
+                                <a-box width="0.4" height="0.02" depth="0.5" position="0 1.5 0" src="#bois"
+                                        shadow="receive:true"></a-box>
+                                <!---------------------coté gauche de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="-0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------coté droit de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.5" rotation="0 0 90" position="0.19 1.61 0"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------arriere de tiroir---------------------->
+                                <a-box width="0.2" height="0.02" depth="0.40" rotation="0 90 90" position="0 1.6 -0.241"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------facade de tiroir---------------------->
+                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90" position="0 1.6 0.25"
+                                        src="#bois" shadow="receive:true"></a-box>
+                                <!---------------------bouton de tiroir---------------------->
+                                <a-box width="0.05" height="0.02" depth="0.07" rotation="0 90 90" position="0 1.6 0.26"
+                                        src="#bois" shadow="receive:true"></a-box>
+                        </a-entity>
 
-        <!--haut du pc-->
-        <a-entity position="0 1.73 -0.9" rotation="50 0 0">       
-          <a-box src="#texture_laptop" width="0.49" height="0.27" depth="0.02" metalness="0"></a-box>            
-          <a-image src="#windows" width="0.45" height="0.23" color="aqua" position="0 0.01 0.011"></a-image>
-        </a-entity>
+                </a-entity>
+                <!--repere téléportation-->
+                <a-image src="#footsteps" position="0 0.01 -1.5" checkpoint="offset: 0 0 0.5" class="clickable"
+                        color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
+                        event-set__mouseenter="material.color: blue" event-set__mouseleave="material.color: aqua">
 
-        <!--bas du pc portable-->
-        <a-entity position="0 0 -0.008">
-          <a-box width="0.49" 
-                 height="0.27" 
-                 depth="0.02" 
-                 src="#texture_laptop"
-                 position="0 1.5 -1" 
-                 rotation="0 0 0" 
-                 metalness="1"></a-box>
+                </a-image>
 
-          <!--clavier-->
-          <a-entity position="-0.2 1.595 -0.992" 
-                    scale="1 1 1">
-              <!--echap-->   
-              <a-entity>
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Echap" color="red" scale="0.025 0.025 0.025"
-                          position="-0.009 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--F1-->   
-              <a-entity position="0.044 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F1" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F2-->   
-              <a-entity position="0.066 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F2" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F3-->   
-              <a-entity position="0.088 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F3" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F4-->   
-              <a-entity position="0.11 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F4" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F5-->   
-              <a-entity position="0.143 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F5" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F6-->   
-              <a-entity position="0.165 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F6" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F7-->   
-              <a-entity position="0.187 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F7" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F8-->   
-              <a-entity position="0.209 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F8" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F9-->   
-              <a-entity position="0.242 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F9" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F10-->   
-              <a-entity position="0.264 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F10" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F11-->   
-              <a-entity position="0.286 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F11" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F12-->   
-              <a-entity position="0.308 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F12" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--imp ecran-->   
-              <a-entity position="0.341 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Impr
-                                 ecran" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--arret defil-->   
-              <a-entity position="0.363 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Arret
-                                 Defil" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--pause-->   
-              <a-entity position="0.385 0 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Pause" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0 0.011"></a-text>
-              </a-entity>            
-              <!--n-->   
-              <a-entity position="0 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="n
-                                 2" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--1-->   
-              <a-entity position="0.022 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="1" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--2-->   
-              <a-entity position="0.044 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="2 ~" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--3-->   
-              <a-entity position="0.066 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="3 #" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--4-->   
-              <a-entity position="0.088 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="4 {" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--5-->   
-              <a-entity position="0.11 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="5 [" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--6-->   
-              <a-entity position="0.132 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="6 |" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--7-->   
-              <a-entity position="0.154 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="7 `" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--8-->   
-              <a-entity position="0.176 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="8 \" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--9-->   
-              <a-entity position="0.198 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="9 ^" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--0-->   
-              <a-entity position="0.22 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="0 @" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--°]-->   
-              <a-entity position="0.242 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="]" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--+}-->   
-              <a-entity position="0.264 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="+ }" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--<---->   
-              <a-entity position="0.297 -0.024 0">
-                  <a-box width="0.042" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="<--" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>                   
-              <!--TAB---->   
-              <a-entity position="0.006 -0.048 0">
-                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="TAB" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--A-->   
-              <a-entity position="0.034 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="A" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Z-->   
-              <a-entity position="0.056 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Z" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--E-->   
-              <a-entity position="0.078 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="E" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--R-->   
-              <a-entity position="0.1 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="R" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--T-->   
-              <a-entity position="0.122 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="T" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Y-->   
-              <a-entity position="0.144 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Y" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--U-->   
-              <a-entity position="0.166 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="U" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--I-->   
-              <a-entity position="0.188 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="I" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--O-->   
-              <a-entity position="0.21 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="O" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--P-->   
-              <a-entity position="0.232 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="P" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--^-->   
-              <a-entity position="0.254 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="^" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--$-->   
-              <a-entity position="0.276 -0.048 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="$" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>     
-              <!--Enter-->   
-              <a-entity position="0.303 -0.059 0">
-                  <a-box width="0.02" height="0.042" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Enter" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>                   
-              <!--Caps lock---->   
-              <a-entity position="0.006 -0.07 0">
-                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Caps lock" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Q-->   
-              <a-entity position="0.034 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Q" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--S-->   
-              <a-entity position="0.056 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="S" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--D-->   
-              <a-entity position="0.078 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="D" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--F-->   
-              <a-entity position="0.1 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="F" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--G-->   
-              <a-entity position="0.122 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="G" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--H-->   
-              <a-entity position="0.144 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="H" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--J-->   
-              <a-entity position="0.166 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="J" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--K-->   
-              <a-entity position="0.188 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="K" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--L-->   
-              <a-entity position="0.21 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="L" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--M-->   
-              <a-entity position="0.232 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="M" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--%-->   
-              <a-entity position="0.254 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="%" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--*-->   
-              <a-entity position="0.276 -0.07 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="*" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--Shift---->   
-              <a-entity position="0.006 -0.092 0">
-                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Shift" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--<>-->   
-              <a-entity position="0.034 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="<
-                                 >" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--W-->   
-              <a-entity position="0.056 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="W" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--X-->   
-              <a-entity position="0.078 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="X" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--C-->   
-              <a-entity position="0.1 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="C" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--V-->   
-              <a-entity position="0.122 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="V" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--B-->   
-              <a-entity position="0.144 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="B" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--N-->   
-              <a-entity position="0.166 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="N" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--?-->   
-              <a-entity position="0.188 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="?" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--. ;-->   
-              <a-entity position="0.21 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value=".
-                                 ;" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--/ :-->   
-              <a-entity position="0.232 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="/
-                                 :" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>
-              <!--§ !-->   
-              <a-entity position="0.254 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="§
-                                 !" color="red" scale="0.025 0.025 0.025"
-                          position="-0.003 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--Shift-->   
-              <a-entity position="0.292 -0.092 0">
-                  <a-box width="0.052" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Shift" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>             
-              <!--Ctrl---->   
-              <a-entity position="0.006 -0.114 0">
-                  <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Ctrl" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Win-->   
-              <a-entity position="0.034 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Win" color="red" scale="0.025 0.025 0.025"
-                          position="-0.005 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Alt-->   
-              <a-entity position="0.056 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Alt" color="red" scale="0.025 0.025 0.025"
-                          position="-0.005 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Space-->   
-              <a-entity position="0.16 -0.114 0">
-                  <a-box width="0.15" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Space" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Alt Gr-->   
-              <a-entity position="0.264 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Alt Gr" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Fn-->   
-              <a-entity position="0.286 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Fn" color="red" scale="0.025 0.025 2"
-                          position="-0.007 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Ctrl-->   
-              <a-entity position="0.308 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Ctrl" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>            
-              <!--Inser-->   
-              <a-entity position="0.341 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Inser" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Suppr-->   
-              <a-entity position="0.363 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Suppr" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Ver Num-->   
-              <a-entity position="0.385 -0.024 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Ver
-                                 Num" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Top-->   
-              <a-entity position="0.363 -0.092 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Haut" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Left-->   
-              <a-entity position="0.341 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Gauche" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Down-->   
-              <a-entity position="0.363 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Bas" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-              <!--Right-->   
-              <a-entity position="0.385 -0.114 0">
-                  <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey"></a-box>     
-                  <a-text value="Droite" color="red" scale="0.025 0.025 0.025"
-                          position="-0.01 0.002 0.011"></a-text>
-              </a-entity>
-          </a-entity>
+                <!----------laptop---------->
+                <a-entity position="0 2.05 -0.2" rotation="-90 0 0">
 
-          <!--souris-->
-          <a-entity position="0 1.42 -0.989">
-                <a-plane width="0.16" height="0.08" color="grey"></a-plane>
-                <a-box width="0.06" height="0.02" depth="0.001" color="darkgrey" position="-0.04 -0.03 0.001"></a-box>
-                <a-box width="0.06" height="0.02" depth="0.001" color="darkgrey" position="0.04 -0.03 0.001"></a-box>
-          </a-entity>
+                        <!--haut du pc-->
+                        <a-entity position="0 1.73 -0.9" rotation="50 0 0">
+                                <a-box src="#texture_laptop" width="0.49" height="0.27" depth="0.02" metalness="0">
+                                </a-box>
+                                <a-image src="#windows" width="0.45" height="0.23" color="aqua" position="0 0.01 0.011">
+                                </a-image>
+                        </a-entity>
 
-        </a-entity>
+                        <!--bas du pc portable-->
+                        <a-entity position="0 0 -0.008">
+                                <a-box width="0.49" height="0.27" depth="0.02" src="#texture_laptop" position="0 1.5 -1"
+                                        rotation="0 0 0" metalness="1"></a-box>
 
-       </a-entity>
+                                <!--clavier-->
+                                <a-entity position="-0.2 1.595 -0.992" scale="1 1 1">
+                                        <!--echap-->
+                                        <a-entity>
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Echap" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.009 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F1-->
+                                        <a-entity position="0.044 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F1" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F2-->
+                                        <a-entity position="0.066 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F2" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F3-->
+                                        <a-entity position="0.088 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F3" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F4-->
+                                        <a-entity position="0.11 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F4" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F5-->
+                                        <a-entity position="0.143 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F5" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F6-->
+                                        <a-entity position="0.165 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F6" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F7-->
+                                        <a-entity position="0.187 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F7" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F8-->
+                                        <a-entity position="0.209 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F8" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F9-->
+                                        <a-entity position="0.242 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F9" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F10-->
+                                        <a-entity position="0.264 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F10" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F11-->
+                                        <a-entity position="0.286 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F11" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F12-->
+                                        <a-entity position="0.308 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F12" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--imp ecran-->
+                                        <a-entity position="0.341 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Impr
+                                 ecran" color="red" scale="0.025 0.025 0.025" position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--arret defil-->
+                                        <a-entity position="0.363 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Arret
+                                 Defil" color="red" scale="0.025 0.025 0.025" position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--pause-->
+                                        <a-entity position="0.385 0 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Pause" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0 0.011"></a-text>
+                                        </a-entity>
+                                        <!--n-->
+                                        <a-entity position="0 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="n
+                                 2" color="red" scale="0.025 0.025 0.025" position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--1-->
+                                        <a-entity position="0.022 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="1" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--2-->
+                                        <a-entity position="0.044 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="2 ~" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--3-->
+                                        <a-entity position="0.066 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="3 #" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--4-->
+                                        <a-entity position="0.088 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="4 {" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--5-->
+                                        <a-entity position="0.11 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="5 [" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--6-->
+                                        <a-entity position="0.132 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="6 |" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--7-->
+                                        <a-entity position="0.154 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="7 `" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--8-->
+                                        <a-entity position="0.176 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="8 \" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--9-->
+                                        <a-entity position="0.198 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="9 ^" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--0-->
+                                        <a-entity position="0.22 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="0 @" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--°]-->
+                                        <a-entity position="0.242 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="]" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--+}-->
+                                        <a-entity position="0.264 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="+ }" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--<---->
+                                        <a-entity position="0.297 -0.024 0">
+                                                <a-box width="0.042" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="<--" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--TAB---->
+                                        <a-entity position="0.006 -0.048 0">
+                                                <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="TAB" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--A-->
+                                        <a-entity position="0.034 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="A" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Z-->
+                                        <a-entity position="0.056 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Z" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--E-->
+                                        <a-entity position="0.078 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="E" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--R-->
+                                        <a-entity position="0.1 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="R" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--T-->
+                                        <a-entity position="0.122 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="T" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Y-->
+                                        <a-entity position="0.144 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Y" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--U-->
+                                        <a-entity position="0.166 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="U" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--I-->
+                                        <a-entity position="0.188 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="I" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--O-->
+                                        <a-entity position="0.21 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="O" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--P-->
+                                        <a-entity position="0.232 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="P" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--^-->
+                                        <a-entity position="0.254 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="^" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--$-->
+                                        <a-entity position="0.276 -0.048 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="$" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Enter-->
+                                        <a-entity position="0.303 -0.059 0">
+                                                <a-box width="0.02" height="0.042" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Enter" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Caps lock---->
+                                        <a-entity position="0.006 -0.07 0">
+                                                <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Caps lock" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Q-->
+                                        <a-entity position="0.034 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Q" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--S-->
+                                        <a-entity position="0.056 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="S" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--D-->
+                                        <a-entity position="0.078 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="D" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--F-->
+                                        <a-entity position="0.1 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="F" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--G-->
+                                        <a-entity position="0.122 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="G" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--H-->
+                                        <a-entity position="0.144 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="H" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--J-->
+                                        <a-entity position="0.166 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="J" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--K-->
+                                        <a-entity position="0.188 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="K" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--L-->
+                                        <a-entity position="0.21 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="L" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--M-->
+                                        <a-entity position="0.232 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="M" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--%-->
+                                        <a-entity position="0.254 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="%" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--*-->
+                                        <a-entity position="0.276 -0.07 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="*" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Shift---->
+                                        <a-entity position="0.006 -0.092 0">
+                                                <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Shift" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--<>-->
+                                        <a-entity position="0.034 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="<
+                                 >" color="red" scale="0.025 0.025 0.025" position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--W-->
+                                        <a-entity position="0.056 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="W" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--X-->
+                                        <a-entity position="0.078 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="X" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--C-->
+                                        <a-entity position="0.1 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="C" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--V-->
+                                        <a-entity position="0.122 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="V" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--B-->
+                                        <a-entity position="0.144 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="B" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--N-->
+                                        <a-entity position="0.166 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="N" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--?-->
+                                        <a-entity position="0.188 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="?" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--. ;-->
+                                        <a-entity position="0.21 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value=".
+                                 ;" color="red" scale="0.025 0.025 0.025" position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--/ :-->
+                                        <a-entity position="0.232 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="/
+                                 :" color="red" scale="0.025 0.025 0.025" position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--§ !-->
+                                        <a-entity position="0.254 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="§
+                                 !" color="red" scale="0.025 0.025 0.025" position="-0.003 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Shift-->
+                                        <a-entity position="0.292 -0.092 0">
+                                                <a-box width="0.052" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Shift" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Ctrl---->
+                                        <a-entity position="0.006 -0.114 0">
+                                                <a-box width="0.033" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Ctrl" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Win-->
+                                        <a-entity position="0.034 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Win" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.005 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Alt-->
+                                        <a-entity position="0.056 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Alt" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.005 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Space-->
+                                        <a-entity position="0.16 -0.114 0">
+                                                <a-box width="0.15" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Space" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Alt Gr-->
+                                        <a-entity position="0.264 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Alt Gr" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Fn-->
+                                        <a-entity position="0.286 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Fn" color="red" scale="0.025 0.025 2"
+                                                        position="-0.007 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Ctrl-->
+                                        <a-entity position="0.308 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Ctrl" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Inser-->
+                                        <a-entity position="0.341 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Inser" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Suppr-->
+                                        <a-entity position="0.363 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Suppr" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Ver Num-->
+                                        <a-entity position="0.385 -0.024 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Ver
+                                 Num" color="red" scale="0.025 0.025 0.025" position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Top-->
+                                        <a-entity position="0.363 -0.092 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Haut" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Left-->
+                                        <a-entity position="0.341 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Gauche" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Down-->
+                                        <a-entity position="0.363 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Bas" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                        <!--Right-->
+                                        <a-entity position="0.385 -0.114 0">
+                                                <a-box width="0.02" height="0.02" depth="0.02" color="lightgrey">
+                                                </a-box>
+                                                <a-text value="Droite" color="red" scale="0.025 0.025 0.025"
+                                                        position="-0.01 0.002 0.011"></a-text>
+                                        </a-entity>
+                                </a-entity>
 
-    </a-scene>
-    <script src="assets/js/fonctions.js"></script>
-  </body>
+                                <!--souris-->
+                                <a-entity position="0 1.42 -0.989">
+                                        <a-plane width="0.16" height="0.08" color="grey"></a-plane>
+                                        <a-box width="0.06" height="0.02" depth="0.001" color="darkgrey"
+                                                position="-0.04 -0.03 0.001"></a-box>
+                                        <a-box width="0.06" height="0.02" depth="0.001" color="darkgrey"
+                                                position="0.04 -0.03 0.001"></a-box>
+                                </a-entity>
+
+                        </a-entity>
+
+                </a-entity>
+
+        </a-scene>
+        <script src="assets/js/fonctions.js"></script>
+</body>
+
 </html>
