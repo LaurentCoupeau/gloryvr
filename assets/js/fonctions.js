@@ -34,3 +34,34 @@ AFRAME.registerComponent('raycaster-listen', {
     console.log(intersection.point);
   }
 });
+
+
+// éléments du bureau
+let bureau = [];
+let tiroir1 = document.getElementById('tiroir1');
+let tiroir2 = document.getElementById('tiroir2');
+let tiroir3 = document.getElementById('tiroir3');
+let tiroir4 = document.getElementById('tiroir4');
+let tiroir5 = document.getElementById('tiroir5');
+let tiroir6 = document.getElementById('tiroir6');
+
+bureau.push(tiroir1, tiroir2, tiroir3, tiroir4, tiroir5, tiroir6);
+
+bureau.forEach(element => {
+    element.addEventListener('mouseenter', function(){
+        element.setAttribute('material', 'color', '#025698');
+		console.log('ok')
+
+    })
+    element.addEventListener('mouseleave', function(){
+        element.removeAttribute('material', 'color');
+
+    })
+    
+});
+// AFRAME.registerComponent('open-close',  {
+// 	init: function () {
+// 		let parent= this.el.parentNode;
+// 		parent.setAttribute('position', {z: 0.6}, true);
+//   }
+// });
