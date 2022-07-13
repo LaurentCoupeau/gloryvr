@@ -95,11 +95,8 @@
                         </a-entity>
                 </a-entity>
 
-
-                <!----------LUMIERE---------->
-                <a-light type="spot" color="white" intensity="0" 
-                        position="0 2.8 0" rotation="-90 0 0"
-                        angle="120"></a-light>
+               
+                
 
                 <!----------CIEL---------->
                 <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
@@ -113,7 +110,21 @@
                 </a-plane>
 
                 <!--PIECE PRINCIPALE-->
-                <a-entity>
+                <a-entity id="first-room">
+
+                        <!----------LUMIERE PIECE PRINCIPALE---------->
+                        <a-light type="directional" color="white" intensity="0.5" 
+                                position="-4 4 0"
+                                target="#directionaltargetleft">
+                                <a-entity id="directionaltargetleft"
+                                          position="3 -3 0"></a-entity>
+                        </a-light>
+                        <a-light type="directional" color="white" intensity="0.5" 
+                                position="4 4 0"
+                                target="#directionaltargetright">
+                        <a-entity id="directionaltargetright"
+                                  position="-3 -3 0"></a-entity>
+                </a-light>
 
                         <!--MURS-->
                         <a-entity position="0 2 0">
@@ -628,7 +639,6 @@
 
                         </a-entity>
 
-
                 </a-entity>
 
 
@@ -658,7 +668,9 @@
 
 
                 <!--AILE GAUCHE-->
-                <a-entity position="-7.02 0 0" rotation="0 90 0">
+                <a-entity id="aile-gauche"
+                          position="-7.02 0 0" rotation="0 90 0">
+                        
 
                         <!--mur de gauche du couloir-->
                         <a-entity position="-2 1 0" rotation="0 90 0">
@@ -726,9 +738,18 @@
                                        width="0.2" height="0.1" depth="0.1"
                                        emissive="blue" emissive-intensity="2">
                                 </a-box>
-                                <a-light type="spot" intensity="0.5" 
-                                         position="0 2 0" rotation="-90 0 0"
-                                         angle="250"></a-light>
+                                <a-light type="directional" color="white" intensity="0.3" 
+                                        position="-2 -0.05 0" rotation="0 0 90"
+                                        target="#directionaltargethallright">
+                                        <a-entity id="directionaltargethallright"
+                                                  position="2 -4 0"></a-entity>
+                                </a-light>
+                                <a-light type="directional" color="white" intensity="0.3" 
+                                        position="22 -0.05 0" rotation="0 0 -90"
+                                        target="#directionaltargethallleft">
+                                        <a-entity id="directionaltargethallleft"
+                                                  position="-2 -4 0"></a-entity>
+                                </a-light>
                         </a-entity>
                         
                 </a-entity>
@@ -744,7 +765,8 @@
 
 
                 <!-------------------CHAMBRE DES SECRETS------------------->
-                <a-entity position="-13 0 0" rotation="0 90 0">
+                <a-entity id="secret-room"
+                          position="-13 0 0" rotation="0 90 0">
 
                         <!-----------SABRE LASER------------>
                         <a-entity position="0 1.5 -0.5">
