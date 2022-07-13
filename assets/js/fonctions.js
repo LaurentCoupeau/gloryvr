@@ -1,3 +1,5 @@
+
+
 AFRAME.registerComponent('play-pause', {
 	init: function () {
 		var myVideo = document.querySelector('#pub-glorydev');
@@ -36,7 +38,7 @@ AFRAME.registerComponent('raycaster-listen', {
 });
 
 
-// éléments du bureau
+// interaction pour les tiroirs du bureau
 let bureau = [];
 let tiroir1 = document.getElementById('tiroir1');
 let tiroir2 = document.getElementById('tiroir2');
