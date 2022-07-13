@@ -37,6 +37,10 @@
                         <img id="harry" src="assets/img/poster/harry-coupe-de-feu.jpg"></img>
                         <img id="got" src="assets/img/poster/game-of-throne.jpg"></img>
 
+                        <!---------------------anneau unique-------------------->
+                        <a-asset-item id="ring-obj" src="assets/3d/anneau/ring.obj"></a-asset-item>
+                        <a-asset-item id="ring-mtl" src="assets/3d/anneau/ring.mtl"></a-asset-item>
+
                         <!---------------------video de publicite----------------------->
                         <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
 
@@ -93,7 +97,7 @@
 
 
                 <!----------LUMIERE---------->
-                <a-light type="spot" color="white" intensity="0.8" 
+                <a-light type="spot" color="white" intensity="0.2" 
                         position="0 2.8 0" rotation="-90 0 0"
                         angle="120"></a-light>
 
@@ -111,277 +115,211 @@
                 <!--PIECE PRINCIPALE-->
                 <a-entity>
 
-                        <!--mur de gauche-->
-                        <a-entity position="-4 2 0" rotation="0 90 0">
+                        <!--MURS-->
+                        <a-entity position="0 2 0">
 
-                                <!--partie gauche-->
-                                <a-entity position="-3 0 0">
-                                        <a-plane src="#plaster" repeat="3 4"
-                                                 width="3" height="4"
+                                <!--plafond-->
+                                <a-entity position="0 2 0" rotation="90 0 0">
+                                        <a-plane src="#plaster" repeat="8 9" 
+                                                width="8" height="9"
+                                                side="double">
+                                        </a-plane>
+                                </a-entity>
+
+                                <!--mur de gauche-->
+                                <a-entity position="-4 0 0" rotation="0 90 0">
+        
+                                        <!--partie gauche-->
+                                        <a-entity position="-3 0 0">
+                                                <a-plane src="#plaster" repeat="3 4"
+                                                         width="3" height="4"
+                                                         side="double">
+                                                </a-plane>
+                                                <!--plainte sol-->
+                                                <a-box width="3" height="0.1" depth="0.05"
+                                                        src="#bois" repeat="4 1"
+                                                        position="0 -1.95 0">
+                                                </a-box>
+                                                <!--plainte porte-->
+                                                <a-box width="0.1" height="1.9" depth="0.05"
+                                                        src="#bois" repeat="1 2"
+                                                        position="1.45 -0.95 0">
+                                                </a-box>
+                                        </a-entity>
+                                        
+                                        <!--partie droite-->
+                                        <a-entity position="3 0 0">
+                                                <a-plane src="#plaster" repeat="3 4"
+                                                         width="3" height="4" side="double">
+                                                </a-plane>
+                                                <!--plainte sol-->
+                                                <a-box width="3" height="0.1" depth="0.05"
+                                                        src="#bois" repeat="4 1"
+                                                        position="0 -1.95 0">
+                                                </a-box>
+                                                <!--plainte porte-->
+                                                <a-box width="0.1" height="1.9" depth="0.05"
+                                                        src="#bois" repeat="1 2"
+                                                        position="-1.45 -0.95 0">
+                                                </a-box>
+                                        </a-entity>
+        
+                                        <!--dessus de porte-->
+                                        <a-plane position="0 1 0"
+                                                src="#plaster" repeat="3 2"
+                                                width="3" height="2"
+                                                side="double">
+                                        </a-plane>
+                                        <!--plainte porte-->
+                                        <a-box width="3.2" height="0.1" depth="0.05"
+                                                src="#bois" repeat="3 1"
+                                                position="0 0.05 0">
+                                        </a-box>
+                                </a-entity>                       
+                                
+                                <!--mur de droite-->
+                                <a-entity position="4 0 0" rotation="0 -90 0">
+                                        <a-plane src="#plaster" repeat="9 4" 
+                                                width="9" height="4"
+                                                side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="9" height="0.1" depth="0.05"
+                                                src="#bois" repeat="1 2"
+                                                position="0 -1.95 0">
+                                        </a-box>
+                                </a-entity>
+        
+                                <!--mur de du fond-->
+                                <a-entity position="0 0 -4.5">
+        
+                                        <!-------------haut------------->                                
+                                        <a-plane position="0 1.75 0"
+                                                 src="#plaster" repeat="6 .5" 
+                                                 width="6" height="0.5" depth="0.05"
                                                  side="double">
                                         </a-plane>
-                                        <!--plainte sol-->
-                                        <a-box width="3" height="0.1" depth="0.05"
-                                                src="#bois" repeat="4 1"
-                                                position="0 -1.95 0">
+                                        <!--plainte-->
+                                        <a-box width="6.1" height="0.1" depth="0.05"
+                                                src="#bois" repeat="6 1"
+                                                position="0 1.5 0.025">
                                         </a-box>
-                                        <!--plainte porte-->
-                                        <a-box width="0.1" height="1.9" depth="0.05"
-                                                src="#bois" repeat="1 2"
-                                                position="1.45 -0.95 0">
-                                        </a-box>
-                                </a-entity>
-                                
-                                <!--partie droite-->
-                                <a-entity position="3 0 0">
-                                        <a-plane src="#plaster" repeat="3 4"
-                                                 width="3" height="4" side="double">
+        
+                                        <!-------------bas------------->
+                                        <a-plane position="0 -1.75 0"
+                                                 src="#plaster" repeat="6 1" 
+                                                 width="6" height="0.5" depth="0.05"
+                                                 side="double">
                                         </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="6.1" height="0.1" depth="0.05"
+                                                src="#bois" repeat="6 1"
+                                                position="0 -1.5 0.025">
+                                        </a-box>
+        
+                                        <!-------------gauche------------->
+                                        <a-plane position="-3.5 0 0"
+                                                 src="#plaster" repeat="1 4" 
+                                                 width="1" height="4" depth="0.05"
+                                                 side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="0.1" height="2.9" depth="0.05"
+                                                src="#bois" repeat="1 3"
+                                                position="-3 0 0.025">
+                                        </a-box>
+        
+                                        <!-------------droite------------->
+                                        <a-plane position="3.5 0 0"
+                                                 src="#plaster" repeat="1 4" 
+                                                 width="1" height="4" depth="0.05"
+                                                 side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="0.1" height="2.9" depth="0.05"
+                                                src="#bois" repeat="1 3"
+                                                position="3 0 0.025">
+                                        </a-box>
+        
+                                        <!--baie vitrée-->
+                                        <a-box width="6" height="3" depth="0.02"
+                                                color="aqua" transparent="true"
+                                                opacity="0.6"></a-box>
                                         <!--plainte sol-->
-                                        <a-box width="3" height="0.1" depth="0.05"
-                                                src="#bois" repeat="4 1"
+                                        <a-box width="8" height="0.1" depth="0.05"
+                                                src="#bois" repeat="1 2"
                                                 position="0 -1.95 0">
                                         </a-box>
-                                        <!--plainte porte-->
-                                        <a-box width="0.1" height="1.9" depth="0.05"
+                                </a-entity>                        
+                                
+                                <!--mur de l'entrée-->
+                                <a-entity position="0 0 4.5" rotation="180 0 0">
+        
+                                        <!-------------haut------------->                                
+                                        <a-plane position="0 1.75 0"
+                                                 src="#plaster" repeat="6 1" 
+                                                 width="6" height="0.5" depth="0.05"
+                                                 side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="6.1" height="0.1" depth="0.05"
+                                                src="#bois" repeat="6 1"
+                                                position="0 1.5 0.025">
+                                        </a-box>
+        
+                                        <!-------------bas------------->
+                                        <a-plane position="0 -1.75 0"
+                                                 src="#plaster" repeat="6 1" 
+                                                 width="6" height="0.5" depth="0.05"
+                                                 side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="6.1" height="0.1" depth="0.05"
+                                                src="#bois" repeat="6 1"
+                                                position="0 -1.5 0.025">
+                                        </a-box>
+        
+                                        <!-------------gauche------------->
+                                        <a-plane position="-3.5 0 0"
+                                                 src="#plaster" repeat="1 4" 
+                                                 width="1" height="4" depth="0.05"
+                                                 side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="0.1" height="2.9" depth="0.05"
+                                                src="#bois" repeat="1 3"
+                                                position="-3 0 0.025">
+                                        </a-box>
+        
+                                        <!-------------droite------------->
+                                        <a-plane position="3.5 0 0"
+                                                 src="#plaster" repeat="1 4" 
+                                                 width="1" height="4" depth="0.05"
+                                                 side="double">
+                                        </a-plane>
+                                        <!--plainte-->
+                                        <a-box width="0.1" height="2.9" depth="0.05"
+                                                src="#bois" repeat="1 4"
+                                                position="3 0 0.025">
+                                        </a-box>
+        
+                                        <!--baie vitrée-->
+                                        <a-box position="" rotation=""
+                                                width="6" height="3" depth="0.02"
+                                                color="aqua" transparent="true"
+                                                opacity="0.6">
+                                        </a-box>
+                                        <!--plainte sol-->
+                                        <a-box width="8" height="0.1" depth="0.05"
                                                 src="#bois" repeat="1 2"
-                                                position="-1.45 -0.95 0">
+                                                position="0 1.95 0">
                                         </a-box>
                                 </a-entity>
 
-                                <!--dessus de porte-->
-                                <a-plane position="0 1 0"
-                                        src="#plaster" repeat="3 2"
-                                        width="3" height="2"
-                                        side="double">
-                                </a-plane>
-                                <!--plainte porte-->
-                                <a-box width="3.2" height="0.1" depth="0.05"
-                                        src="#bois" repeat="3 1"
-                                        position="0 0.05 0">
-                                </a-box>
-                        </a-entity>                       
-                        
-                        <!--mur de droite-->
-                        <a-entity position="4 2 0" rotation="0 -90 0">
-                                <a-plane src="#plaster" repeat="9 4" 
-                                        width="9" height="4"
-                                        side="double">
-                                </a-plane>
                         </a-entity>
 
-                        <!--mur de du fond-->
-                        <a-entity position="0 2 -4.5">
-
-                                <!-------------haut------------->                                
-                                <a-box src="#plaster" repeat="5 1" 
-                                        width="6" height="0.5" depth="0.05"
-                                        position="0 1.75 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="6.1" height="0.1" depth="0.05"
-                                        src="#bois" repeat="20 1"
-                                        position="0 1.5 0.025">
-                                </a-box>
-
-                                <!-------------bas------------->
-                                <a-box src="#plaster" repeat="5 1" 
-                                        width="6" height="0.5" depth="0.05"
-                                        position="0 -1.75 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="6.1" height="0.1" depth="0.05"
-                                        src="#bois" repeat="20 1"
-                                        position="0 -1.5 0.025">
-                                </a-box>
-
-                                <!-------------gauche------------->
-                                <a-box src="#plaster" repeat="1 3" 
-                                        width="1" height="4" depth="0.05"
-                                        position="-3.5 0 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="0.1" height="2.9" depth="0.05"
-                                        src="#bois" repeat="1 10"
-                                        position="-3 0 0.025">
-                                </a-box>
-
-                                <!-------------droite------------->
-                                <a-box src="#plaster" repeat="1 3" 
-                                        width="1" height="4" depth="0.05"
-                                        position="3.5 0 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="0.1" height="2.9" depth="0.05"
-                                        src="#bois" repeat="1 10"
-                                        position="3 0 0.025">
-                                </a-box>
-
-                                <!--baie vitrée-->
-                                <a-box width="6" height="3" depth="0.02"
-                                        color="aqua" transparent="true"
-                                        opacity="0.6"></a-box>
-                        </a-entity>
-                        
-                        
-                        <!--mur de l'entree-->
-                        <a-entity position="0 2 4.5" rotation="180 0 0">
-
-                                <!-------------haut------------->                                
-                                <a-box src="#plaster" repeat="5 1" 
-                                        width="6" height="0.5" depth="0.05"
-                                        position="0 1.75 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="6.1" height="0.1" depth="0.05"
-                                        src="#bois" repeat="20 1"
-                                        position="0 1.5 0.025">
-                                </a-box>
-
-                                <!-------------bas------------->
-                                <a-box src="#plaster" repeat="5 1" 
-                                        width="6" height="0.5" depth="0.05"
-                                        position="0 -1.75 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="6.1" height="0.1" depth="0.05"
-                                        src="#bois" repeat="20 1"
-                                        position="0 -1.5 0.025">
-                                </a-box>
-
-                                <!-------------gauche------------->
-                                <a-box src="#plaster" repeat="1 3" 
-                                        width="1" height="4" depth="0.05"
-                                        position="-3.5 0 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="0.1" height="2.9" depth="0.05"
-                                        src="#bois" repeat="1 10"
-                                        position="-3 0 0.025">
-                                </a-box>
-
-                                <!-------------droite------------->
-                                <a-box src="#plaster" repeat="1 3" 
-                                        width="1" height="4" depth="0.05"
-                                        position="3.5 0 0">
-                                </a-box>
-                                <!--plainte-->
-                                <a-box width="0.1" height="2.9" depth="0.05"
-                                        src="#bois" repeat="1 10"
-                                        position="3 0 0.025">
-                                </a-box>
-
-                                <!--baie vitrée-->
-                                <a-box position="" rotation=""
-                                        width="6" height="3" depth="0.02"
-                                        color="aqua" transparent="true"
-                                        opacity="0.6"></a-box>
-                        </a-entity>
-                </a-entity>
-
-
-                <!----------STATUE---------->
-                <!-- <a-obj-model src="#statue" scale="0.003 0.003 0.003" rotation="0 -55 0" position="4 0 -5">
-                </a-obj-model> -->
-
-                <!----------FEUILLE DE PRESENTATION---------->
-                <!-- <a-entity position="4 2 0" scale="2 2 2" rotation="0 -90 0"> -->
-
-                        <!--Feuille de présentation Laurent Coupeau-->
-                        <!-- <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0.011">
-                        </a-image> -->
-                        <!--Encart pour la vidéo de pub-->
-                        <!-- <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0"> -->
-
-                                <!-- Controles Play/Pause -->
-                                <!-- <a-image id="videoControls" class="clickable" src="#play" color="aqua"
-                                        position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
-                                        event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
-                                </a-image>
-
-                        </a-video> -->
-
-                <!-- </a-entity> -->
-
-
-                <!--AILE GAUCHE-->
-                <a-entity position="-7.02 0 0" rotation="0 90 0">
-
-                        <!--mur de gauche du couloir-->
-                        <a-entity position="-2 1 0" rotation="0 90 0">
-                                <a-plane src="#plaster" repeat="6 2" 
-                                         side="double"
-                                         width="6" height="2">
-                                </a-plane>
-                                <!--posters du mur-->
-                                <a-entity position="-0.015 0 0.011">
-                                        <a-image src="#lodro" side="double"
-                                                width="1.2" height="1.6"
-                                                position="-2 0 0"></a-image>
-                                        <a-image src="#got" side="double"
-                                                width="1.2" height="1.6"
-                                                position="0 0 0"></a-image>
-                                        <a-image src="#matrix" side="double"
-                                                width="1.2" height="1.6"
-                                                position="2 0 0"></a-image>
-                                </a-entity>
-                                <!--plainte mur gauche du couloir-->
-                                <a-box width="6" height="0.1" depth="0.05"
-                                        src="#bois" repeat="1 2"
-                                        position="0 -0.95 0">
-                                </a-box>
-
-                        </a-entity>
-
-                        <!--mur de droite du couloir-->
-                        <a-entity position="2 1 0" rotation="0 -90 0">
-                                <a-plane src="#plaster" repeat="6 2" 
-                                         side="double"
-                                         width="6" height="2">
-                                </a-plane>
-                                <!--posters du mur-->
-                                <a-entity position="-0.015 0 0.011">
-                                        <a-image src="#xmen" side="double"
-                                                width="1.2" height="1.6"
-                                                position="-2 0 0"></a-image>
-                                        <a-image src="#harry" side="double"
-                                                width="1.2" height="1.6"
-                                                position="0 0 0"></a-image>
-                                        <a-image src="#star-wars" side="double"
-                                                width="1.2" height="1.6"
-                                                position="2 0 0"></a-image>
-                                </a-entity>
-                                <!--plainte mur gauche du couloir-->
-                                <a-box width="6" height="0.1" depth="0.05"
-                                        src="#bois" repeat="1 2"
-                                        position="0 -0.95 0">
-                                </a-box>
-
-                        </a-entity>
-
-                        <!--plafond du couloir-->
-                        <a-plane position="0 2 0" 
-                                src="#plaster" repeat="4 6"
-                                side="double"s
-                                 width="4" height="6"
-                                 rotation="90 0 0">
-                        </a-plane>
-
-                        <!--lumiere du plafond-->
-                        <a-entity>
-                                <a-box position="0 2 0"
-                                       width="0.2" height="0.1" depth="0.1"
-                                       emissive="blue" emissive-intensity="2">
-                                </a-box>
-                                <a-light type="spot" intensity="0.5" 
-                                         position="0 2 0" rotation="-90 0 0"
-                                         angle="180"></a-light>
-                        </a-entity>
-                        
-                </a-entity>
-                <!-------------------BUREAU ET REPERE---------------------->
-                <a-entity position="0.1 0.01 -4">
+                        <!--BUREAU ET REPERE-->
+                        <a-entity position="0 0.01 -4">
                         <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
                         <a-entity position="0 1.1 0.2">
                                 <a-dodecahedron color="blue" radius="0.06"
@@ -559,7 +497,241 @@
                                         src="#acier" shadow="receive:true"></a-box>
                         </a-entity>
 
+                        </a-entity>
+
+                        <!--table et imprimante 3D-->
+                        <a-entity position="3 0 -2" rotation="0 90 0">
+                                <!--plateau-->
+                                <a-box position="0 1 0" rotation="90 0 0"
+                                        width="2" height="1" depth="0.015"
+                                        src="">
+                                </a-box>
+                                <!--pieds-->
+                                <a-cylinder position="-0.9 0.5 -0.4"
+                                            radius="0.03" height="1"
+                                            src="">
+                                </a-cylinder>
+                                <a-cylinder position="-0.9 0.5 0.4"
+                                            radius="0.03" height="1"
+                                            src="">
+                                </a-cylinder>
+                                <a-cylinder position="0.9 0.5 -0.4"
+                                            radius="0.03" height="1"
+                                            src="">
+                                </a-cylinder>
+                                <a-cylinder position="0.9 0.5 0.4"
+                                            radius="0.03" height="1"
+                                            src="">
+                                </a-cylinder>
+
+                                <!--imprimante 3D-->
+                                <a-entity position="-0.5 1.05 0" rotation="0 180 0">
+
+                                        <!--socle-->
+                                        <a-entity>
+                                            <!--support inférieur-->
+                                            <a-box width="0.3" height="0.05" depth="0.3"
+                                                   src="#metal">
+                                            </a-box>
+                                            <a-box width="0.02" height="0.04" depth="0.28"
+                                                   src="#metal" position="0 0.03 0"></a-box>
+                                            <!--plateau-->
+                                            <a-entity position="0 0.07 0.1"
+                                                       animation="property: position; to: 0 0.07 -0.03; dir: alternate; dur: 2000; easing: linear; loop: true" >
+                                                <a-box width="0.3" height="0.005" depth="0.3"
+                                                       color="aqua">
+                                                </a-box>
+                                                <a-entity obj-model="obj: #ring-obj; mtl:#ring-mtl"
+                                                          position="0 0.018 0" rotation="-90 0 0"
+                                                          scale="0.005 0.005 0.005"></a-entity>
+                                            </a-entity>
+                                            <!--bouton on/off-->
+                                            <a-box width="0.02" height="0.03" depth="0.01"
+                                                   position="0.08 0 0.149" rotation=""
+                                                   emissive="red" emissive-intensity="2"></a-box>>
+                                            
+                                        </a-entity>
+                            
+                                        <!--bloc controle-->
+                                        <a-entity position="-0.08 0 0.165" rotation="-45 0 0">
+                                            <a-box width="0.1" height="0.05" depth="0.01"
+                                                   position=""
+                                                   src="#metal">
+                                            </a-box>
+                            
+                                            <a-entity position="0.035 0 0.01" rotation="90 0 0">
+                                                <!--bouton selection-->
+                                                <a-cylinder radius="0.008" height="0.011"
+                                                            src="#metal">
+                                                </a-cylinder>
+                                                <!--thorus eclairé du bouton selection-->
+                                                <a-torus radius="0.0085" radius-tubular="0.0005"
+                                                         rotation="90 0 0"
+                                                         emissive="aqua" emissive-intensity="2">                    
+                                                </a-torus>
+                            
+                                            </a-entity>
+                                            <!--ecran-->
+                                            <a-entity position="0 0.003 0.006">
+                                                <a-plane width="0.06" height="0.04"
+                                                        position="-0.01 -0.002 0"
+                                                        emissive="aqua" emissive-intensity="0.7">
+                                                </a-plane>
+                                                <a-text id="texte" value="impression" color="black"
+                                                        position="-0.037 0 0"
+                                                        width="0.2">
+                                                </a-text>
+                            
+                                            </a-entity>
+                                        </a-entity>
+                            
+                                        <!--armature et bloc Nozzle-->
+                                        <a-entity position="0 0.17 0">
+                                            <!--bras gauche-->
+                                            <a-box width="0.04" height="0.4" depth="0.04"
+                                                   src="#metal"
+                                                   position="-0.17 0 0">
+                                            </a-box>
+                                            <!--bras droit-->
+                                            <a-box width="0.04" height="0.4" depth="0.04"
+                                            src="#metal"
+                                                    position="0.17 0 0">
+                                            </a-box>
+                                            <!--bras du haut-->
+                                            <a-box width="0.3" height="0.02" depth="0.02"
+                                                   src="#metal"
+                                                   position="0 -0.004 0">
+                                            </a-box>
+                            
+                                            <!--nozzle-->
+                                            <a-entity id="nozzle" position="-0.03 -0.014 0.025"
+                                                      animation="property: position; to:0.03 -0.014 0.032; dir: alternate; dur: 2000; easing: linear; loop: true">
+                                                <!--extrudeur-->
+                                                <a-box src="#metal" width="0.05" height="0.05" depth="0.025"
+                                                       color="red"
+                                                ></a-box>
+                                                <a-cylinder height="0.02" radius="0.007"
+                                                            src="#metal" position="0 -0.03 0">
+                                                </a-cylinder>
+                                                <a-cone radius-bottom="0.001" radius-top="0.007" height="0.01"
+                                                        position="0 -0.045 0" rotation=""
+                                                        color="yellow" src="#laiton">
+                                                </a-cone>
+                                            </a-entity>
+                                            
+                                        </a-entity>
+                                </a-entity>
+
+                                
+
+                        </a-entity>
+
+
                 </a-entity>
+
+
+                <!----------STATUE---------->
+                <!-- <a-obj-model src="#statue" scale="0.003 0.003 0.003" rotation="0 -55 0" position="4 0 -5">
+                </a-obj-model> -->
+
+                <!----------FEUILLE DE PRESENTATION---------->
+                <!-- <a-entity position="4 2 0" scale="2 2 2" rotation="0 -90 0"> -->
+
+                        <!--Feuille de présentation Laurent Coupeau-->
+                        <!-- <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0.011">
+                        </a-image> -->
+                        <!--Encart pour la vidéo de pub-->
+                        <!-- <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0"> -->
+
+                                <!-- Controles Play/Pause -->
+                                <!-- <a-image id="videoControls" class="clickable" src="#play" color="aqua"
+                                        position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
+                                        event-set__mouseenter="material.color: blue"
+                                        event-set__mouseleave="material.color: aqua">
+                                </a-image>
+
+                        </a-video> -->
+
+                <!-- </a-entity> -->
+
+
+                <!--AILE GAUCHE-->
+                <a-entity position="-7.02 0 0" rotation="0 90 0">
+
+                        <!--mur de gauche du couloir-->
+                        <a-entity position="-2 1 0" rotation="0 90 0">
+                                <a-plane src="#plaster" repeat="6 2" 
+                                         side="double"
+                                         width="6" height="2">
+                                </a-plane>
+                                <!--posters du mur-->
+                                <a-entity position="-0.015 0 0.011">
+                                        <a-image src="#lodro" side="double"
+                                                width="1.2" height="1.6"
+                                                position="-2 0 0"></a-image>
+                                        <a-image src="#got" side="double"
+                                                width="1.2" height="1.6"
+                                                position="0 0 0"></a-image>
+                                        <a-image src="#matrix" side="double"
+                                                width="1.2" height="1.6"
+                                                position="2 0 0"></a-image>
+                                </a-entity>
+                                <!--plainte mur gauche du couloir-->
+                                <a-box width="6" height="0.1" depth="0.05"
+                                        src="#bois" repeat="1 2"
+                                        position="0 -0.95 0">
+                                </a-box>
+
+                        </a-entity>
+
+                        <!--mur de droite du couloir-->
+                        <a-entity position="2 1 0" rotation="0 -90 0">
+                                <a-plane src="#plaster" repeat="6 2" 
+                                         side="double"
+                                         width="6" height="2">
+                                </a-plane>
+                                <!--posters du mur-->
+                                <a-entity position="-0.015 0 0.011">
+                                        <a-image src="#xmen" side="double"
+                                                width="1.2" height="1.6"
+                                                position="-2 0 0"></a-image>
+                                        <a-image src="#harry" side="double"
+                                                width="1.2" height="1.6"
+                                                position="0 0 0"></a-image>
+                                        <a-image src="#star-wars" side="double"
+                                                width="1.2" height="1.6"
+                                                position="2 0 0"></a-image>
+                                </a-entity>
+                                <!--plainte mur gauche du couloir-->
+                                <a-box width="6" height="0.1" depth="0.05"
+                                        src="#bois" repeat="1 2"
+                                        position="0 -0.95 0">
+                                </a-box>
+
+                        </a-entity>
+
+                        <!--plafond du couloir-->
+                        <a-plane position="0 2 0" 
+                                src="#plaster" repeat="4 6"
+                                side="double"s
+                                 width="4" height="6"
+                                 rotation="90 0 0">
+                        </a-plane>
+
+                        <!--lumiere du plafond-->
+                        <a-entity>
+                                <a-box position="0 2 0"
+                                       width="0.2" height="0.1" depth="0.1"
+                                       emissive="blue" emissive-intensity="2">
+                                </a-box>
+                                <a-light type="spot" intensity="0.5" 
+                                         position="0 2 0" rotation="-90 0 0"
+                                         angle="250"></a-light>
+                        </a-entity>
+                        
+                </a-entity>
+
+
                 <!--repere téléportation-->
                 <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5" class="clickable"
                         color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
@@ -592,13 +764,13 @@
                         </a-entity>
 
                         <!--mur de gauche-->
-                        <a-entity position="-2.95 1.25 -2"
+                        <a-entity position="-3.45 1.25 -2"
                                   rotation="0 90 0">
                                 <a-box width="9.8" height="2.5" depth="0.1"
                                         color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--mur de droite-->
-                        <a-entity position="2.95 1.25 -2"
+                        <a-entity position="3.45 1.25 -2"
                                   rotation="0 90 0">
                                 <a-box width="9.8" height="2.5" depth="0.1"
                                         color="aqua" opacity="0.7"></a-box>
@@ -606,29 +778,29 @@
                         <!--mur du fond-->
                         <a-entity position="0 1.25 -6.95"
                                   rotation="0 0 0">
-                                <a-box width="6" height="2.5" depth="0.1"
+                                <a-box width="7" height="2.5" depth="0.1"
                                         color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--plafond-->
                         <a-entity position="0  2.55 -2"
                                   rotation="90 90 0">
-                                <a-box width="10" height="6" depth="0.1"
+                                <a-box width="10" height="7" depth="0.1"
                                         color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--mur de devant avec ouverture-->
                         <a-entity position="0 0 2.95">
-                                <a-box width="6" height="0.8" depth="0.1"
-                                        position="0 2.1 0"
-                                        color="aqua" opacity="0.7">
+                                <a-box position="0 2.25 0"
+                                        width="3" height="0.5" depth="0.1"
+                                        color="aqua">
                                 </a-box>
-                                <a-box width="1.7" height="2" depth="0.1"
-                                        color="aqua" opacity="0.7"
-                                        rotation="0 0 90" position="-2 0.85 0">
+                                <a-box position="-2.5 1.25 0"
+                                        width="2" height="2.5"  depth="0.1"
+                                        color="aqua">
 
                                 </a-box>
-                                <a-box width="1.7" height="2" depth="0.1"
-                                        color="aqua" opacity="0.7"
-                                        rotation="0 0 90" position="2 0.85 0">
+                                <a-box position="2.5 1.25 0"
+                                        width="2" height="2.5" depth="0.1"
+                                        color="aqua">
 
                                 </a-box>
 
@@ -883,6 +1055,7 @@
         </a-scene>
 
         <script src="assets/js/fonctions.js"></script>
+        <script src="assets/js/print3d.js"></script>
 </body>
 
 </html>
