@@ -22,9 +22,12 @@
         <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
         <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+
         <script src="assets/js/progressive-controls.js"></script>
+
         <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
 	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.js"></script>
 </head>
 
@@ -112,19 +115,22 @@
 		</a-entity>
 
 
-                <a-entity movement-controls="controls: checkpoint" checkpoint-controle="mode: animate" look-controls
-                        position="0 1.5 -0.7">
+                <a-entity movement-controls="controls: checkpoint" 
+                          checkpoint-controle="mode: animate" look-controls
+                          position="0 1.5 -0.7">
+
                         <!--controlers-->
                         <a-entity>
                                 <a-entity id="left-hand" laser-controls="hand: left"
-                                        raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
-                                        defaultModelColor="black">
+                                          raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:4"
+                                          defaultModelColor="white">
                                 </a-entity>
                                 <a-entity id="right-hand" laser-controls="hand: right"
-                                        raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6;far:4"
-                                        defaultModelColor="black">
+                                          raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:4"
+                                          defaultModelColor="white">
                                 </a-entity>
                         </a-entity>
+
                 </a-entity>
 
                 <!-------------------CIEL------------------->
@@ -526,11 +532,10 @@
                         </a-entity>
 
                         <!-------------------REPERE TELEPORTATION BUREAU---------------------->
-                        <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5"
+                        <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5" class="clickable"
                                 color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
                                 event-set__mouseenter="material.color: blue"
-                                event-set__mouseleave="material.color: aqua"
-                                >
+                                event-set__mouseleave="material.color: aqua">
                         </a-image>
 
                         <!-------------------TABLE ET IMPRIMANTE 3D---------------------->
