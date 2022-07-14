@@ -307,26 +307,10 @@
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
                                 <a-entity position="0 1.1 0.2">
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.85 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.65 0 0" emissive="blue"
-                                                emissive-intensity="0.4" transparent="true" opacity="1">
-                                        </a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.45 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.25 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.05 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.15 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.35 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.55 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.75 0 0"
-                                                transparent="true" opacity="1"></a-dodecahedron>
+                                        <a-dodecahedron id="first-dod" color="blue" radius="0.06" position="0 0 0" class="clickable"
+                                                        event-set__enter="_event: mouseenter; material.color: #ffd700"
+                                                        event-set__leave="_event: mouseleave; material.color: blue"
+                                                transparent="true" opacity="1" grabbable></a-dodecahedron>
                                 </a-entity>
 
                                 <!-------------------BUREAU---------------------->
