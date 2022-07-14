@@ -308,10 +308,58 @@
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
                                 <a-entity position="0 1.1 0.2">
-                                        <a-dodecahedron id="first-dod" color="blue" radius="0.06" position="0 0 0" class="clickable"
-                                                        event-set__enter="_event: mouseenter; material.color: #ffd700"
-                                                        event-set__leave="_event: mouseleave; material.color: blue"
-                                                transparent="true" opacity="1" grabbable></a-dodecahedron>
+                                        <a-box id="control-surface"
+                                                width="1" height="0.1" depth="0.5"
+                                                color="black"></a-box>
+                                        <a-box id="button-power" position="0 0 0.25"
+                                                width="0.02" height="0.03" depth="0.01"
+                                                 emissive="red" emissive-intensity="2"
+                                                event-set__enter="_event: mouseenter; material.emissive: lime"
+                                                event-set__click="_event: click; target: .clickable; material.emissive:aqua"
+                                                event-set__click2="_event: click; material.emissive: lime">
+                                        </a-box>
+                                        <!--rangée du haut-->
+                                        <a-entity position="0 0 0.12">
+                                                <a-box id="pad1" class="clickable" position="-0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad2" class="clickable" position="0 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad3" class="clickable" position="0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                        </a-entity>
+                                        <!--rangée du bas-->
+                                        <a-entity position="0 0 -0.1">
+                                                <a-box id="pad4" class="clickable" position="-0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad5" class="clickable" position="0 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad6" class="clickable" position="0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                        </a-entity>
                                 </a-entity>
 
                                 <!-------------------BUREAU---------------------->
