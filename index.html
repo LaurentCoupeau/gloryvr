@@ -19,9 +19,12 @@
         <meta property="og:image" content="https://laurentcoupeau.github.io/gloryvr/assets/img/logo-glorydev.png">
 
 
-        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+        <script src="assets/js/progressive-controls.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.js"></script>
 </head>
 
@@ -30,6 +33,7 @@
         <a-scene renderer="antialias: true" physics="friction: 0.1; restitution: 0.5" debug stats>
 
                 <a-assets>
+
                         <!---------------------ciel--------------------->
                         <img id="plafond" src="assets/img/sky9.png"></img>
 
@@ -38,7 +42,7 @@
                         <!---------------------texture mur interieur--------------------->
                         <img id="plaster" src="assets/textures/plaster-white.jpg"></img>
                         <!---------------------texture marbre--------------------->
-                        <img id="#marbre" src="assets/textures/marbre.jpg"></img>
+                        <img id="marbre" src="assets/textures/marbre.jpg"></img>
                         <!---------------------texture bois--------------------->
                         <img id="bois" src="assets/textures/bois_crade.jpg"></img>
                         <!---------------------texture acier---------------------->
@@ -64,8 +68,8 @@
                         <a-asset-item id="ring-obj" src="assets/3d/anneau/ring.obj"></a-asset-item>
                         <a-asset-item id="ring-mtl" src="assets/3d/anneau/ring.mtl"></a-asset-item>
                         <!---------------------plante-------------------->
-                        <a-asset-item id="plante-obj" src="assets/3d/eb_house_plant_01/eb_house_plant_01.obj"></a-asset-item>
-                        <a-asset-item id="plante-mtl" src="assets/3d/eb_house_plant_01/eb_house_plant_01.mtl"></a-asset-item>
+                        <!-- <a-asset-item id="aloevera-obj" src="assets/3d/aloe-vera/aloe-vera.obj"></a-asset-item>
+                        <a-asset-item id="aloevera-mtl" src="assets/3d/aloe-vera/aloe-vera.obj"></a-asset-item> -->
 
                         <!---------------------video de publicite----------------------->
                         <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
@@ -81,17 +85,31 @@
                 </a-assets>
 
                 <!----------camera---------->
-                <!-- <a-entity position="0 1.2 -0.7">
-        <a-entity camera position="0 0 -0.5"
-                  look-controls>
-                <a-cursor></a-cursor>
-                <a-entity id="left-hand"
-                          laser-controls="hand: left"></a-entity>
-                          
-                <a-entity id="right-hand"
-                laser-controls="hand: right"></a-entity>
-        </a-entity>
-      </a-entity> -->
+                <!-- <a-entity position="0 1.6 -0.7">
+                        <a-entity camera position="0 0 -0.5" look-controls>
+                                <a-entity id="left-hand" laser-controls="hand: left"></a-entity>                          
+                                <a-entity id="right-hand" laser-controls="hand: right"></a-entity>
+                        </a-entity>
+                </a-entity> -->
+
+                <!-- Camera Rig -->
+		<a-entity id="cam-rig"
+                          movement-controls="controls: checkpoint"
+                          checkpoint-controls="mode: animate; animateSpeed: 13.0"
+                          event-set__start="_target: #blink; _event: navigation-start;
+				  	    animation.property: opacity;
+				  	    animation.to: 1;
+				  	    animation.dur: 250;
+				  	    animation.easing: easeOutQuart"
+			  event-set__end="_target: #blink; _event: navigation-end;
+				  	  animation.to: 0">
+			<!-- Progressive Controls -->
+			<a-entity progressive-controls>
+				<a-camera>
+					<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
+				</a-camera>
+			</a-entity>
+		</a-entity>
 
 
                 <a-entity movement-controls="controls: checkpoint" checkpoint-controle="mode: animate" look-controls
@@ -508,10 +526,11 @@
                         </a-entity>
 
                         <!-------------------REPERE TELEPORTATION BUREAU---------------------->
-                        <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5" class="clickable"
+                        <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5"
                                 color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
                                 event-set__mouseenter="material.color: blue"
-                                event-set__mouseleave="material.color: aqua">
+                                event-set__mouseleave="material.color: aqua"
+                                >
                         </a-image>
 
                         <!-------------------TABLE ET IMPRIMANTE 3D---------------------->
@@ -633,7 +652,9 @@
 
                         </a-entity>
 
-                        <a-obj-model src="#plante-obj" mtl="#plante-mtl" scale="0.01 0.01 0.01" position="0 1 -1"></a-obj-model>
+                        <!-- <a-obj-model src="#aloevera-obj" mtl="#aloevera-mtl" 
+                                     scale="0.01 0.01 0.01" rotation="-90 0 0" position="0 1 -1">
+                        </a-obj-model> -->
 
 
 
@@ -768,14 +789,14 @@
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0">
+                                                position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0">
+                                                position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -794,14 +815,14 @@
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0">
+                                                position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0">
+                                                position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -820,14 +841,14 @@
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0">
+                                                position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0">
+                                                position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -846,14 +867,14 @@
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0">
+                                                position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0">
+                                                position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -872,14 +893,14 @@
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0">
+                                                position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0">
+                                                position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -898,14 +919,14 @@
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0">
+                                                position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0">
+                                                position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
