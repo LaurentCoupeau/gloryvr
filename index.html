@@ -91,7 +91,15 @@
 
                 </a-assets>
 
-                                <!-- Camera Rig -->
+                <!----------camera---------->
+                <!-- <a-entity position="0 1.6 -0.7">
+                        <a-entity camera position="0 0 -0.5" look-controls>
+                                <a-entity id="left-hand" laser-controls="hand: left"></a-entity>                          
+                                <a-entity id="right-hand" laser-controls="hand: right"></a-entity>
+                        </a-entity>
+                </a-entity> -->
+
+                <!-- Camera Rig -->
 		<a-entity id="cam-rig"
                           movement-controls="controls: checkpoint"
                           checkpoint-controls="mode: animate; animateSpeed: 13.0"
@@ -108,13 +116,13 @@
 					<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
 				</a-camera>
                                 <!--controlers-->
-                                <a-entity posotion="0 0 -0.1">
+                                <a-entity position="0 0 -0.1">
                                         <a-entity id="left-hand" laser-controls="hand: left"
-                                                  raycaster=" lineColor: red;lineOpacity: 0.6; far:4"
+                                                  raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:4"
                                                   defaultModelColor="white">
                                         </a-entity>
                                         <a-entity id="right-hand" laser-controls="hand: right"
-                                                  raycaster="lineColor: red; lineOpacity: 0.6; far:4"
+                                                  raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:4"
                                                   defaultModelColor="white">
                                         </a-entity>
                                 </a-entity>
