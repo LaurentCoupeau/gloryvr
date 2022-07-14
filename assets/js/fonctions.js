@@ -67,3 +67,35 @@ bureau.forEach(element => {
 // 		parent.setAttribute('position', {z: 0.6}, true);
 //   }
 // });
+
+// instantiate a loader
+const loader = new TGALoader();
+
+// load a resource
+const texture = loader.load(
+	// resource URL
+	'../assets/3d/eb_house_plante_01_c.tga';
+	// called when loading is completed
+	function ( texture ) {
+
+		console.log( 'Texture is loaded' );
+
+	},
+	// called when the loading is in progresses
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+	},
+	// called when the loading fails
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
+	}
+);
+
+const material = new THREE.MeshPhongMaterial( {
+	color: 0xffffff,
+	map: texture
+} );
