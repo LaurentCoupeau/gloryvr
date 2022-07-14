@@ -27,7 +27,7 @@
 
         <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
 	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
-
+        <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.js"></script>
 </head>
 
@@ -87,7 +87,7 @@
 
                 </a-assets>
 
-                <!-- Camera Rig -->
+                <!-- CAMERA RIG -->
                 <a-entity id="cam-rig"
                           movement-controls="controls: checkpoint"
                           checkpoint-controls="mode: animate; animateSpeed: 13.0"
@@ -302,30 +302,30 @@
 
                         </a-entity>
 
-                        <!-------------------BUREAU ET REPERE---------------------->
+                        <!-------------------BUREAU---------------------->
                         <a-entity position="0 0.01 -4">
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
                                 <a-entity position="0 1.1 0.2">
-                                        <a-dodecahedron color="blue" radius="0.06" position="-0.85 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.85 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="-0.65 0 0" emissive="blue"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.65 0 0" emissive="blue"
                                                 emissive-intensity="0.4" transparent="true" opacity="1">
                                         </a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="-0.45 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.45 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="-0.25 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.25 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="-0.05 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="-0.05 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="0.15 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.15 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="0.35 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.35 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
 
-                                        <a-dodecahedron color="blue" radius="0.06" position="0.55 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.55 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
-                                        <a-dodecahedron color="blue" radius="0.06" position="0.75 0 0"
+                                        <a-dodecahedron grabbable color="blue" radius="0.06" position="0.75 0 0"
                                                 transparent="true" opacity="1"></a-dodecahedron>
                                 </a-entity>
 
@@ -944,8 +944,7 @@
                 </a-entity>
 
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
-                <a-entity id="ambiance" geometry="primitive: plane" 
-                          position="0 5 0" sound="src: url(assets/sounds/the-inner-sound.mp3); autoplay: true"></a-entity>
+                <a-entity id="ambiance" position="0 5 0" volume="3" sound="src: url(assets/sounds/the-inner-sound.mp3); autoplay: true"></a-entity>
 
                 <!-------------------FEUILLE DE PRESENTATION------------------->
                 <!-- <a-entity position="4 2 0" scale="2 2 2" rotation="0 -90 0"> -->
