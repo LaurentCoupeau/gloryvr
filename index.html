@@ -26,8 +26,6 @@
         <script src="assets/js/progressive-controls.js"></script>
 
         <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
-	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
-        <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 </head>
 
 <body>
@@ -69,8 +67,8 @@
                         <img id="got" src="assets/img/poster/game-of-throne.jpg"></img>
 
                         <!---------------------plante-------------------->
-                        <!-- <a-asset-item id="aloevera-obj" src="assets/3d/aloe-vera/aloe-vera.obj"></a-asset-item>
-                        <a-asset-item id="aloevera-mtl" src="assets/3d/aloe-vera/aloe-vera.obj"></a-asset-item> -->
+                        <a-asset-item id="plante-obj" src="assets/3d/rododendron.obj"></a-asset-item>
+                        <a-asset-item id="plante-mtl" src="assets/3d/rododendron.mtl"></a-asset-item>
 
                         <!---------------------video de publicite----------------------->
                         <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
@@ -85,6 +83,9 @@
 
                         <!---------------------ciel--------------------->
                         <img id="black" src="assets/img/black.png"></img>
+
+                        <!---------------------musique--------------------->
+                        <audio id="ambiant" src="assets/sounds/the-inner-sound.mp3"></audio>
 
                 </a-assets>
 
@@ -106,11 +107,11 @@
 				</a-camera>
                                 <!--controlers-->
                                 <a-entity>
-                                        <a-entity id="left-hand" laser-controls="hand: left"
+                                        <a-entity id="left-hand" super-hands laser-controls="hand: left"
                                                   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:15"
                                                   defaultModelColor="white">
                                         </a-entity>
-                                        <a-entity id="right-hand" laser-controls="hand: right"
+                                        <a-entity id="right-hand" super-hands laser-controls="hand: right"
                                                   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:15"
                                                   defaultModelColor="white">
                                         </a-entity>
@@ -131,6 +132,9 @@
 
                 <!-------------------PIECE PRINCIPALE------------------->
                 <a-entity id="first-room">
+
+                        
+                        
 
                         <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
                         <a-entity id="lightroom">
@@ -308,10 +312,58 @@
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
                                 <a-entity position="0 1.1 0.2">
-                                        <a-dodecahedron id="first-dod" color="blue" radius="0.06" position="0 0 0" class="clickable"
-                                                        event-set__enter="_event: mouseenter; material.color: #ffd700"
-                                                        event-set__leave="_event: mouseleave; material.color: blue"
-                                                transparent="true" opacity="1" grabbable></a-dodecahedron>
+                                        <a-box id="control-surface"
+                                                width="1" height="0.1" depth="0.5"
+                                                color="black"></a-box>
+                                        <a-box id="button-power" position="0 0 0.25"
+                                                width="0.02" height="0.03" depth="0.01"
+                                                 emissive="red" emissive-intensity="2"
+                                                event-set__enter="_event: mouseenter; material.emissive: lime"
+                                                event-set__click="_event: click; target: .clickable; material.emissive:aqua"
+                                                event-set__click2="_event: click; material.emissive: lime">
+                                        </a-box>
+                                        <!--rangée du haut-->
+                                        <a-entity position="0 0 0.12">
+                                                <a-box id="pad1" class="clickable" position="-0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad2" class="clickable" position="0 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad3" class="clickable" position="0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                        </a-entity>
+                                        <!--rangée du bas-->
+                                        <a-entity position="0 0 -0.1">
+                                                <a-box id="pad4" class="clickable" position="-0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad5" class="clickable" position="0 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                                <a-box id="pad6" class="clickable" position="0.2 0.05 0"
+                                                        width="0.15" height="0.025" depth="0.15"
+                                                        emissive="aqua" emissive-intensity="0.5"
+                                                        event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
+                                                        event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                </a-box>
+                                        </a-entity>
                                 </a-entity>
 
                                 <!-------------------BUREAU---------------------->
@@ -501,7 +553,7 @@
                         </a-entity>
 
                         <!-------------------REPERE TELEPORTATION BUREAU---------------------->
-                        <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5" class="clickable"
+                        <a-image src="#footsteps" position="0 0.01 -3.8" checkpoint="offset: 0 0 0.5" class="clickable"
                                 color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
                                 event-set__mouseenter="material.color: blue"
                                 event-set__mouseleave="material.color: aqua">
@@ -521,6 +573,8 @@
                                 </a-cylinder>
                                 <a-cylinder position="0.9 0.5 0.4" radius="0.03" height="1" src="">
                                 </a-cylinder>
+
+                                <a-obj-model src="#plante-obj" mtl="#plante-mtl" scale="0.1 0.1 0.1" position="0.2 1 0"></a-obj-model>
 
                                 <!--imprimante 3D-->
                                 <a-entity position="-0.5 1.05 0" rotation="0 180 0">
@@ -768,48 +822,25 @@
 
                         <a-entity position="0 0.5 0">
                                 <!---------piedestal sabre laser--------->
-                                <a-entity position="-2 0 0" rotation="0 90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
-                                                segments-radial="15" position="0 0.428 0.1" metalness="0.8">
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="-1.2 -0.495 0" checkpoint="offset: 0 0 0.5"
-                                        class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
-                                </a-image>
-                                <!---------piedestal 5--------->
                                 <a-entity position="-2 0 1" rotation="0 90 0">
 
                                         <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                    segments-radial="15"
+                                                    position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15"  segments-radial="15"
+                                                    metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                    segments-radial="15"
+                                                    position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
-                                                segments-radial="15" position="0 0.428 0.1" metalness="0.8">
+                                               segments-radial="15" position="0 0.428 0.1" metalness="0.8">
                                         </a-box>
 
                                 </a-entity>
@@ -819,18 +850,22 @@
                                         scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
                                         event-set__mouseleave="material.color: aqua">
                                 </a-image>
-                                <!---------piedestal 4--------->
-                                <a-entity position="-2 0 2" rotation="0 90 0">
+
+                                <!---------piedestal 5--------->
+                                <a-entity position="-2 0 -2" rotation="0 90 0">
 
                                         <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                segments-radial="15"
                                                 position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
+                                                segments-radial="15" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                segments-radial="15"
                                                 position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
@@ -840,50 +875,53 @@
 
                                 </a-entity>
                                 <!--repere téléportation-->
-                                <a-image src="#footsteps" position="-1.2 -0.495 2" checkpoint="offset: 0 0 0.5"
+                                <a-image src="#footsteps" position="-1.2 -0.495 -2" checkpoint="offset: 0 0 0.5"
+                                        class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
+                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
+                                        event-set__mouseleave="material.color: aqua">
+                                </a-image>
+                                <!---------piedestal 4--------->
+                                <a-entity position="-2 0 -5" rotation="0 90 0">
+
+                                        <!--TOP-->
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                segments-radial="15"
+                                                position="0 0.4 0" metalness="0.5">
+                                        </a-cylinder>
+                                        <!--CORPS-->
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
+                                                segments-radial="15" metalness="0.5">
+                                        </a-cylinder>
+                                        <!--BOTTOM-->
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                segments-radial="15" position="0 -0.4 0" metalness="0.5">
+                                        </a-cylinder>
+                                        <!--BOUTON-->
+                                        <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
+                                                segments-radial="15" position="0 0.428 0.1" metalness="0.8">
+                                        </a-box>
+
+                                </a-entity>
+                                <!--repere téléportation-->
+                                <a-image src="#footsteps" position="-1.2 -0.495 -5" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
                                         event-set__mouseleave="material.color: aqua">
                                 </a-image>
                                 <!---------piedestal 3--------->
-                                <a-entity position="2 0 0" rotation="0 -90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
-                                                segments-radial="15" position="0 0.428 0.1" metalness="0.8">
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="1.2 -0.495 2" checkpoint="offset: 0 0 0.5"
-                                        class="clickable" color="aqua" rotation="-90 -90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
-                                </a-image>
-                                <!---------piedestal 2--------->
                                 <a-entity position="2 0 1" rotation="0 -90 0">
 
                                         <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                segments-radial="15" position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
+                                                segments-radial="15" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                segments-radial="15" position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -897,19 +935,47 @@
                                         scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
                                         event-set__mouseleave="material.color: aqua">
                                 </a-image>
-                                <!---------piedestal 1--------->
-                                <a-entity position="2 0 2" rotation="0 -90 0">
+                                <!---------piedestal 2--------->
+                                <a-entity position="2 0 -2" rotation="0 -90 0">
 
                                         <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 0.4 0" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                segments-radial="15" position="0 0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.1" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
+                                                segments-radial="15" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.13" segments-radial="15"
-                                                position="0 -0.4 0" metalness="0.5">
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                segments-radial="15" position="0 -0.4 0" metalness="0.5">
+                                        </a-cylinder>
+                                        <!--BOUTON-->
+                                        <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
+                                               segments-radial="15" position="0 0.428 0.1" metalness="0.8">
+                                        </a-box>
+
+                                </a-entity>
+                                <!--repere téléportation-->
+                                <a-image src="#footsteps" position="1.2 -0.495 -2" checkpoint="offset: 0 0 0.5"
+                                        class="clickable" color="aqua" rotation="-90 -90 0" opacity="0.5"
+                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
+                                        event-set__mouseleave="material.color: aqua">
+                                </a-image>
+                                <!---------piedestal 1--------->
+                                <a-entity position="2 0 -5" rotation="0 -90 0">
+
+                                        <!--TOP-->
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                segments-radial="15" position="0 0.4 0" metalness="0.5">
+                                        </a-cylinder>
+                                        <!--CORPS-->
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
+                                                segments-radial="15" metalness="0.5">
+                                        </a-cylinder>
+                                        <!--BOTTOM-->
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                segments-radial="15" position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
                                         <!--BOUTON-->
                                         <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
@@ -918,7 +984,7 @@
 
                                 </a-entity>
                                 <!--repere téléportation-->
-                                <a-image src="#footsteps" position="1.2 -0.495 0" checkpoint="offset: 0 0 0.5"
+                                <a-image src="#footsteps" position="1.2 -0.495 -5" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 -90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
                                         event-set__mouseleave="material.color: aqua">
@@ -928,7 +994,7 @@
                 </a-entity>
 
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
-                <a-entity id="ambiance" position="0 5 0" volume="3" sound="src: url(assets/sounds/the-inner-sound.mp3); autoplay: true"></a-entity>
+                <a-sound src="#ambiant" position="0 2 0" volume="0.5" sound="autoplay: true"></a-sound>
 
                 <!-------------------FEUILLE DE PRESENTATION------------------->
                 <!-- <a-entity position="4 2 0" scale="2 2 2" rotation="0 -90 0"> -->
