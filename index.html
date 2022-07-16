@@ -69,8 +69,8 @@
                         <img id="got" src="assets/img/poster/game-of-throne.jpg"></img>
 
                         <!---------------------plante-------------------->
-                        <!-- <a-asset-item id="aloevera-obj" src="assets/3d/aloe-vera/aloe-vera.obj"></a-asset-item>
-                        <a-asset-item id="aloevera-mtl" src="assets/3d/aloe-vera/aloe-vera.obj"></a-asset-item> -->
+                        <a-asset-item id="plante-obj" src="assets/3d/rododendron.obj"></a-asset-item>
+                        <a-asset-item id="plante-mtl" src="assets/3d/rododendron.mtl"></a-asset-item>
 
                         <!---------------------video de publicite----------------------->
                         <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
@@ -131,6 +131,9 @@
 
                 <!-------------------PIECE PRINCIPALE------------------->
                 <a-entity id="first-room">
+
+                        
+                        
 
                         <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
                         <a-entity id="lightroom">
@@ -549,7 +552,7 @@
                         </a-entity>
 
                         <!-------------------REPERE TELEPORTATION BUREAU---------------------->
-                        <a-image src="#footsteps" position="0 0.01 -3.5" checkpoint="offset: 0 0 0.5" class="clickable"
+                        <a-image src="#footsteps" position="0 0.01 -3.8" checkpoint="offset: 0 0 0.5" class="clickable"
                                 color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
                                 event-set__mouseenter="material.color: blue"
                                 event-set__mouseleave="material.color: aqua">
@@ -569,6 +572,8 @@
                                 </a-cylinder>
                                 <a-cylinder position="0.9 0.5 0.4" radius="0.03" height="1" src="">
                                 </a-cylinder>
+
+                                <a-obj-model src="#plante-obj" mtl="#plante-mtl" scale="0.1 0.1 0.1" position="0.2 1 0"></a-obj-model>
 
                                 <!--imprimante 3D-->
                                 <a-entity position="-0.5 1.05 0" rotation="0 180 0">
