@@ -115,11 +115,11 @@
 				</a-camera>
                                 <!--controlers-->
                                 <a-entity>
-                                        <a-entity id="left-hand" super-hands laser-controls="hand: left"
+                                        <a-entity id="left-hand" sphere-collider="objects: a-entity" super-hands laser-controls="hand: left"
                                                   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:15"
                                                   defaultModelColor="white">
                                         </a-entity>
-                                        <a-entity id="right-hand" super-hands laser-controls="hand: right"
+                                        <a-entity id="right-hand" sphere-collider="objects: a-entity" super-hands laser-controls="hand: right"
                                                   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:15"
                                                   defaultModelColor="white">
                                         </a-entity>
