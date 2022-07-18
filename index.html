@@ -115,11 +115,11 @@
 				</a-camera>
                                 <!--controlers-->
                                 <a-entity>
-                                        <a-entity id="left-hand" sphere-collider="objects: a-entity" super-hands laser-controls="hand: left"
+                                        <a-entity id="left-hand" sphere-collider="objects: #sabre" super-hands laser-controls="hand: left"
                                                   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:15"
                                                   defaultModelColor="white">
                                         </a-entity>
-                                        <a-entity id="right-hand" sphere-collider="objects: a-entity" super-hands laser-controls="hand: right"
+                                        <a-entity id="right-hand" sphere-collider="objects: #sabre" super-hands laser-controls="hand: right"
                                                   raycaster="objects: .clickable; lineColor: red; lineOpacity: 0.6; far:15"
                                                   defaultModelColor="white">
                                         </a-entity>
@@ -807,7 +807,7 @@
                                 <a-entity position="-2 0 1" rotation="0 90 0">
 
                                         <!-----------SABRE LASER------------>
-                                        <a-entity position="0 1 0" grabbable>
+                                        <a-entity id="sabre" position="0 1 0" grabbable>
                                                 <!--button-->
                                                 <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
                                                         rotation="0 -90 90"></a-cylinder>
