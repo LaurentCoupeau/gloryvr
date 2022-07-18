@@ -1,4 +1,4 @@
-# Blender MTL File: 'None'
+# Blender MTL File: 'plante-grasse.blend'
 # Material Count: 4
 
 newmtl Material
@@ -22,12 +22,12 @@ d 1.000000
 illum 2
 
 newmtl Matériau.002
-Ns 163.689438
+Ns 158.093674
 Ka 1.000000 1.000000 1.000000
-Kd 0.000000 0.800000 0.069234
-Ks 0.154412 0.154412 0.154412
+Kd 0.077057 0.381519 0.057091
+Ks 1.000000 1.000000 1.000000
 Ke 0.000000 0.000000 0.000000
-Ni 1.450000
+Ni 0.900000
 d 1.000000
 illum 2
 
