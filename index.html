@@ -23,7 +23,7 @@
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
         
 
-        <script src="assets/js/progressive-controls.js"></script>
+        <!-- <script src="assets/js/progressive-controls.js"></script> -->
         <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 
 	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
@@ -32,7 +32,7 @@
 
 <body>
 
-        <a-scene renderer="antialias: true" physics="friction: 0.1; restitution: 0.5" debug stats>
+        <a-scene renderer="antialias: true" debug stats>
 
                 <a-assets>
 
@@ -115,15 +115,39 @@
 				</a-camera>
                                 <!--controlers-->
                                 <a-entity>
-                                        <a-entity sphere-collider="objects: #sabre" super-hands id="left-hand" hand-controls="hand: left">
+                                        <a-entity sphere-collider="objects: #sabre" super-hands hand-controls="hand: left" id="left-hand" >
                                         </a-entity>
-                                        <a-entity sphere-collider="objects: #sabre" super-hands id="right-hand"  hand-controls="hand: right">
+                                        <a-entity sphere-collider="objects: #sabre" super-hands hand-controls="hand: right" id="right-hand">
                                         </a-entity>
                                 </a-entity>
 			</a-entity>
                 </a-entity>
 
-                  
+                   <!-----------SABRE LASER------------>
+                  <a-entity id="sabre" geometry="primitive:sphere; radius:0.02" position="0 1.5 -0.5" grabbable draggable>
+                         <!--button-->
+                         <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
+                                 rotation="0 -90 90"></a-cylinder>
+                         <!--laser-->
+                         <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
+                                 emissiveintensity="10"></a-cylinder>
+                         <!--top of the body-->
+                         <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
+                                 metalness="0.1"></a-cylinder>
+                         <!--middle part-->
+                         <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
+                         <!--bottom-->
+                         <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
+                         <!--rings for decorations-->
+                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                 position="0 0.05 0"></a-torus>
+                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                 position="0 0.04 0"></a-torus>
+                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                 position="0 0.03 0"></a-torus>
+                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                 position="0 0.02 0"></a-torus>
+                 </a-entity>
                 <!-------------------CIEL------------------->
                 <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
 
@@ -139,31 +163,7 @@
                 <a-entity id="first-room">
 
                         
-                        <!-----------SABRE LASER------------>
-                  <a-entity id="sabre" position="0 1.5 -0.5" grabbable>
-                        <!--button-->
-                        <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
-                                rotation="0 -90 90"></a-cylinder>
-                        <!--laser-->
-                        <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
-                                emissiveintensity="10"></a-cylinder>
-                        <!--top of the body-->
-                        <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
-                                metalness="0.1"></a-cylinder>
-                        <!--middle part-->
-                        <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
-                        <!--bottom-->
-                        <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
-                        <!--rings for decorations-->
-                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                position="0 0.05 0"></a-torus>
-                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                position="0 0.04 0"></a-torus>
-                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                position="0 0.03 0"></a-torus>
-                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                position="0 0.02 0"></a-torus>
-                </a-entity>
+                        
 
                         <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
                         <a-entity id="lightroom">
