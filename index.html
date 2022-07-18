@@ -19,12 +19,14 @@
         <meta property="og:image" content="https://laurentcoupeau.github.io/gloryvr/assets/img/logo-glorydev.png">
 
 
-        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
         
 
         <script src="assets/js/progressive-controls.js"></script>
+        <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 
+	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
         <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
 </head>
 
@@ -69,6 +71,9 @@
                         <!---------------------plante-------------------->
                         <a-asset-item id="plante-obj" src="assets/3d/rododendron.obj"></a-asset-item>
                         <a-asset-item id="plante-mtl" src="assets/3d/rododendron.mtl"></a-asset-item>
+                        <!---------------------plante-------------------->
+                        <a-asset-item id="planteviolette-obj" src="assets/3d/plante-violette.obj"></a-asset-item>
+                        <a-asset-item id="planteviolette-mtl" src="assets/3d/plante-violette.mtl"></a-asset-item>
 
                         <!---------------------video de publicite----------------------->
                         <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
@@ -88,6 +93,9 @@
                         <audio id="ambiant" src="assets/sounds/the-inner-sound.mp3"></audio>
 
                 </a-assets>
+
+                
+                <a-light type="ambient" intensity="0.6"></a-light>
 
                 <!-- CAMERA RIG -->
                 <a-entity id="cam-rig"
@@ -138,13 +146,10 @@
 
                         <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
                         <a-entity id="lightroom">
-                                <a-light type="directional" color="white" intensity="0.5" position="-4 4 0"
-                                        target="#directionaltargetleft">
-                                        <a-entity id="directionaltargetleft" position="3 -3 0"></a-entity>
+                                <a-light type="spot" color="white" intensity="0.1" position="3.5 4 0"
+                                        cast-shadow="true" rotation="-90 0 0" angle="50">
                                 </a-light>
-                                <a-light type="directional" color="white" intensity="0.5" position="4 4 0"
-                                        target="#directionaltargetright">
-                                        <a-entity id="directionaltargetright" position="-3 -3 0"></a-entity>
+                                <a-light type="spot" color="white" intensity="0.05" position="-3 4 0">
                                 </a-light>
                         </a-entity>
 
@@ -310,6 +315,9 @@
                         <!-------------------BUREAU---------------------->
                         <a-entity position="0 0.01 -4">
 
+                                <a-obj-model src="#planteviolette-obj" mtl="#planteviolette-mtl" scale="0.1 0.1 0.1" position="0.85 1 -0.3"></a-obj-model>
+
+
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
                                 <a-entity position="0 1.1 0.2">
                                         <a-box id="control-surface"
@@ -326,7 +334,7 @@
                                         <a-entity position="0 0 0.12">
                                                 <a-box id="pad1" class="clickable" position="-0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
-                                                        emissive="aqua" emissive-intensity="0"
+                                                        emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
                                                 </a-box>
@@ -575,7 +583,7 @@
                                 </a-cylinder>
 
                                 <a-obj-model src="#plante-obj" mtl="#plante-mtl" scale="0.1 0.1 0.1" position="0.2 1 0"></a-obj-model>
-
+                                
                                 <!--imprimante 3D-->
                                 <a-entity position="-0.5 1.05 0" rotation="0 180 0">
 
@@ -765,32 +773,6 @@
                 <!-------------------CHAMBRE DES SECRETS------------------->
                 <a-entity id="secret-room" position="-13 0 0" rotation="0 90 0">
 
-                        <!-----------SABRE LASER------------>
-                        <a-entity position="0 1.5 -0.5">
-                                <!--button-->
-                                <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
-                                        rotation="0 -90 90"></a-cylinder>
-                                <!--laser-->
-                                <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
-                                        emissiveintensity="10"></a-cylinder>
-                                <!--top of the body-->
-                                <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
-                                        metalness="0.1"></a-cylinder>
-                                <!--middle part-->
-                                <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.1 0"></a-cylinder>
-                                <!--bottom-->
-                                <a-cylinder color="grey" height="0.06" radius="0.015" position="0 -0.15 0"></a-cylinder>
-                                <!--rings for decorations-->
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.05 0"></a-torus>
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.04 0"></a-torus>
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.03 0"></a-torus>
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.02 0"></a-torus>
-                        </a-entity>
-
                         <!--mur de gauche-->
                         <a-entity position="-3.45 1.25 -2" rotation="0 90 0">
                                 <a-box width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
@@ -823,6 +805,31 @@
                         <a-entity position="0 0.5 0">
                                 <!---------piedestal sabre laser--------->
                                 <a-entity position="-2 0 1" rotation="0 90 0">
+                                        <!-----------SABRE LASER------------>
+                        <a-entity position="0 1 0">
+                                <!--button-->
+                                <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
+                                        rotation="0 -90 90"></a-cylinder>
+                                <!--laser-->
+                                <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
+                                        emissiveintensity="10"></a-cylinder>
+                                <!--top of the body-->
+                                <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
+                                        metalness="0.1"></a-cylinder>
+                                <!--middle part-->
+                                <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.1 0"></a-cylinder>
+                                <!--bottom-->
+                                <a-cylinder color="grey" height="0.06" radius="0.015" position="0 -0.15 0"></a-cylinder>
+                                <!--rings for decorations-->
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.05 0"></a-torus>
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.04 0"></a-torus>
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.03 0"></a-torus>
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.02 0"></a-torus>
+                        </a-entity>
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.2" 
