@@ -159,8 +159,8 @@
                 <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
 
                 <!-------------------COLLISION SOL------------------->
-                <a-plane body="type: static; shape: box" width="100" depth="100" height="0.1" visible="false">
-                </a-plane>
+                <a-entity static-body="shape:plane; width:100; depth:100" visible="false">
+                </a-entity>
 
                 <!-------------------SOL------------------->
                 <a-plane src="#floor" height="100" width="100" rotation="-90 0 0" repeat="100 100" transparent="true">
