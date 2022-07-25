@@ -1,4 +1,4 @@
-<html>
+<html lang="fr">
 
 <head>
         <meta charset="UTF-8">
@@ -8,9 +8,7 @@
 
         <meta name="description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO..." />
         <meta name="keywords" content="Formation, réalité virtuelle, réalité augmentée, accompagnement dans le digital, wordpress, SEO" />
-        <meta name="language" content="fr" />
-
-        
+        <meta name="language" content="fr"/>
         <meta property="og:title" content="GLORYDEV VR">
         <meta property="og:site_name" content="GLORYDEV VR">
         <meta property="og:url" content="https://laurentcoupeau.github.io/gloryvr/">
@@ -21,13 +19,10 @@
 
         <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-        
-
         <!-- <script src="assets/js/progressive-controls.js"></script> -->
-        <script src="https://unpkg.com/super-hands@^3.0.1/dist/super-hands.min.js"></script>
+        <!-- <script src="https://unpkg.com/super-hands@^3.0.1/dist/super-hands.min.js"></script> -->
         <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
-
-	<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+	<!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
         <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
 </head>
 
@@ -39,7 +34,6 @@
 
                         <!---------------------ciel--------------------->
                         <img id="plafond" src="assets/img/sky9.png"></img>
-
                         <!---------------------textures du sol--------------------->
                         <img id="floor" src="assets/img/floor.png"></img>
                         <!---------------------texture mur interieur--------------------->
@@ -56,9 +50,8 @@
                         <img id="laiton" src="assets/textures/laiton.jpg"></img>
                         <!---------------------texture mars---------------------->
                         <img id="mars" src="assets/img/mars.png"></img>
-
-                        <!---------------------photo de Laurent--------------------->
-                        <img id="fiche-presentation" src="assets/img/fiche-presentation.png"></img>
+                        <!---------------------mignature pour la video--------------------->
+                        <img id="mignature-video" src="assets/img/miniature-video.png"></img>
                         <!---------------------image de l'anneau unique--------------------->
                         <img id="ring-lodro" src="assets/img/ringlodro_Plan de travail 1.jpg"></img>
                         <!---------------------posters--------------------->
@@ -68,38 +61,35 @@
                         <img id="star-wars" src="assets/img/poster/star-wars.jpg"></img>
                         <img id="harry" src="assets/img/poster/harry-coupe-de-feu.jpg"></img>
                         <img id="got" src="assets/img/poster/game-of-throne.jpg"></img>
-
                         <!---------------------plante-------------------->
                         <a-asset-item id="plante-obj" src="assets/3d/rododendron.obj"></a-asset-item>
                         <a-asset-item id="plante-mtl" src="assets/3d/rododendron.mtl"></a-asset-item>
                         <!---------------------plante-------------------->
                         <a-asset-item id="planteviolette-obj" src="assets/3d/plante-violette.obj"></a-asset-item>
                         <a-asset-item id="planteviolette-mtl" src="assets/3d/plante-violette.mtl"></a-asset-item>
-
                         <!---------------------video de publicite----------------------->
                         <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
-
                         <!---------------------logo glorydev--------------------->
                         <img id="logo" src="assets/img/logo-glorydev.png"></img>
                         <!---------------------icones pour videos--------------------->
                         <img id="play" src="assets/icones/play.png"></img>
+                        <img id="play-hover" src="assets/icones/play-hover.png"></img>
                         <img id="pause" src="assets/icones/pause.png"></img>
                         <!---------------------icone pour socle téléportation--------------------->
                         <img id="footsteps" src="assets/icones/foot.png"></img>
-
                         <!---------------------ciel--------------------->
                         <img id="black" src="assets/img/black.png"></img>
-
                         <!---------------------musique--------------------->
                         <audio id="ambiant" src="assets/sounds/the-inner-sound.mp3"></audio>
 
                 </a-assets>
-
                 
                 <a-light type="ambient" intensity="0.6"></a-light>
 
+                <a-entity position="0 1 2" particle-system="preset: dust; color:black;particleCount: 100; size:2"></a-entity>
+
                 <!-- CAMERA RIG -->
-                <a-entity id="cam-rig"
+                <a-entity id="cam-rig" progressive-controls 
                           movement-controls="controls: checkpoint"
                           checkpoint-controls="mode: animate; animateSpeed: 13.0"
                           event-set__start="_target: #blink; _event: navigation-start;
@@ -109,65 +99,36 @@
 				  	    animation.easing: easeOutQuart"
 			  event-set__end="_target: #blink; _event: navigation-end;
 				  	  animation.to: 0">
-			<!-- Progressive Controls -->
-			<a-entity progressive-controls>
-				<a-camera>
-					<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
-				</a-camera>
-                                <!--controlers-->
-                                <a-entity>
-                                        <a-entity sphere-collider="objects: #sabre" 
-                                                  
-                                                  static-body="shape:sphere; sphereRadius: 0.03"
-                                                  laser-controls="hand: left" id="left-hand" >
-                                        </a-entity>
-                                        <a-entity sphere-collider="objects: #sabre" 
-                                                  static-body="shape:sphere; sphereRadius: 0.03"
-                                                  laser-controls="hand: right" id="right-hand">
-                                        </a-entity>
+			
+			<a-camera>
+				<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
+                                <a-cursor></a-cursor>
+			</a-camera>
+                        <!--controlers-->
+                        <a-entity>
+                                <a-entity sphere-collider="objects: #sabre" 
+                                          static-body="shape:sphere; sphereRadius: 0.03"
+                                          laser-controls="hand: left" id="left-hand"
+                                          raycaster="objects: .links; far: 5" >
                                 </a-entity>
-			</a-entity>
+                                <a-entity sphere-collider="objects: #sabre" 
+                                          static-body="shape:sphere; sphereRadius: 0.03"
+                                          laser-controls="hand: right" id="right-hand"
+                                          raycaster="objects: .links; far: 5">
+                                </a-entity>
+                        </a-entity>
+			
                 </a-entity>
 
-                   <!-----------SABRE LASER------------>
-                  <a-entity id="sabre" geometry="primitive:sphere; radius:0.02; visible:none" visible="none" position="0 1.5 -0.5" dynamic-body grabbable>
-                         <!--button-->
-                         <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
-                                 rotation="0 -90 90"></a-cylinder>
-                         <!--laser-->
-                         <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
-                                 emissiveintensity="10"></a-cylinder>
-                         <!--top of the body-->
-                         <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
-                                 metalness="0.1"></a-cylinder>
-                         <!--middle part-->
-                         <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
-                         <!--bottom-->
-                         <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
-                         <!--rings for decorations-->
-                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                 position="0 0.05 0"></a-torus>
-                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                 position="0 0.04 0"></a-torus>
-                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                 position="0 0.03 0"></a-torus>
-                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                 position="0 0.02 0"></a-torus>
-                 </a-entity>
                 <!-------------------CIEL------------------->
-                <a-sky src="#plafond" rotation="0 -90 0"></a-sky>
-
-            
+                <a-sky src="#plafond" rotation="0 -90 0"></a-sky>            
 
                 <!-------------------SOL------------------->
                 <a-plane static-body src="#floor" height="100" width="100" rotation="-90 0 0" repeat="100 100" transparent="true">
                 </a-plane>
 
                 <!-------------------PIECE PRINCIPALE------------------->
-                <a-entity id="first-room">
-
-                        
-                        
+                <a-entity id="first-room">                        
 
                         <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
                         <a-entity id="lightroom">
@@ -182,8 +143,8 @@
                         <a-entity position="0 2 0">
 
                                 <!--plafond-->
-                                <a-entity static-body position="0 2 0" rotation="90 0 0">
-                                        <a-plane src="#plaster" repeat="8 9" width="8" height="9" side="double">
+                                <a-entity position="0 2 0" rotation="90 0 0">
+                                        <a-plane src="#plaster" repeat="8 9" width="8" height="9" side="double" static-body>
                                         </a-plane>
                                 </a-entity>
 
@@ -229,8 +190,8 @@
                                 </a-entity>
 
                                 <!--mur de droite-->
-                                <a-entity static-body position="4 0 0" rotation="0 -90 0">
-                                        <a-plane src="#plaster" repeat="9 4" width="9" height="4" side="double">
+                                <a-entity position="4 0 0" rotation="0 -90 0">
+                                        <a-plane src="#plaster" repeat="9 4" width="9" height="4" side="double" static-body>
                                         </a-plane>
                                         <!--plainte-->
                                         <a-box width="9" height="0.1" depth="0.05" src="#bois" repeat="1 2"
@@ -239,10 +200,10 @@
                                 </a-entity>
 
                                 <!--mur de du fond-->
-                                <a-entity static-body position="0 0 -4.5">
+                                <a-entity position="0 0 -4.5">
 
                                         <!-------------haut------------->
-                                        <a-plane position="0 1.75 0" src="#plaster" repeat="6 .5" width="6" height="0.5"
+                                        <a-plane static-body position="0 1.75 0" src="#plaster" repeat="6 .5" width="6" height="0.5"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -251,7 +212,7 @@
                                         </a-box>
 
                                         <!-------------bas------------->
-                                        <a-plane position="0 -1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
+                                        <a-plane static-body position="0 -1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -260,7 +221,7 @@
                                         </a-box>
 
                                         <!-------------gauche------------->
-                                        <a-plane position="-3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
+                                        <a-plane static-body position="-3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -269,7 +230,7 @@
                                         </a-box>
 
                                         <!-------------droite------------->
-                                        <a-plane position="3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
+                                        <a-plane static-body position="3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -278,7 +239,7 @@
                                         </a-box>
 
                                         <!--baie vitrée-->
-                                        <a-box width="6" height="3" depth="0.02" color="aqua" transparent="true"
+                                        <a-box static-body width="6" height="3" depth="0.02" color="aqua" transparent="true"
                                                 opacity="0.6"></a-box>
                                         <!--plainte sol-->
                                         <a-box width="8" height="0.1" depth="0.05" src="#bois" repeat="1 2"
@@ -287,10 +248,10 @@
                                 </a-entity>
 
                                 <!--mur de l'entrée-->
-                                <a-entity static-body position="0 0 4.5" rotation="180 0 0">
+                                <a-entity position="0 0 4.5" rotation="180 0 0">
 
                                         <!-------------haut------------->
-                                        <a-plane position="0 1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
+                                        <a-plane static-body position="0 1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -299,7 +260,7 @@
                                         </a-box>
 
                                         <!-------------bas------------->
-                                        <a-plane position="0 -1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
+                                        <a-plane static-body position="0 -1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -308,7 +269,7 @@
                                         </a-box>
 
                                         <!-------------gauche------------->
-                                        <a-plane position="-3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
+                                        <a-plane static-body position="-3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -317,7 +278,7 @@
                                         </a-box>
 
                                         <!-------------droite------------->
-                                        <a-plane position="3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
+                                        <a-plane static-body position="3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
@@ -326,7 +287,7 @@
                                         </a-box>
 
                                         <!--baie vitrée-->
-                                        <a-box position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
+                                        <a-box static-body position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
                                                 transparent="true" opacity="0.6">
                                         </a-box>
                                         <!--plainte sol-->
@@ -344,32 +305,25 @@
 
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
-                                <a-entity position="0 1.1 0.2">
-                                        <a-box id="control-surface"
+                                <a-entity id="tactil-pad" position="0 1.1 0.2">
+                                        <a-box  static-body id="control-surface"
                                                 width="1" height="0.1" depth="0.5"
                                                 color="black"></a-box>
-                                        <a-box id="button-power" position="0 0 0.25"
-                                                width="0.02" height="0.03" depth="0.01"
-                                                 emissive="red" emissive-intensity="2"
-                                                event-set__enter="_event: mouseenter; material.emissive: lime"
-                                                event-set__click="_event: click; target: .clickable; material.emissive:aqua"
-                                                event-set__click2="_event: click; material.emissive: lime">
-                                        </a-box>
                                         <!--rangée du haut-->
                                         <a-entity position="0 0 0.12">
-                                                <a-box id="pad1" class="clickable" position="-0.2 0.05 0"
+                                                <a-box id="pad1" class="clickable pad" position="-0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
                                                 </a-box>
-                                                <a-box id="pad2" class="clickable" position="0 0.05 0"
+                                                <a-box id="pad2" class="clickable pad" position="0 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
                                                 </a-box>
-                                                <a-box id="pad3" class="clickable" position="0.2 0.05 0"
+                                                <a-box id="pad3" class="clickable pad" position="0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
@@ -378,19 +332,19 @@
                                         </a-entity>
                                         <!--rangée du bas-->
                                         <a-entity position="0 0 -0.1">
-                                                <a-box id="pad4" class="clickable" position="-0.2 0.05 0"
+                                                <a-box id="pad4" class="clickable pad" position="-0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
                                                 </a-box>
-                                                <a-box id="pad5" class="clickable" position="0 0.05 0"
+                                                <a-box id="pad5" class="clickable pad" position="0 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
                                                 </a-box>
-                                                <a-box id="pad6" class="clickable" position="0.2 0.05 0"
+                                                <a-box id="pad6" class="clickable pad" position="0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
@@ -403,26 +357,23 @@
                                 <a-entity id="desk">
 
                                         <!---------------------plateau du dessus---------------------->
-                                        <a-box width="2" height="0.05" depth="1" position="0 1 0" src="#acier"
+                                        <a-box  static-body width="2" height="0.05" depth="1" position="0 1 0" src="#acier"
                                                 shadow="receive:true" metalness="0.5"></a-box>
-                                        <!---------------------Collision du plateau du bureau---------------------->
-                                        <a-box body="type: static; shape: box" width=1.999 height=0.001 depth=0.999
-                                                position="0 1.024 0" visible="false"></a-box>
                                         <!---------------------plateau arriere---------------------->
-                                        <a-box width="1.8" height="0.05" depth="1" rotation="90 90 90"
+                                        <a-box  static-body width="1.8" height="0.05" depth="1" rotation="90 90 90"
                                                 position="0 0.5 -0.43" src="#acier" shadow="receive:true"
                                                 metalness="0.5"></a-box>
                                         <!---------------------pieds de gauche à droite---------------------->
-                                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90"
+                                        <a-box static-body width="1" height="0.05" depth="0.9" rotation="0 0 90"
                                                 position="-0.9 0.5 0" src="#acier" shadow="receive:true"
                                                 metalness="0.5"></a-box>
-                                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90"
+                                        <a-box static-body width="1" height="0.05" depth="0.9" rotation="0 0 90"
                                                 position="-0.4 0.5 0" src="#acier" shadow="receive:true"
                                                 metalness="0.5"></a-box>
-                                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90"
+                                        <a-box static-body width="1" height="0.05" depth="0.9" rotation="0 0 90"
                                                 position="0.4 0.5 0" src="#acier" shadow="receive:true" metalness="0.5">
                                         </a-box>
-                                        <a-box width="1" height="0.05" depth="0.9" rotation="0 0 90"
+                                        <a-box static-body width="1" height="0.05" depth="0.9" rotation="0 0 90"
                                                 position="0.9 0.5 0" src="#acier" shadow="receive:true" metalness="0.5">
                                         </a-box>
                                         <!---------------------tiroirs de gauche: 1er tiroir---------------------->
@@ -443,7 +394,7 @@
                                                         position="0 1.6 -0.241" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------facade de tiroir---------------------->
-                                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
+                                                <a-box static-body width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
                                                         position="0 1.6 0.25" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------bouton de tiroir---------------------->
@@ -469,7 +420,7 @@
                                                         position="0 1.6 -0.241" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------facade de tiroir---------------------->
-                                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
+                                                <a-box static-body width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
                                                         position="0 1.6 0.25" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------bouton de tiroir---------------------->
@@ -495,7 +446,7 @@
                                                         position="0 1.6 -0.241" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------facade de tiroir---------------------->
-                                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
+                                                <a-box static-body width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
                                                         position="0 1.6 0.25" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------bouton de tiroir---------------------->
@@ -521,7 +472,7 @@
                                                         position="0 1.6 -0.241" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------facade de tiroir---------------------->
-                                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
+                                                <a-box static-body width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
                                                         position="0 1.6 0.25" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------bouton de tiroir---------------------->
@@ -547,7 +498,7 @@
                                                         position="0 1.6 -0.241" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------facade de tiroir---------------------->
-                                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
+                                                <a-box static-body width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
                                                         position="0 1.6 0.25" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------bouton de tiroir---------------------->
@@ -573,7 +524,7 @@
                                                         position="0 1.6 -0.241" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------facade de tiroir---------------------->
-                                                <a-box width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
+                                                <a-box static-body width="0.26" height="0.02" depth="0.5" rotation="0 90 90"
                                                         position="0 1.6 0.25" src="#acier" shadow="receive:true">
                                                 </a-box>
                                                 <!---------------------bouton de tiroir---------------------->
@@ -586,16 +537,18 @@
                         </a-entity>
 
                         <!-------------------REPERE TELEPORTATION BUREAU---------------------->
-                        <a-image src="#footsteps" position="0 0.01 -3.8" checkpoint="offset: 0 0 0.5" class="clickable"
+                        <a-image src="#footsteps" position="0 0.01 -3.1" checkpoint="offset: 0 0 0.5" class="clickable"
                                 color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
                                 event-set__mouseenter="material.color: blue"
                                 event-set__mouseleave="material.color: aqua">
                         </a-image>
 
                         <!-------------------TABLE ET IMPRIMANTE 3D---------------------->
-                        <a-entity static-body position="3 0 0" rotation="0 90 0">
+                        <a-entity position="3 0 0" rotation="0 90 0">
                                 <!--plateau-->
-                                <a-box position="0 1 0" rotation="90 0 0" width="2" height="1" depth="0.015" src="">
+                                <a-box position="0 1 0" rotation="90 0 0" 
+                                        width="2" height="1" depth="0.015" 
+                                        static-body >
                                 </a-box>
                                 <!--pieds-->
                                 <a-cylinder position="-0.9 0.5 -0.4" radius="0.03" height="1" src="">
@@ -727,8 +680,8 @@
                 <a-entity id="aile-gauche" position="-7.02 0 0" rotation="0 90 0">
 
                         <!--mur de gauche du couloir-->
-                        <a-entity static-body position="-2 1 0" rotation="0 90 0">
-                                <a-plane src="#plaster" repeat="6 2" side="double" width="6" height="2">
+                        <a-entity position="-2 1 0" rotation="0 90 0">
+                                <a-plane static-body src="#plaster" repeat="6 2" side="double" width="6" height="2">
                                 </a-plane>
                                 <!--posters du mur-->
                                 <a-entity position="-0.015 0 0.011">
@@ -747,8 +700,8 @@
                         </a-entity>
 
                         <!--mur de droite du couloir-->
-                        <a-entity static-body position="2 1 0" rotation="0 -90 0">
-                                <a-plane src="#plaster" repeat="6 2" side="double" width="6" height="2">
+                        <a-entity position="2 1 0" rotation="0 -90 0">
+                                <a-plane static-body src="#plaster" repeat="6 2" side="double" width="6" height="2">
                                 </a-plane>
                                 <!--posters du mur-->
                                 <a-entity position="-0.015 0 0.011">
@@ -799,20 +752,20 @@
                 <a-entity id="secret-room" position="-13 0 0" rotation="0 90 0">
 
                         <!--mur de gauche-->
-                        <a-entity static-body position="-3.45 1.25 -2" rotation="0 90 0">
-                                <a-box width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                        <a-entity position="-3.45 1.25 -2" rotation="0 90 0">
+                                <a-box static-body width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--mur de droite-->
-                        <a-entity static-body position="3.45 1.25 -2" rotation="0 90 0">
-                                <a-box width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                        <a-entity position="3.45 1.25 -2" rotation="0 90 0">
+                                <a-box static-body width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--mur du fond-->
-                        <a-entity static-body position="0 1.25 -6.95" rotation="0 0 0">
-                                <a-box width="7" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                        <a-entity position="0 1.25 -6.95" rotation="0 0 0">
+                                <a-box static-body width="7" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--plafond-->
-                        <a-entity static-body position="0  2.55 -2" rotation="90 90 0">
-                                <a-box width="10" height="7" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                        <a-entity position="0  2.55 -2" rotation="90 90 0">
+                                <a-box static-body width="10" height="7" depth="0.1" color="aqua" opacity="0.7"></a-box>
                         </a-entity>
                         <!--mur de devant avec ouverture-->
                         <a-entity position="0 0 2.95">
@@ -828,11 +781,9 @@
                         </a-entity>
 
                         <a-entity position="0 0.5 0">
+
                                 <!---------piedestal sabre laser--------->
-                                <a-entity static-body position="-2 0 1" rotation="0 90 0">
-
-                                      
-
+                                <a-entity static-body position="-2 0 1" rotation="0 90 0">    
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.2" 
                                                     segments-radial="15"
@@ -847,18 +798,42 @@
                                                     segments-radial="15"
                                                     position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
-                                               segments-radial="15" position="0 0.428 0.1" metalness="0.8">
-                                        </a-box>
-
                                 </a-entity>
+
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="-1.2 -0.495 1" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
                                         event-set__mouseleave="material.color: aqua">
                                 </a-image>
+
+                                <!-----------SABRE LASER------------>
+                                <a-entity id="sabre" geometry="primitive:sphere; radius:0.02" 
+                                material="visible: false"
+                                position="-2 0.65 1" rotation="0 90 0" dynamic-body grabbable>
+                                <!--button-->
+                                <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
+                                        rotation="0 -90 90"></a-cylinder>
+                                <!--laser-->
+                                <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
+                                        emissiveintensity="10"></a-cylinder>
+                                <!--top of the body-->
+                                <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
+                                        metalness="0.1"></a-cylinder>
+                                <!--middle part-->
+                                <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
+                                <!--bottom-->
+                                <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
+                                <!--rings for decorations-->
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.05 0"></a-torus>
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.04 0"></a-torus>
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.03 0"></a-torus>
+                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                        position="0 0.02 0"></a-torus>
+                                </a-entity>
 
                                 <!---------piedestal 5--------->
                                 <a-entity static-body position="-2 0 -2" rotation="0 90 0">
@@ -1005,30 +980,26 @@
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
                 <a-sound src="#ambiant" position="0 2 0" volume="0.5" sound="autoplay: true"></a-sound>
 
-                <!-------------------FEUILLE DE PRESENTATION------------------->
-                <!-- <a-entity position="4 2 0" scale="2 2 2" rotation="0 -90 0"> -->
+                <!--TV sur mur de gauche-->
+                <a-entity position="-3.95 2 -3" rotation="0 -90 0">
+                        <a-box width="1.3" height="0.9" depth="0.05"
+                                color="black">
+                                <a-entity id="tv" position="0 0.05 -0.026" rotation="0 180 0">
+                                        <a-plane id="screen" width="1.28" height="0.72" color="grey"></a-plane>
+                                        <a-box id="button-tv" width="0.1" height="0.06" depth="0.05"
+                                                position="0 -0.43 0"
+                                                emissive="red" emissive-intensity="1" play-pause></a-box>
+                                </a-entity>
+                        
+                        </a-box>
+                </a-entity>
 
-                <!--Feuille de présentation Laurent Coupeau-->
-                <!-- <a-image src="#fiche-presentation" width="1.28" height="0.72" position="-0.7 0 0.011">
-                        </a-image> -->
-                <!--Encart pour la vidéo de pub-->
-                <!-- <a-video src="#pub-glorydev" width="1.28" height="0.72" position="0.7 0 0"> -->
-
-                <!-- Controles Play/Pause -->
-                <!-- <a-image id="videoControls" class="clickable" src="#play" color="aqua"
-                                        position="0 -0.5 0" scale="0.1 0.1 0.5" play-pause
-                                        event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
-                                </a-image>
-
-                        </a-video> -->
-
-                <!-- </a-entity> -->
+                
 
         </a-scene>
 
-        <script src="assets/js/fonctions.js"></script>
-        <script src="assets/js/print3d.js"></script>
+        <script src="js/fonctions.js"></script>
+        <script src="js/pad-fonctions.js"></script>
 </body>
 
 </html>

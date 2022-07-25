@@ -1,18 +1,27 @@
 
-
+// video pub de glorydev
 AFRAME.registerComponent('play-pause', {
 	init: function () {
-		var myVideo = document.querySelector('#pub-glorydev');
-		var videoControls = document.querySelector('#videoControls');
-		this.el.addEventListener('click', function () {
-			if (myVideo.paused) {
-				myVideo.play();
-				videoControls.setAttribute('src', '#pause');
-			} else {
-				myVideo.pause();
-				videoControls.setAttribute('src', '#play');
-			}
-		});
+    let tv = document.querySelector('#tv');
+    let screen = document.querySelector('#screen');
+    let buttonTv = document.querySelector('#button-tv')
+    let video = document.createElement('a-video');
+
+    video.setAttribute('geometry' ,{
+      width: 1.28,
+      height: 0.72
+    });
+
+    buttonTv.setAttribute('material', 'emissive', 'lime');
+    video.setAttribute('src',  'assets/video/pub-glorydev.mp4');
+
+    buttonTv.addEventListener('click', function() {
+      tv.remove(screen);
+      tv.append(video);
+      video.play()
+
+    })
+		
 	}
 });
 
@@ -61,10 +70,42 @@ bureau.forEach(element => {
     })
     
 });
-// AFRAME.registerComponent('open-close',  {
-// 	init: function () {
-// 		let parent= this.el.parentNode;
-// 		parent.setAttribute('position', {z: 0.6}, true);
-//   }
-// });
+
+
+// fonction d'affichage console.log sous controller gauche
+
+let leftHand = document.getElementById('left-hand');
+let plan = document.createElement('a-plane');
+let textValue = "hello !!!";
+let text = document.createElement('a-text');
+text.setAttribute('value', textValue);
+
+plan.setAttribute('geometry', {
+  width:0.1,
+  height:0.15
+})
+plan.setAttribute('position', {
+  x:0.1,
+  y:-0.05,
+  z:0
+})
+plan.setAttribute('rotation', {
+  x:45,
+  y:180,
+  z:0
+})
+
+text.setAttribute('width', 0.5);
+text.setAttribute('anchor', 'left')
+
+text.setAttribute('position', {
+  x:-0.05,
+  y:0.05,
+  z:0
+})
+plan.setAttribute('material','color', 'black');
+plan.append(text)
+
+leftHand.append(plan)
+
 
