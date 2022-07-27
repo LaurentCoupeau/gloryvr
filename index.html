@@ -18,17 +18,16 @@
 
 
         <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-        <!-- <script src="assets/js/progressive-controls.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.js"></script>
         <!-- <script src="https://unpkg.com/super-hands@^3.0.1/dist/super-hands.min.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system/dist/aframe-physics-system.js"></script>
 	<!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
-        <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+        <!-- <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script> -->
 </head>
 
 <body>
 
-        <a-scene renderer="antialias: true" physics="gravity: 0; debug:true" stats>
+        <a-scene renderer="antialias: true" physics="gravity: 0" stats>
 
                 <a-assets>
 
@@ -52,8 +51,6 @@
                         <img id="mars" src="assets/img/mars.png"></img>
                         <!---------------------mignature pour la video--------------------->
                         <img id="mignature-video" src="assets/img/miniature-video.png"></img>
-                        <!---------------------image de l'anneau unique--------------------->
-                        <img id="ring-lodro" src="assets/img/ringlodro_Plan de travail 1.jpg"></img>
                         <!---------------------posters--------------------->
                         <img id="matrix" src="assets/img/poster/matrix.jpg"></img>
                         <img id="xmen" src="assets/img/poster/x-men.jpg"></img>
@@ -67,14 +64,21 @@
                         <!---------------------plante-------------------->
                         <a-asset-item id="planteviolette-obj" src="assets/3d/plante-violette.obj"></a-asset-item>
                         <a-asset-item id="planteviolette-mtl" src="assets/3d/plante-violette.mtl"></a-asset-item>
-                        <!---------------------video de publicite----------------------->
-                        <!-- <video id="pub-glorydev" autoplay src="assets/video/pub-glorydev.mp4"></video> -->
                         <!---------------------logo glorydev--------------------->
                         <img id="logo" src="assets/img/logo-glorydev.png"></img>
                         <!---------------------icones pour videos--------------------->
                         <img id="play" src="assets/icones/play.png"></img>
                         <img id="play-hover" src="assets/icones/play-hover.png"></img>
                         <img id="pause" src="assets/icones/pause.png"></img>
+                        <!---------------------png pads--------------------->
+                        <img id="presentation" src="assets/img/pads/presentation.png"></img>
+                        <img id="engagements" src="assets/img/pads/engagements.png"></img>
+                        <img id="formations" src="assets/img/pads/formations.png"></img>
+                        <img id="prestations" src="assets/img/pads/prestations.png"></img>
+                        <img id="partenaires" src="assets/img/pads/partenaires.png"></img>
+                        <img id="infos" src="assets/img/pads/infos.png"></img>
+                        <!---------------------hand sas--------------------->
+                        <img id="handSas" src="assets/img/sas/hand.png"></img>
                         <!---------------------icone pour socle téléportation--------------------->
                         <img id="footsteps" src="assets/icones/foot.png"></img>
                         <!---------------------ciel--------------------->
@@ -101,20 +105,20 @@
 				  	  animation.to: 0">
 			
 			<a-camera>
-				<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
+				<!-- <a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image> -->
                                 <a-cursor></a-cursor>
 			</a-camera>
                         <!--controlers-->
                         <a-entity>
-                                <a-entity sphere-collider="objects: #sabre" 
+                                <a-entity super-hands sphere-collider="objects: #sabre" 
                                           static-body="shape:sphere; sphereRadius: 0.03"
                                           laser-controls="hand: left" id="left-hand"
-                                          raycaster="objects: .links; far: 5" >
+                                          raycaster="objects: .clickable; far: 10" >
                                 </a-entity>
-                                <a-entity sphere-collider="objects: #sabre" 
+                                <a-entity super-hands sphere-collider="objects: #sabre" 
                                           static-body="shape:sphere; sphereRadius: 0.03"
                                           laser-controls="hand: right" id="right-hand"
-                                          raycaster="objects: .links; far: 5">
+                                          raycaster="objects: .clickable; far: 10">
                                 </a-entity>
                         </a-entity>
 			
@@ -183,10 +187,18 @@
                                         <a-plane static-body position="0 1 0" src="#plaster" repeat="3 2" width="3" height="2"
                                                 side="double">
                                         </a-plane>
+
                                         <!--plainte porte-->
                                         <a-box width="3.2" height="0.1" depth="0.05" src="#bois" repeat="3 1"
                                                 position="0 0.05 0">
                                         </a-box>
+
+                                        <!-------------------SAS---------------------->
+                                        <a-plane id="sas" position="0 -1 0"
+                                                width="3" height="2" src="#plaster" repeat="3 2"
+                                                side="double">
+                                        </a-plane>
+
                                 </a-entity>
 
                                 <!--mur de droite-->
@@ -298,10 +310,26 @@
 
                         </a-entity>
 
+                        <!-------------------CONTROLE DU SAS---------------------->                        
+                        <a-box position="-3.97 1.5 2" rotation="0 90 0"
+                                id="control-sas" class="clickable"  src="#handSas"
+                               width="0.3" height="0.4" depth="0.05"
+                               emissive="aqua" emissive-intensity="0.1">
+                        </a-box>
+                        
+                        
+                        <!-------------------REPERE TELEPORTATION SAS---------------------->
+                        <a-image src="#footsteps" position="-3 0.01 0" checkpoint="offset: 0 0 0" class="clickable"
+                                color="aqua" rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        
+
                         <!-------------------BUREAU---------------------->
                         <a-entity static-body position="0 0.01 -4">
 
-                                <a-obj-model src="#planteviolette-obj" mtl="#planteviolette-mtl" scale="0.1 0.1 0.1" position="0.85 1 -0.3"></a-obj-model>
+                                <a-obj-model src="#planteviolette-obj" mtl="#planteviolette-mtl" 
+                                        scale="0.1 0.1 0.1" position="0.85 1 0">
+                                </a-obj-model>
 
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
@@ -316,18 +344,24 @@
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                        <a-image src="#presentation" position="0 0.015 0" rotation="-90 0 0"
+                                                                width="0.15" height="0.15"></a-image>
                                                 </a-box>
                                                 <a-box id="pad2" class="clickable pad" position="0 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                        <a-image src="#engagements" position="0 0.015 0" rotation="-90 0 0"
+                                                                width="0.15" height="0.15"></a-image>
                                                 </a-box>
                                                 <a-box id="pad3" class="clickable pad" position="0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                        <a-image src="#formations" position="0 0.015 0" rotation="-90 0 0"
+                                                                width="0.15" height="0.15"></a-image>
                                                 </a-box>
                                         </a-entity>
                                         <!--rangée du bas-->
@@ -337,18 +371,24 @@
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                        <a-image src="#prestations" position="0 0.015 0" rotation="-90 0 0"
+                                                                width="0.15" height="0.15"></a-image>
                                                 </a-box>
                                                 <a-box id="pad5" class="clickable pad" position="0 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                        <a-image src="#partenaires" position="0 0.015 0" rotation="-90 0 0"
+                                                                width="0.15" height="0.15"></a-image>
                                                 </a-box>
                                                 <a-box id="pad6" class="clickable pad" position="0.2 0.05 0"
                                                         width="0.15" height="0.025" depth="0.15"
                                                         emissive="aqua" emissive-intensity="0.5"
                                                         event-set__enter="_event:mouseenter; material.emissive: lime"                                                        
                                                         event-set__leave="_event:mouseleave; material.emissive: aqua">
+                                                        <a-image src="#infos" position="0 0.015 0" rotation="-90 0 0"
+                                                                width="0.15" height="0.15"></a-image>
                                                 </a-box>
                                         </a-entity>
                                 </a-entity>
@@ -535,12 +575,9 @@
                                 </a-entity>
 
                         </a-entity>
-
                         <!-------------------REPERE TELEPORTATION BUREAU---------------------->
-                        <a-image src="#footsteps" position="0 0.01 -3.1" checkpoint="offset: 0 0 0.5" class="clickable"
-                                color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
-                                event-set__mouseenter="material.color: blue"
-                                event-set__mouseleave="material.color: aqua">
+                        <a-image src="#footsteps" position="0 0.01 -3.1" checkpoint="offset: 0 0 0.1" class="clickable"
+                                color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
 
                         <!-------------------TABLE ET IMPRIMANTE 3D---------------------->
@@ -666,12 +703,27 @@
                                 </a-entity>
 
                         </a-entity>
-
                         <!-------------------REPERE TELEPORTATION TABLE IMPRIMANTE 3D---------------------->
                         <a-image src="#footsteps" position="2 0.01 0" checkpoint="offset: 0 0 0" class="clickable"
-                                color="aqua" rotation="-90 -90 0" opacity="0.5" scale="0.5 0.5 0.5"
-                                event-set__mouseenter="material.color: blue"
-                                event-set__mouseleave="material.color: aqua">
+                                color="aqua" rotation="-90 -90 0" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+
+                        <!-------------------TV-------------------->
+                        <a-entity position="-3.95 1.5 -3" rotation="0 -90 0">
+                                <a-box width="1.3" height="0.9" depth="0.05"
+                                        color="black">
+                                        <a-entity id="tv" position="0 0.05 -0.026" rotation="0 180 0">
+                                                <a-plane id="screen" width="1.28" height="0.72" color="grey"></a-plane>
+                                                <a-box id="buttonTv" class="clickable" width="0.1" height="0.06" depth="0.05"
+                                                        position="0 -0.43 0"
+                                                        emissive="aqua" emissive-intensity="1" play-pause>
+                                                </a-box>
+                                        </a-entity>                                
+                                </a-box>
+                        </a-entity>
+                        <!-------------------REPERE TELEPORTATION TV---------------------->
+                        <a-image src="#footsteps" position="-2.8 0.01 -3" checkpoint="offset: 0 0 0" class="clickable"
+                        color="aqua" rotation="90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
 
                 </a-entity>
@@ -684,12 +736,12 @@
                                 <a-plane static-body src="#plaster" repeat="6 2" side="double" width="6" height="2">
                                 </a-plane>
                                 <!--posters du mur-->
-                                <a-entity position="-0.015 0 0.011">
+                                <a-entity position="-0.015 0 0.02">
                                         <a-image src="#lodro" side="double" width="1.2" height="1.6" position="-2 0 0">
                                         </a-image>
                                         <a-image src="#got" side="double" width="1.2" height="1.6" position="0 0 0">
                                         </a-image>
-                                        <a-image src="#matrix" side="double" width="1.2" height="1.6" position="2 0 0">
+                                        <a-image src="#harry" side="double" width="1.2" height="1.6" position="2 0 0">
                                         </a-image>
                                 </a-entity>
                                 <!--plainte mur gauche du couloir-->
@@ -704,10 +756,10 @@
                                 <a-plane static-body src="#plaster" repeat="6 2" side="double" width="6" height="2">
                                 </a-plane>
                                 <!--posters du mur-->
-                                <a-entity position="-0.015 0 0.011">
+                                <a-entity position="-0.015 0 0.02">
                                         <a-image src="#xmen" side="double" width="1.2" height="1.6" position="-2 0 0">
                                         </a-image>
-                                        <a-image src="#harry" side="double" width="1.2" height="1.6" position="0 0 0">
+                                        <a-image src="#matrix" side="double" width="1.2" height="1.6" position="0 0 0">
                                         </a-image>
                                         <a-image src="#star-wars" side="double" width="1.2" height="1.6"
                                                 position="2 0 0"></a-image>
@@ -724,26 +776,9 @@
                                 rotation="90 0 0">
                         </a-plane>
 
-                        <!--lumiere du plafond-->
-                        <a-entity>
-                                <a-box position="0 2 0" width="0.2" height="0.1" depth="0.1" emissive="blue"
-                                        emissive-intensity="2">
-                                </a-box>
-                                <a-light type="directional" color="white" intensity="0.3" position="-2 -0.05 0"
-                                        rotation="0 0 90" target="#directionaltargethallright">
-                                        <a-entity id="directionaltargethallright" position="2 -4 0"></a-entity>
-                                </a-light>
-                                <a-light type="directional" color="white" intensity="0.3" position="22 -0.05 0"
-                                        rotation="0 0 -90" target="#directionaltargethallleft">
-                                        <a-entity id="directionaltargethallleft" position="-2 -4 0"></a-entity>
-                                </a-light>
-                        </a-entity>
-
                         <!-------------------REPERE TELEPORTATION COULOIR AILE GAUCHE---------------------->
                         <a-image src="#footsteps" position="0 0.01 0" checkpoint="offset: 0 0 0.5" class="clickable"
-                                color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5"
-                                event-set__mouseenter="material.color: blue"
-                                event-set__mouseleave="material.color: aqua">
+                                color="aqua" rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
 
                 </a-entity>
@@ -803,8 +838,7 @@
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="-1.2 -0.495 1" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
+                                        scale="0.5 0.5 0.5">
                                 </a-image>
 
                                 <!-----------SABRE LASER------------>
@@ -860,9 +894,7 @@
                                 </a-entity>
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="-1.2 -0.495 -2" checkpoint="offset: 0 0 0.5"
-                                        class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
+                                        class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5">
                                 </a-image>
                                 <!---------piedestal 4--------->
                                 <a-entity static-body position="-2 0 -5" rotation="0 90 0">
@@ -889,8 +921,7 @@
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="-1.2 -0.495 -5" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
+                                        scale="0.5 0.5 0.5">
                                 </a-image>
                                 <!---------piedestal 3--------->
                                 <a-entity static-body position="2 0 1" rotation="0 -90 0">
@@ -916,8 +947,7 @@
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="1.2 -0.495 1" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 -90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
+                                        scale="0.5 0.5 0.5">
                                 </a-image>
                                 <!---------piedestal 2--------->
                                 <a-entity static-body position="2 0 -2" rotation="0 -90 0">
@@ -943,8 +973,7 @@
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="1.2 -0.495 -2" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 -90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
+                                        scale="0.5 0.5 0.5">
                                 </a-image>
                                 <!---------piedestal 1--------->
                                 <a-entity static-body position="2 0 -5" rotation="0 -90 0">
@@ -970,8 +999,7 @@
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="1.2 -0.495 -5" checkpoint="offset: 0 0 0.5"
                                         class="clickable" color="aqua" rotation="-90 -90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5" event-set__mouseenter="material.color: blue"
-                                        event-set__mouseleave="material.color: aqua">
+                                        scale="0.5 0.5 0.5">
                                 </a-image>
                         </a-entity>
 
@@ -980,26 +1008,12 @@
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
                 <a-sound src="#ambiant" position="0 2 0" volume="0.5" sound="autoplay: true"></a-sound>
 
-                <!--TV sur mur de gauche-->
-                <a-entity position="-3.95 2 -3" rotation="0 -90 0">
-                        <a-box width="1.3" height="0.9" depth="0.05"
-                                color="black">
-                                <a-entity id="tv" position="0 0.05 -0.026" rotation="0 180 0">
-                                        <a-plane id="screen" width="1.28" height="0.72" color="grey"></a-plane>
-                                        <a-box id="button-tv" width="0.1" height="0.06" depth="0.05"
-                                                position="0 -0.43 0"
-                                                emissive="red" emissive-intensity="1" play-pause></a-box>
-                                </a-entity>
-                        
-                        </a-box>
-                </a-entity>
-
-                
-
         </a-scene>
 
-        <script src="js/fonctions.js"></script>
-        <script src="js/pad-fonctions.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/sas-functions.js"></script>
+        <script src="js/tv-functions.js"></script>
+        <script src="js/pad-functions.js"></script>
 </body>
 
 </html>
