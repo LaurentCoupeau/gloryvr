@@ -1,29 +1,4 @@
 
-// video pub de glorydev
-AFRAME.registerComponent('play-pause', {
-	init: function () {
-    let tv = document.querySelector('#tv');
-    let screen = document.querySelector('#screen');
-    let buttonTv = document.querySelector('#button-tv')
-    let video = document.createElement('a-video');
-
-    video.setAttribute('geometry' ,{
-      width: 1.28,
-      height: 0.72
-    });
-
-    buttonTv.setAttribute('material', 'emissive', 'lime');
-    video.setAttribute('src',  'assets/video/pub-glorydev.mp4');
-
-    buttonTv.addEventListener('click', function() {
-      tv.remove(screen);
-      tv.append(video);
-      video.play()
-
-    })
-		
-	}
-});
 
 AFRAME.registerComponent('raycaster-listen', {
 	init: function () {
@@ -61,7 +36,7 @@ bureau.push(tiroir1, tiroir2, tiroir3, tiroir4, tiroir5, tiroir6);
 bureau.forEach(element => {
     element.addEventListener('mouseenter', function(){
         element.setAttribute('material', 'color', '#025698');
-		console.log('ok')
+		
 
     })
     element.addEventListener('mouseleave', function(){
@@ -108,4 +83,15 @@ plan.append(text)
 
 leftHand.append(plan)
 
+// hover clickables object functions
+let clickableObjects = document.querySelectorAll('.clickable');
+console.log(clickableObjects)
+for (let i=0; i<clickableObjects.length; i++){
+  clickableObjects[i].addEventListener('mouseenter', function(){
+    clickableObjects[i].setAttribute('material', 'color', 'lime');
+  });
 
+  clickableObjects[i].addEventListener('mouseleave', function() {
+    clickableObjects[i].setAttribute('material', 'color', 'aqua')
+  });
+}
