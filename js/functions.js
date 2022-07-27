@@ -85,7 +85,6 @@ leftHand.append(plan)
 
 // hover clickables object functions
 let clickableObjects = document.querySelectorAll('.clickable');
-console.log(clickableObjects)
 for (let i=0; i<clickableObjects.length; i++){
   clickableObjects[i].addEventListener('mouseenter', function(){
     clickableObjects[i].setAttribute('material', 'color', 'lime');
