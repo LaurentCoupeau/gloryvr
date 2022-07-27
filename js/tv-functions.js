@@ -26,7 +26,6 @@ AFRAME.registerComponent('play-pause', {
             tv.remove(video);
             tv.append(screen);
             stateTv = false;
-            console.log(screen)
           }
         
         })
