@@ -1,4 +1,4 @@
-
+let stateTv = false;
 // video pub de glorydev
 AFRAME.registerComponent('play-pause', {
 	init: function () {
@@ -13,11 +13,20 @@ AFRAME.registerComponent('play-pause', {
         });
 
         video.setAttribute('src', 'assets/video/pub-glorydev.mp4');
-
         buttonTv.addEventListener('click', function() {
-          tv.remove(screen);
-          tv.append(video);
-          video.play()
+          if (stateTv == false){
+            tv.remove(screen);
+            tv.append(video);
+            video.play();
+            stateTv = true;
+
+          } else {
+            video.pause();
+            video.currentTime=0;
+            tv.remove(video);
+            tv.append(screen);
+            stateTv = false;
+          }
         
         })
 		
