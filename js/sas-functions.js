@@ -68,7 +68,6 @@ for (let j=0;j<controlSas.length; j++){
     controlSas[j].addEventListener('click', function() {
     // si le sas opérationnel
     if (stateSas === true) { 
-        // si la porte est ouverte
         // le sas change d'état
         stateSas = false;
         if (zCount == 20) {
