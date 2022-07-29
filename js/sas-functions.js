@@ -16,6 +16,19 @@ AFRAME.registerComponent('open-sas', {
         // on instancie le son de déclenchement du sas
         let sasSound = document.createElement('audio');
         sasSound.src='assets/sounds/sas.mp3';
+        sasSound.setAttribute('refDistance', 1);
+        sasSound.setAttribute('rollofffasctor', 1);
+
+        for(let i=0;i<controlSas.length;i++){
+            controlSas[i].setAttribute('sound', {
+                src: "assets/sounds/sas.mp3",
+                on: "click",
+                volume: 1,
+                refDistance: 5,
+                rolloffFactor: 4
+
+            })
+        }
 
         // fonction d'ouverture ou de fermeture de porte
         function moveDoor(ySens, yValueFinal,zValueInit, zValueFinal){
@@ -56,8 +69,6 @@ for (let j=0;j<controlSas.length; j++){
     // si le sas opérationnel
     if (stateSas === true) { 
         // si la porte est ouverte
-        // joue le bruit du sas
-        sasSound.play();
         // le sas change d'état
         stateSas = false;
         if (zCount == 20) {
