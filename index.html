@@ -78,7 +78,8 @@
                         <img id="partenaires" src="assets/img/pads/partenaires.png"></img>
                         <img id="infos" src="assets/img/pads/infos.png"></img>
                         <!---------------------hand sas--------------------->
-                        <img id="handSas" src="assets/img/sas/hand.png"></img>
+                        <img id="handLeftSas" src="assets/img/sas/handLeft.png"></img>
+                        <img id="handRightSas" src="assets/img/sas/handRight.png"></img>
                         <!---------------------icone pour socle téléportation--------------------->
                         <img id="footsteps" src="assets/icones/foot.png"></img>
                         <!---------------------ciel--------------------->
@@ -310,9 +311,16 @@
 
                         </a-entity>
 
-                        <!-------------------CONTROLE DU SAS---------------------->                        
+                        <!-------------------CONTROL DU SAS PIECE PRINCIPALE---------------------->                        
                         <a-box position="-3.97 1.5 2" rotation="0 90 0"
-                                id="control-sas" class="clickable"  src="#handSas"
+                               class="clickable control-sas"  src="#handLeftSas"
+                               width="0.3" height="0.4" depth="0.05"
+                               emissive="aqua" emissive-intensity="0.1" open-sas>
+                        </a-box>
+
+                        <!-------------------CONTROL DU SAS PIECE COULOIR AILE GAUCHE---------------------->                        
+                        <a-box position="-4.1 1.5 1.8" rotation="0 90 0"
+                               class="clickable control-sas"  src="#handRightSas"
                                width="0.3" height="0.4" depth="0.05"
                                emissive="aqua" emissive-intensity="0.1" open-sas>
                         </a-box>
