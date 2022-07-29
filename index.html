@@ -78,7 +78,8 @@
                         <img id="partenaires" src="assets/img/pads/partenaires.png"></img>
                         <img id="infos" src="assets/img/pads/infos.png"></img>
                         <!---------------------hand sas--------------------->
-                        <img id="handSas" src="assets/img/sas/hand.png"></img>
+                        <img id="handLeftSas" src="assets/img/sas/handLeft.png"></img>
+                        <img id="handRightSas" src="assets/img/sas/handRight.png"></img>
                         <!---------------------icone pour socle téléportation--------------------->
                         <img id="footsteps" src="assets/icones/foot.png"></img>
                         <!---------------------ciel--------------------->
@@ -88,7 +89,7 @@
 
                 </a-assets>
                 
-                <a-light type="ambient" intensity="0.6"></a-light>
+                <a-light type="ambient" intensity="0.7"></a-light>
 
                 <a-entity position="0 1 2" particle-system="preset: dust; color:black;particleCount: 100; size:2"></a-entity>
 
@@ -299,9 +300,9 @@
                                         </a-box>
 
                                         <!--baie vitrée-->
-                                        <a-box static-body position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
+                                        <!-- <a-box static-body position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
                                                 transparent="true" opacity="0.6">
-                                        </a-box>
+                                        </a-box> -->
                                         <!--plainte sol-->
                                         <a-box width="8" height="0.1" depth="0.05" src="#bois" repeat="1 2"
                                                 position="0 1.95 0">
@@ -310,9 +311,16 @@
 
                         </a-entity>
 
-                        <!-------------------CONTROLE DU SAS---------------------->                        
+                        <!-------------------CONTROL DU SAS PIECE PRINCIPALE---------------------->                        
                         <a-box position="-3.97 1.5 2" rotation="0 90 0"
-                                id="control-sas" class="clickable"  src="#handSas"
+                               class="clickable control-sas"  src="#handLeftSas"
+                               width="0.3" height="0.4" depth="0.05"
+                               emissive="aqua" emissive-intensity="0.1" open-sas>
+                        </a-box>
+
+                        <!-------------------CONTROL DU SAS PIECE COULOIR AILE GAUCHE---------------------->                        
+                        <a-box position="-4.1 1.5 1.8" rotation="0 90 0"
+                               class="clickable control-sas"  src="#handRightSas"
                                width="0.3" height="0.4" depth="0.05"
                                emissive="aqua" emissive-intensity="0.1" open-sas>
                         </a-box>
@@ -713,7 +721,7 @@
                                 <a-box width="1.3" height="0.9" depth="0.05"
                                         color="black">
                                         <a-entity id="tv" position="0 0.05 -0.026" rotation="0 180 0">
-                                                <a-plane id="screen" src="#miniature-video" width="1.28" height="0.72" color="grey"></a-plane>
+                                                <a-plane id="screen" src="#miniature-video" width="1.28" height="0.72"></a-plane>
                                                 <a-box id="buttonTv" class="clickable" width="0.1" height="0.06" depth="0.05"
                                                         position="0 -0.43 0"
                                                         emissive="aqua" emissive-intensity="1" play-pause>
@@ -894,7 +902,8 @@
                                 </a-entity>
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="-1.2 -0.495 -2" checkpoint="offset: 0 0 0.5"
-                                        class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5">
+                                        class="clickable" color="aqua" rotation="-90 90 0" opacity="0.5"
+                                        scale="0.5 0.5 0.5">
                                 </a-image>
                                 <!---------piedestal 4--------->
                                 <a-entity static-body position="-2 0 -5" rotation="0 90 0">
@@ -1006,7 +1015,7 @@
                 </a-entity>
 
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
-                <a-sound src="#ambiant" position="0 2 0" volume="0.5" sound="autoplay: true"></a-sound>
+                <!-- <a-sound src="#ambiant" position="0 2 0" volume="0.5" sound="autoplay: true"></a-sound> -->
 
         </a-scene>
 
