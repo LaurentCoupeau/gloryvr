@@ -3,10 +3,6 @@ AFRAME.registerComponent('open-sas', {
 
 	init: function () {
 
-        let control = this.el;
-        let controls = [];
-
-        controls.push(control);
         // positions initiales
         let yState = -1;
         let zState = 0;
@@ -16,6 +12,7 @@ AFRAME.registerComponent('open-sas', {
         let zCount = 0;
         // on instancie les parties visuelle du sas 
         let sas = document.querySelector('#sas');
+        let controlSas = document.getElementById('control-sas');
 
         // fonction d'ouverture ou de fermeture de porte
         function moveDoor(ySens, yValueFinal, zValueInit, zValueFinal){
@@ -47,18 +44,17 @@ AFRAME.registerComponent('open-sas', {
                         z:zValueFinal
                     });
                 }
-            },6);  
-        }        
-
-        for (let j=0;j<controls.length; j++){
+            },0.4);  
+        }               
 
             // on écoute les panneaux de controle du sas
-            controls[j].addEventListener('click', function() {
+            controlSas.addEventListener('click', function() {
                 // si le sas opérationnel
                 if (stateSas === true) { 
                     // le sas change d'état
                     stateSas = false;
                     if (zCount == 20) {
+                        console.log(zCount)
                         // la porte descend
                         moveDoor(-0.01,-1, -0.02, 0);
                         // le sas change d'état
@@ -66,6 +62,7 @@ AFRAME.registerComponent('open-sas', {
                         zCount=0;
                     // si la porte est fermée
                     } else if ( zCount == 0) {
+                        console.log(zCount)
                         // le sas change d'état
                         stateSas = false;
                         // la porte monte
@@ -80,6 +77,6 @@ AFRAME.registerComponent('open-sas', {
                     console.log('Arrêtes, tu vas tout casser !!!');      
                 }  
             });
-        }        
+               
     }
 })
