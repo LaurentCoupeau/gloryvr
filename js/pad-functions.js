@@ -26,7 +26,7 @@ tactilPad.append(screenPad);
 for (let i=0; i<pads.length; i++) {
     
     pads[i].addEventListener ('click', function() {
-        soundPad.volume="0.5";
+        soundPad.volume="0.3";
         soundPad.play();
 
         switch (i) {
