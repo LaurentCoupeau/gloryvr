@@ -3,6 +3,10 @@ AFRAME.registerComponent('open-sas', {
 
 	init: function () {
 
+        let control = this.el;
+        let controls = [];
+
+        controls.push(control);
         // positions initiales
         let yState = -1;
         let zState = 0;
@@ -12,26 +16,9 @@ AFRAME.registerComponent('open-sas', {
         let zCount = 0;
         // on instancie les parties visuelle du sas 
         let sas = document.querySelector('#sas');
-        let controlSas = document.querySelectorAll('.control-sas');
-        // on instancie le son de déclenchement du sas
-        let sasSound = document.createElement('audio');
-        sasSound.src='assets/sounds/sas.mp3';
-        sasSound.setAttribute('refDistance', 1);
-        sasSound.setAttribute('rollofffasctor', 1);
-
-        for(let i=0;i<controlSas.length;i++){
-            controlSas[i].setAttribute('sound', {
-                src: "assets/sounds/sas.mp3",
-                on: "click",
-                volume: 1,
-                refDistance: 5,
-                rolloffFactor: 4
-
-            })
-        }
 
         // fonction d'ouverture ou de fermeture de porte
-        function moveDoor(ySens, yValueFinal,zValueInit, zValueFinal){
+        function moveDoor(ySens, yValueFinal, zValueInit, zValueFinal){
             // systeme virtuel de balancier
             let count = 0;
             // toutes les 60 milisecondes
@@ -63,38 +50,36 @@ AFRAME.registerComponent('open-sas', {
             },6);  
         }        
 
-        // on écoute les panneaux de controle du sas
-for (let j=0;j<controlSas.length; j++){
-    controlSas[j].addEventListener('click', function() {
-    // si le sas opérationnel
-    if (stateSas === true) { 
-        // si la porte est ouverte
-        // le sas change d'état
-        stateSas = false;
-        if (zCount == 20) {
-            // la porte descend
-            moveDoor(-0.01,-1, -0.02, 0);
-            // le sas change d'état
-            stateSas = true;
-            zCount=0;
-        // si la porte est fermée
-        } else if ( zCount == 0) {
-            // le sas change d'état
-            stateSas = false;
-            // la porte monte
-            moveDoor(0.01,1, -0.02, -0.02);    
-            // le sas change d'état
-            stateSas = true;
-            zCount=20;
-        }
-    // sinon
-    } else {            
-        console.log('Arrêtes, tu vas tout casser !!!');            
-    }
-});
+        for (let j=0;j<controls.length; j++){
 
-}
-
-        
+            // on écoute les panneaux de controle du sas
+            controls[j].addEventListener('click', function() {
+                // si le sas opérationnel
+                if (stateSas === true) { 
+                    // le sas change d'état
+                    stateSas = false;
+                    if (zCount == 20) {
+                        // la porte descend
+                        moveDoor(-0.01,-1, -0.02, 0);
+                        // le sas change d'état
+                        stateSas = true;
+                        zCount=0;
+                    // si la porte est fermée
+                    } else if ( zCount == 0) {
+                        // le sas change d'état
+                        stateSas = false;
+                        // la porte monte
+                        moveDoor(0.01,1, -0.02, -0.02);    
+                        // le sas change d'état
+                        stateSas = true;
+                        zCount=20;
+                    // sinon
+                    }    
+                     
+                } else {            
+                    console.log('Arrêtes, tu vas tout casser !!!');      
+                }  
+            });
+        }        
     }
 })
