@@ -31,6 +31,8 @@
 
                 <a-assets>
 
+            <audio id="laser" src="assets/sounds/laser.mp3"></audio>
+            <audio id="moteur" src="assets/sounds/moteur-vaisseau.mp3"></audio>
                         <!---------------------ciel--------------------->
                         <img id="plafond" src="assets/img/sky9.png"></img>
                         <!---------------------textures du sol--------------------->
@@ -92,7 +94,7 @@
 
                 </a-assets>
                 
-                <a-light type="ambient" intensity="0.7"></a-light>
+                <a-light type="ambient" intensity="0.2"></a-light>
 
                 <a-entity position="0 1 2" particle-system="preset: dust; color:black;particleCount: 100; size:2"></a-entity>
 
@@ -309,9 +311,9 @@
                                         </a-box>
 
                                         <!--baie vitrée-->
-                                        <a-box static-body position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
+                                        <!-- <a-box static-body position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
                                                 transparent="true" opacity="0.6">
-                                        </a-box>
+                                        </a-box> -->
                                         <!--plainte sol-->
                                         <a-box width="8" height="0.1" depth="0.05" src="#bois" repeat="1 2"
                                                 position="0 1.95 0">
@@ -1027,6 +1029,72 @@
 
                 </a-entity>
 
+                <!-- starwars --->
+                <a-entity id="orbit" position="0 2 100">
+
+                        <!--vasisseau attaquant-->
+                        <a-entity position="-70 0 0" rotation="0 0 -50" class="ship" sound="src:#moteur; autoplay:true; loop:true; volume:4;">
+                                <!--cockpit-->
+                                <a-sphere color="grey" radius="0.7"></a-sphere>
+                                <!--bras gauche-->
+                                <a-cylinder position="-1 0 0" rotation="0 0 90"
+                                    height="1" radius="0.2" 
+                                    color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--bras droit-->
+                                <a-cylinder position="1 0 0" rotation="0 0 90"
+                                    height="1" radius="0.2" color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--aile gauche-->
+                                <a-cylinder position="-1.5 0 0" rotation="0 0 90" 
+                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--aile droite-->
+                                <a-cylinder position="1.5 0 0" rotation="0 0 90" 
+                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <a-entity>
+                                    <!--arme-->
+                                    <a-cylinder position="0 -0.2 0.8" rotation="90 0 0"
+                                        height="0.4" radius="0.04"
+                                        color="red" id="gunShipOne" sound="src:#laser; volume:10; poolSize:8;">
+                                    </a-cylinder>
+                                </a-entity>
+                        </a-entity>
+                
+                        <!--vasisseau attaqué-->
+                        <a-entity position="-70 0 20" rotation="0 0 -40" class="ship" id='ship-victime' sound="src:#moteur; autoplay:true; loop:true; volume:4;">    
+                                <!--cockpit-->
+                                <a-sphere color="grey" radius="0.7"></a-sphere>
+                                <!--bras gauche-->
+                                <a-cylinder position="-1 0 0" rotation="0 0 90"
+                                    height="1" radius="0.2" 
+                                    color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--bras droit-->
+                                <a-cylinder position="1 0 0" rotation="0 0 90"
+                                    height="1" radius="0.2" color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--aile gauche-->
+                                <a-cylinder position="-1.5 0 0" rotation="0 0 90" 
+                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--aile droite-->
+                                <a-cylinder position="1.5 0 0" rotation="0 0 90" 
+                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                </a-cylinder>
+                                <!--lasers-->
+                                <a-entity>
+                                        <!--arme-->
+                                        <a-cylinder position="0 -0.2 0.8" rotation="90 0 0"
+                                            height="0.4" radius="0.04"
+                                            color="red" id="gun">
+                                        </a-cylinder>
+                                </a-entity>
+                        </a-entity>
+                        
+                </a-entity>
+
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
                 <a-sound src="#ambiant" volume="0.1" sound="autoplay: true"></a-sound>
 
@@ -1037,6 +1105,7 @@
         <script src="js/pad-functions.js"></script>
         <script src="js/sas-functions.js"></script>
         <script src="js/desk-functions.js"></script>
+        <script src="js/ship-functions.js"></script>
 </body>
 
 </html>
