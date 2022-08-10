@@ -1,6 +1,6 @@
 let gun = document.getElementById('gunShipOne');
 let ship = document.querySelector('.ship');
-let scene = document.querySelector('#scene');
+let victimShip = document.getElementById('ship-victime');
 // I think I heard a shot !!!
 let orbit = document.querySelector('#orbit');
 
@@ -13,17 +13,29 @@ let posZInit = 0;
 
 
 let xDir = 0;
-let yDir = 0;
+let yDir = 0.06;
 let zDir = 0;
 
 let count=0;
-let speed = 0.5;
 
-// fonction pour faire avancer un vaisseau
+
+// fonction pour faire avancer les vaisseau
 function moveShip (el) {
     setInterval(() => {
             el.object3D.rotation.y += 0.01;
     }, 12);
+}
+
+function escape(el) {
+    setInterval(() => {
+        el.object3D.position.y += yDir;
+
+        if (el.object3D.position.y >= 3){
+            yDir = -0.06;
+        } else if (el.object3D.position.y <= -2) {
+            yDir = 0.06;
+        }
+    }, 6);
 }
 
 //appuyer pour faire feu
@@ -60,7 +72,7 @@ function Shoot(){
             
         }, 1000);
 
-    }, 200);
+    }, 400);
   
 }
 
@@ -73,9 +85,13 @@ function moveShot(el) {
 
 function update() {    
     moveShip(orbit);
-    Shoot();
-
-    
+    escape(victimShip);
+    Shoot();    
 }
 
-update();
+if (scene.hasLoaded) {
+    update();
+
+} else {
+    scene.addEventListener('loaded', update);
+}
