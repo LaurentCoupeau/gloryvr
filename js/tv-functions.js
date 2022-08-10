@@ -1,11 +1,16 @@
-let stateTv = false;
+
+let buttonTv = document.querySelector('#buttonTv');
+let videoPub = document.querySelector('#video');
+let stateTv;
+
+if (scene.hasLoaded) {
+  stateTv = false;
+
+} 
 // video pub de glorydev
 AFRAME.registerComponent('play-pause', {
 
 	init: function () {
-        let buttonTv = document.querySelector('#buttonTv');
-        let videoPub = document.querySelector('#video');
-
         video.setAttribute('geometry', {
           width:1.28,
           height:0.72
@@ -16,6 +21,7 @@ AFRAME.registerComponent('play-pause', {
         buttonTv.addEventListener('click', function() {
 
           if (stateTv == false){
+            console.log(stateTv)
 
             buttonTv.setAttribute('material', 'src', 'assets/icones/pause.png');
             videoPub.play();
@@ -23,9 +29,11 @@ AFRAME.registerComponent('play-pause', {
             stateTv = true;
 
           } else {
+            let curent = video.currentTime;
+            console.log(stateTv)
 
             buttonTv.setAttribute('material', 'src', 'assets/icones/play.png');
-            videoPub.currentTime=0;
+            videoPub.currentTime=curent;
             videoPub.pause();
             stateTv = false;
 

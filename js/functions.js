@@ -1,4 +1,4 @@
-
+let scene= document.querySelector('a-scene');
 
 AFRAME.registerComponent('raycaster-listen', {
 	init: function () {

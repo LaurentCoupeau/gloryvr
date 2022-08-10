@@ -27,12 +27,10 @@
 
 <body>
 
-        <a-scene renderer="antialias: true" physics="gravity: 0" stats>
+        <a-scene renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats>
 
                 <a-assets>
 
-            <audio id="laser" src="assets/sounds/laser.mp3"></audio>
-            <audio id="moteur" src="assets/sounds/moteur-vaisseau.mp3"></audio>
                         <!---------------------ciel--------------------->
                         <img id="plafond" src="assets/img/sky9.png"></img>
                         <!---------------------textures du sol--------------------->
@@ -51,9 +49,9 @@
                         <img id="laiton" src="assets/textures/laiton.jpg"></img>
                         <!---------------------texture mars---------------------->
                         <img id="mars" src="assets/img/mars.png"></img>
-                        <!---------------------miniature pour la video--------------------->
-                        <img id="video" src="assets/video/pub-glorydev.mp4" autoplay="false"></img>
                         <!---------------------video--------------------->
+                        <video id="video" src="assets/video/pub-glorydev.mp4" autoplay="false"></video>
+                        <!---------------------miniature de la video--------------------->
                         <img id="miniature-video" src="assets/img/miniature-video.png"></img>
                         <!---------------------posters--------------------->
                         <img id="matrix" src="assets/img/poster/matrix.jpg"></img>
@@ -91,12 +89,14 @@
                         <audio id="ambiant" src="assets/sounds/wild-heart.mp3"></audio>
                         <!---------------------bruit sas--------------------->
                         <audio id="sas-sound" src="assets/sounds/sas.mp3"></audio>
+                        <!---------------------bruit starwars--------------------->
+                        <audio id="laser" src="assets/sounds/laser.mp3"></audio>
+                        <audio id="moteur" src="assets/sounds/moteur-vaisseau.mp3"></audio>
 
                 </a-assets>
                 
-                <a-light type="ambient" intensity="0.2"></a-light>
+                <a-light type="ambient" intensity="0.7"></a-light>
 
-                <a-entity position="0 1 2" particle-system="preset: dust; color:black;particleCount: 100; size:2"></a-entity>
 
                 <!-- CAMERA RIG -->
                 <a-entity id="cam-rig" progressive-controls 
@@ -340,6 +340,11 @@
                         <a-image src="#footsteps" position="-3 0.01 0" 
                                 checkpoint="offset: 0 0 0" class="clickable"
                                 rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!-------------------REPERE FENETRE---------------------->
+                        <a-image src="#footsteps" position="0 0.01 3" 
+                                checkpoint="offset: 0 0 0" class="clickable"
+                                rotation="-90 180 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
                         
 
@@ -732,8 +737,7 @@
 
                         <!-------------------TV-------------------->
                         <a-entity position="-3.95 1.5 -3" rotation="0 -90 0">
-                                <a-box width="1.3" height="0.9" depth="0.05"
-                                        color="black">
+                                <a-box width="1.3" height="0.9" depth="0.05" color="black">
                                         <a-entity id="tv" position="0 0.05 -0.026" rotation="0 180 0">
                                                 <a-plane src="#video" width="1.28" height="0.72"></a-plane>
                                                 <a-box id="buttonTv" class="clickable" width="0.1" height="0.06" depth="0.05"
@@ -1029,29 +1033,83 @@
 
                 </a-entity>
 
-                <!-- starwars --->
+                <!-------------------STARWARS------------------->
                 <a-entity id="orbit" position="0 2 100">
 
                         <!--vasisseau attaquant-->
                         <a-entity position="-70 0 0" rotation="0 0 -50" class="ship" sound="src:#moteur; autoplay:true; loop:true; volume:4;">
                                 <!--cockpit-->
-                                <a-sphere color="grey" radius="0.7"></a-sphere>
+                                <a-sphere color="darkred" radius="0.7"></a-sphere>
                                 <!--bras gauche-->
                                 <a-cylinder position="-1 0 0" rotation="0 0 90"
                                     height="1" radius="0.2" 
-                                    color="grey" segments-radial="6">
+                                    color="black" segments-radial="6">
                                 </a-cylinder>
                                 <!--bras droit-->
                                 <a-cylinder position="1 0 0" rotation="0 0 90"
-                                    height="1" radius="0.2" color="grey" segments-radial="6">
+                                    height="1" radius="0.2" color="black" segments-radial="6">
                                 </a-cylinder>
                                 <!--aile gauche-->
                                 <a-cylinder position="-1.5 0 0" rotation="0 0 90" 
-                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                    height="0.1" radius="1.5" color="darkred" segments-radial="6">
+                                    <!--decoration-->
+                                    <a-entity position="0 0.075 0">
+                                        <a-triangle
+                                            position="0.72 0 0" rotation="-90 90 0"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 -0.6" rotation="-90 90 60"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 -0.6" rotation="-90 90 120"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 0.6" rotation="-90 90 -120"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 0.6" rotation="-90 90 -60"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.72 0 0" rotation="-90 90 180"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                    </a-entity>
                                 </a-cylinder>
                                 <!--aile droite-->
                                 <a-cylinder position="1.5 0 0" rotation="0 0 90" 
-                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                    height="0.1" radius="1.5" color="darkred" segments-radial="6">
+                                    <!--decoration-->
+                                    <a-entity position="0 -0.075 0" rotation="0 0 -180">
+                                        <a-triangle
+                                            position="0.72 0 0" rotation="-90 90 0"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 -0.6" rotation="-90 90 60"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 -0.6" rotation="-90 90 120"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 0.6" rotation="-90 90 -120"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 0.6" rotation="-90 90 -60"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.72 0 0" rotation="-90 90 180"
+                                            color="lime" side="double">
+                                        </a-triangle>
+                                    </a-entity>
                                 </a-cylinder>
                                 <a-entity>
                                     <!--arme-->
@@ -1065,23 +1123,77 @@
                         <!--vasisseau attaqué-->
                         <a-entity position="-70 0 20" rotation="0 0 -40" class="ship" id='ship-victime' sound="src:#moteur; autoplay:true; loop:true; volume:4;">    
                                 <!--cockpit-->
-                                <a-sphere color="grey" radius="0.7"></a-sphere>
+                                <a-sphere color="black" radius="0.7"></a-sphere>
                                 <!--bras gauche-->
                                 <a-cylinder position="-1 0 0" rotation="0 0 90"
                                     height="1" radius="0.2" 
-                                    color="grey" segments-radial="6">
+                                    color="black" segments-radial="6">
                                 </a-cylinder>
                                 <!--bras droit-->
                                 <a-cylinder position="1 0 0" rotation="0 0 90"
-                                    height="1" radius="0.2" color="grey" segments-radial="6">
+                                    height="1" radius="0.2" color="black" segments-radial="6">
                                 </a-cylinder>
                                 <!--aile gauche-->
                                 <a-cylinder position="-1.5 0 0" rotation="0 0 90" 
-                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                    height="0.1" radius="1.5" color="black" segments-radial="6">
+                                    <!--decoration-->
+                                    <a-entity position="0 0.075 0">
+                                        <a-triangle
+                                            position="0.72 0 0" rotation="-90 90 0"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 -0.6" rotation="-90 90 60"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 -0.6" rotation="-90 90 120"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 0.6" rotation="-90 90 -120"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 0.6" rotation="-90 90 -60"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.72 0 0" rotation="-90 90 180"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                    </a-entity>
                                 </a-cylinder>
                                 <!--aile droite-->
                                 <a-cylinder position="1.5 0 0" rotation="0 0 90" 
-                                    height="0.1" radius="1.5" color="grey" segments-radial="6">
+                                    height="0.1" radius="1.5" color="black" segments-radial="6">
+                                    <!--decoration-->
+                                    <a-entity position="0 -0.075 0" rotation="0 0 -180">
+                                        <a-triangle
+                                            position="0.72 0 0" rotation="-90 90 0"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 -0.6" rotation="-90 90 60"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 -0.6" rotation="-90 90 120"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.4 0 0.6" rotation="-90 90 -120"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="0.4 0 0.6" rotation="-90 90 -60"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                        <a-triangle
+                                            position="-0.72 0 0" rotation="-90 90 180"
+                                            color="aqua" side="double">
+                                        </a-triangle>
+                                    </a-entity>
                                 </a-cylinder>
                                 <!--lasers-->
                                 <a-entity>
@@ -1092,7 +1204,7 @@
                                         </a-cylinder>
                                 </a-entity>
                         </a-entity>
-                        
+
                 </a-entity>
 
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
