@@ -11,81 +11,81 @@ AFRAME.registerComponent('starwars', {
         let posInit = -200;
         let posFinal = 400;
         let speed = 0.5;
-        let stateWars = false;
+        let stateWars = true;
+
+        function shipsPositioning() {
+
+            trajectory.setAttribute('position', {
+                x:trajectory.object3D.position.x,
+                y:trajectory.object3D.position.y,
+                z: posInit
+
+            })
+
+        }
 
         function shipsMove() {
-
-            if (stateWars == false) {
-
-
+            // si stateWars est true
+            if (stateWars){                  
+                // toutes les 6 milisecondes
                 let time = setInterval(() => {
-                    
-                    trajectory.setAttribute('position', {
-                        x:trajectory.object3D.position.x,
-                        y:trajectory.object3D.position.y,
-                        z:trajectory.object3D.position.z + speed
-                    })
-
-                    if (trajectory.object3D.position.z > posFinal) {
-                        speed = 0;
+                    // si la position z de l'entité trajectory est inférieure à 400
+                    if (trajectory.object3D.position.z < posFinal) {
+                        // stateWars devient false
+                        stateWars = false;
+                        // l'entité bouge sur l'axe z
                         trajectory.setAttribute('position', {
                             x:trajectory.object3D.position.x,
                             y:trajectory.object3D.position.y,
-                            z: posInit
-                        });
+                            z:trajectory.object3D.position.z + speed
+                        })
+                    } else {
+                        // on enleve l'interval
+                        clearInterval(time);
+                        // on repositionne les vaisseaux
+                        shipsPositioning();
+                        // stateWars redevient true
                         stateWars = true;
-                        clearInterval(time)
-                    }    
-
-                    stateWars = true;
-                    
-
+                    }            
                 }, 6);
-                        
-            } else {
-                console.log('attend')
-            }
-                    
+            }                    
         }
 
         function shot() {
+            // toutes les 120 milisecondes
+            let time = setInterval(() => {
+                // si stateWars est false
+                if (! stateWars) {
+                    console.log('tir')
+                    // si la salve est vide
+                    if (gun.childNodes.length < 20) {
 
-            if (! stateWars) {
-                
-                setInterval(() => {
-
-                    //on instancie un tir (cylindre)
-                    let shot = document.createElement('a-cylinder');
-                    // taille du tir
-                    shot.setAttribute('geometry', {
-                        height:0.5,
-                        radius: 0.09
-                    });
-                    // position du tir
-                    shot.setAttribute('position', {
-                        x: 0,
-                        y: 0,
-                        z: 0
-                    })
-                    // couleur du tir
-                    shot.setAttribute('emissive', 'red');
-                    shot.setAttribute('emissive-intensity', 1);
-                    //les lasers sortent du gun
-                    gun.append(shot);
-                    // bruit du son        
-                    gun.components.sound.playSound();
-
-
-                    moveShot(shot);
-
-                    console.log(gun.childNodes.length)
-                    clearShots()
-                    
-                }, 120);
-            } else {
-                gun.pop();
-            }
-
+                        //on instancie un tir (cylindre)
+                        let shot = document.createElement('a-cylinder');
+                        // setting des parametres du tir
+                        shot.setAttribute('geometry', { height:0.5, radius: 0.09 });
+                        shot.setAttribute('position', { x: 0, y: 0, z: 0 })
+                        shot.setAttribute('emissive', 'red');
+                        shot.setAttribute('emissive-intensity', 1);
+                        //on ajoute le tir à l'arme
+                        gun.append(shot);
+                        // I think I heard a shot...     
+                        gun.components.sound.playSound();    
+                        // le tir part en direction de l'ennemi
+                        moveShot(shot);
+                    // s'il y a eu 20 tirs
+                    } else {
+                        // pour chacun des tir de la salve
+                        for (let i=0;i<gun.childNodes.length; i++) {
+                            // on retire la douille de l'arme
+                            gun.removeChild(gun.childNodes[i]);
+                        }
+                    }            
+                } else {
+                    console.log('pas tir')
+                    clearInterval(time);
+                }    
+            }, 120);
         }
 
         
@@ -100,18 +100,19 @@ AFRAME.registerComponent('starwars', {
             }, 200); 
         }
 
-        function clearShots() {
-             for (let i=0;i<gun.childNodes.length; i++) {
-                if (gun.childNodes.length > 12) {
-                    gun.removeChild(gun.childNodes[i]);
-                }
-             }
-        }
+
+        
 
      
         button.addEventListener('click', function() {
-            shipsMove();
-            shot()
+
+            if (stateWars) {
+                shipsMove();
+                shot()
+
+            } else {
+                console.log('attend!')
+            }
 
 
 	    })
