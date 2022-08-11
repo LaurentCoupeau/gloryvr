@@ -14,10 +14,13 @@ screenPad.setAttribute('geometry', {
     height:1.48
 })
 screenPad.setAttribute('position', {
-    x: 0,y:1,z:-0.5
+    x: 0,y:0.5,z:-1
 })
 screenPad.setAttribute('material', {
     visible: false
+})
+screenPad.setAttribute('rotation', {
+    x:-30,y:0,z:0
 })
 
 tactilPad.append(screenPad);
