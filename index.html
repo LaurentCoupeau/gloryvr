@@ -64,6 +64,9 @@
                         <img id="candys" src="assets/img/sugar/candys.png"></img>
                         <img id="twix" src="assets/img/sugar/twix.png"></img>
                         <img id="chocolates" src="assets/img/sugar/chocolates.png"></img>
+                        <!---------------------chnatier--------------------->
+                        <img id="panneau" src="assets/img/chantier/signaux.png"></img>
+                        <img id="tirets" src="assets/img/chantier/tirets.png"></img>
                         <!---------------------plante-------------------->
                         <a-asset-item id="plante-obj" src="assets/3d/rododendron.obj"></a-asset-item>
                         <a-asset-item id="plante-mtl" src="assets/3d/rododendron.mtl"></a-asset-item>
@@ -95,7 +98,7 @@
 
                 </a-assets>
                 
-                <a-light type="ambient" intensity="0.7"></a-light>
+                <!-- <a-light type="ambient" intensity="0.7"></a-light> -->
 
 
                 <!-- CAMERA RIG -->
@@ -143,10 +146,9 @@
 
                         <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
                         <a-entity id="lightroom">
-                                <a-light type="spot" color="white" intensity="0.1" position="3.5 4 0"
-                                        cast-shadow="true" rotation="-90 0 0" angle="50">
-                                </a-light>
-                                <a-light type="spot" color="white" intensity="0.05" position="-3 4 0">
+                                <a-light type="point" color="white" intensity="1" 
+                                        position="0 3.7"
+                                        class="light">
                                 </a-light>
                         </a-entity>
 
@@ -274,50 +276,66 @@
                                 <!--mur de l'entrée-->
                                 <a-entity position="0 0 4.5" rotation="180 0 0">
 
-                                        <!-------------haut------------->
-                                        <a-plane static-body position="0 1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
-                                                depth="0.05" side="double">
-                                        </a-plane>
-                                        <!--plainte-->
-                                        <a-box width="6.1" height="0.1" depth="0.05" src="#bois" repeat="6 1"
-                                                position="0 1.5 0.025">
-                                        </a-box>
+                                        
 
-                                        <!-------------bas------------->
-                                        <a-plane static-body position="0 -1.75 0" src="#plaster" repeat="6 1" width="6" height="0.5"
+                                        <!-------------haut------------->
+                                        <a-plane static-body position="0 -1 0" src="#plaster" repeat="2 2" width="2" height="2"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
-                                        <a-box width="6.1" height="0.1" depth="0.05" src="#bois" repeat="6 1"
-                                                position="0 -1.5 0.025">
+                                        <a-box width="2.2" height="0.1" depth="0.05" src="#bois" repeat="2 1"
+                                                position="0 0 0">
                                         </a-box>
 
                                         <!-------------gauche------------->
-                                        <a-plane static-body position="-3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
+                                        <a-plane static-body position="-2.5 0 0" src="#plaster" repeat="3 4" width="3" height="4"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
-                                        <a-box width="0.1" height="2.9" depth="0.05" src="#bois" repeat="1 3"
-                                                position="-3 0 0.025">
+                                        <a-box width="0.1" height="1.86" depth="0.05" src="#bois" repeat="1 2"
+                                                position="-1.05 0.975 0">
                                         </a-box>
 
                                         <!-------------droite------------->
-                                        <a-plane static-body position="3.5 0 0" src="#plaster" repeat="1 4" width="1" height="4"
+                                        <a-plane static-body position="2.5 0 0" src="#plaster" repeat="3 4" width="3" height="4"
                                                 depth="0.05" side="double">
                                         </a-plane>
                                         <!--plainte-->
-                                        <a-box width="0.1" height="2.9" depth="0.05" src="#bois" repeat="1 4"
-                                                position="3 0 0.025">
+                                        <a-box width="0.1" height="1.86" depth="0.05" src="#bois" repeat="1 2"
+                                                position="1.05 0.975 0">
+                                        </a-box>
+                                        <!--porte-->
+                                        <a-entity>
+                                                <!--porte-->
+                                                <a-plane width="1.25" height="2"
+                                                        position="0.4 1 0" color="grey"
+                                                        side="double"></a-plane>
+                                                <!--coté porte-->
+                                                <a-plane width="0.75" height="2"
+                                                        position="-0.62 1 0" color="grey"
+                                                        side="double"></a-plane>
+                                                <!--batant-->
+                                                <a-box position="-0.23 1.03 0"
+                                                        width="0.05" height="1.95" depth="0.05"
+                                                        color="darkgrey"></a-box>
+                                                <!--poignee-->
+                                                <a-entity></a-entity>
+
+                                        </a-entity>
+                                        <!--plainte sol-->
+                                        <a-box width="3" height="0.1" depth="0.05" src="#bois" repeat="1 2"
+                                                position="-2.5 1.95 0">
+                                        </a-box>
+                                        <a-box width="3" height="0.1" depth="0.05" src="#bois" repeat="1 2"
+                                                position="2.5 1.95 0">
                                         </a-box>
 
-                                        <!--baie vitrée-->
-                                        <!-- <a-box static-body position="" rotation="" width="6" height="3" depth="0.02" color="aqua"
-                                                transparent="true" opacity="0.6">
-                                        </a-box> -->
-                                        <!--plainte sol-->
-                                        <a-box width="8" height="0.1" depth="0.05" src="#bois" repeat="1 2"
-                                                position="0 1.95 0">
-                                        </a-box>
+                                        <a-entity position="0 0.4 -0.5" rotation="0 0 180">
+                                                <a-curvedimage id="panels"  src="#panneau" height="3.0" radius="-6" theta-length="360"
+                                                        repeat="4 1" scale="0.2 0.2 0.2"></a-curvedimage>
+                                                <a-curvedimage id="borders" src="#tirets" height="3.0" radius="6.1" theta-length="360"
+                                                        repeat="4 1" scale="0.2 0.2 0.2"></a-curvedimage>
+                                        </a-entity>
                                 </a-entity>
 
                         </a-entity>
@@ -1220,6 +1238,8 @@
         <script src="js/sas-functions.js"></script>
         <script src="js/desk-functions.js"></script>
         <script src="js/starwars.js"></script>
+        <script src="js/forbiden.js"></script>
+
         <!-- <script src="js/ship-functions.js"></script> -->
 </body>
 
