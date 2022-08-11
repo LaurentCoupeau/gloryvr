@@ -352,7 +352,7 @@
                         <a-entity static-body position="0 0.01 -3.7">
 
                                 <!-------------------SURFACE DE CONTROLE BUREAU---------------------->
-                                <a-entity id="tactil-pad" position="0 1.1 0.2">
+                                <a-entity id="tactil-pad" position="0 1.2 0.2" rotation="30 0 0">
                                         <a-box  static-body id="control-surface"
                                                 width="1" height="0.1" depth="0.5"
                                                 color="black"></a-box>
@@ -873,10 +873,10 @@
                                 material="visible: false"
                                 position="-2 0.65 1" rotation="0 90 0" dynamic-body grabbable>
                                 <!--button-->
-                                <a-cylinder color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
-                                        rotation="0 -90 90"></a-cylinder>
+                                <a-cylinder  id="button-saber" color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
+                                        rotation="0 -90 90" open-saber></a-cylinder>
                                 <!--laser-->
-                                <a-cylinder color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
+                                <a-cylinder id="laserOfSaber" color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
                                         emissiveintensity="10"></a-cylinder>
                                 <!--top of the body-->
                                 <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
@@ -1039,7 +1039,7 @@
                 <a-entity id="ship-trajectory" position="-10 10 -200">
 
                         <!--vasisseau attaquant-->
-                        <a-entity position="0 0 -50" rotation="0 0 0" class="ship" sound="src:#moteur; autoplay:true; loop:true; volume:4;rolloffFactor:3;refDistance:1">
+                        <a-entity position="0 0 -50" rotation="0 0 0" class="ship" sound="src:#moteur; autoplay:true; loop:true; volume:5; rolloffFactor:30; refDistance:2">
                                 <!--cockpit-->
                                 <a-sphere color="darkred" radius="0.7"></a-sphere>
                                 <!--bras gauche-->
@@ -1117,13 +1117,13 @@
                                     <!--arme-->
                                     <a-cylinder position="0 -0.2 0.8" rotation="90 0 0"
                                         height="0.4" radius="0.04"
-                                        color="red" id="gunShipOne" sound="src:#laser; volume:2; poolSize:15;">
+                                        color="red" id="gunShipOne" sound="src:#laser;   volume:5; rolloffFactor:10; refDistance:2; poolSize:15;">
                                     </a-cylinder>
                                 </a-entity>
                         </a-entity>
                 
                         <!--vasisseau attaqué-->
-                        <a-entity position="0 0 -30" rotation="0 0 0" class="ship" id='ship-victime' sound="src:#moteur; autoplay:true; loop:true; volume:4;rolloffFactor:3;refDistance:1">    
+                        <a-entity position="0 0 -30" rotation="0 0 0" class="ship" id='ship-victime' sound="src:#moteur; autoplay:true; loop:true; volume:5; rolloffFactor:30; refDistance:2">    
                                 <!--cockpit-->
                                 <a-sphere color="black" radius="0.7"></a-sphere>
                                 <!--bras gauche-->
@@ -1209,11 +1209,8 @@
 
                 </a-entity>
 
-
-               
-
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
-                <a-sound src="#ambiant" volume="0.2" sound="autoplay: true"></a-sound>
+                <a-sound src="#ambiant" volume="0.1" sound="autoplay: true; rollofFactor:1; refDistance:20"></a-sound>
 
         </a-scene>
 
