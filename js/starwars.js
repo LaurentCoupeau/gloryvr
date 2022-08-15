@@ -12,6 +12,7 @@ AFRAME.registerComponent('starwars', {
         let posFinal = 400;
         let speed = 0.5;
         let stateWars = true;
+        let ships = document.querySelectorAll('ship');
 
         function shipsPositioning() {
 
@@ -39,6 +40,9 @@ AFRAME.registerComponent('starwars', {
                             y:trajectory.object3D.position.y,
                             z:trajectory.object3D.position.z + speed
                         })
+                        for (let i=0;i<ships.length; i++){
+                            ships[i].components.sound.playSound();
+                        }
                     } else {
                         // on enleve l'interval
                         clearInterval(time);
@@ -56,7 +60,6 @@ AFRAME.registerComponent('starwars', {
             let time = setInterval(() => {
                 // si stateWars est false
                 if (! stateWars) {
-                    console.log('tir')
                     // si la salve est vide
                     if (gun.childNodes.length < 20) {
 
@@ -82,7 +85,6 @@ AFRAME.registerComponent('starwars', {
                         }
                     }            
                 } else {
-                    console.log('pas tir')
                     clearInterval(time);
                 }    
             }, 120);
