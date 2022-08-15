@@ -10,21 +10,7 @@ AFRAME.registerComponent('open-saber', {
 
         button.addEventListener('click', {
 
-            if (stateSaber) {
-
-                laser.setAttribute('geometry', {
-                    height: 0.6,
-                    radius: 0.01
-                });
-
-            } else {
-
-                laser.setAttribute('geometry', {
-                    height: 0,
-                    radius:0
-                });
-
-            }
+            
 
         })
 

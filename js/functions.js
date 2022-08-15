@@ -21,11 +21,6 @@ AFRAME.registerComponent('raycaster-listen', {
   }
 });
 
-
-
-
-
-
 // hover clickables object functions
 let clickableObjects = document.querySelectorAll('.clickable');
 for (let i=0; i<clickableObjects.length; i++){
