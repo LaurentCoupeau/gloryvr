@@ -160,6 +160,12 @@
 
                                 <!--mur de gauche-->
                                 <a-entity position="-4 0 0" rotation="0 90 0">
+                                        <!--horloge-->
+                                        <a-entity position="0 1 0.05">
+                                                <a-box width="0.75" height="0.3" depth="0.05"
+                                                        color="black"></a-box>
+                                                <a-text id="heure" value="05 : 30" position="-0.32 0 0.025" width="4" color="white" font="kelsonsans"></a-text>
+                                        </a-entity>   
 
                                         <!--partie gauche-->
                                         <a-entity position="-3 0 0">
@@ -218,12 +224,6 @@
                                         <!--logo de glorydev-->
                                         <a-plane src="#logo" position="0 0 0.11" width="2.82" height="2.36"  opacity="0.9" static-body>
                                         </a-plane>
-                                        <!--horloge-->
-                                        <a-entity position="-3 1 0.05">
-                                                <a-box width="0.75" height="0.3" depth="0.05"
-                                                        color="black"></a-box>
-                                                <a-text id="heure" value="05 : 30" position="-0.32 0 0.025" width="4" color="white" font="kelsonsans"></a-text>
-                                        </a-entity>   
                                 </a-entity>
 
                                 <!--mur de du fond-->
