@@ -6,6 +6,12 @@ function showDate() {
         let heure = laDate.getHours();
         let minute = laDate.getMinutes();
         let seconde = laDate.getSeconds();
+        if (heure < 10){
+            heure = "0" + laDate.getHours();
+        }
+        if (minute < 10){
+            minute = "0" + laDate.getMinutes();
+        }
         if (seconde < 10){
             seconde = "0" + laDate.getSeconds();
         }
