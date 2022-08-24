@@ -1,4 +1,4 @@
-// gestion du sas
+// gestion du sas piece principale
 AFRAME.registerComponent('open-sas', {
 
 	init: function () {
@@ -54,9 +54,105 @@ AFRAME.registerComponent('open-sas', {
                     // le sas change d'état
                     stateSas = false;
                     if (zCount == 20) {
-                        console.log(zCount)
                         // la porte descend
                         moveDoor(-0.01,-1, -0.02, 0);
+                        // le sas change d'état
+                        stateSas = true;
+                        zCount=0;
+                    // si la porte est fermée
+                    } else if ( zCount == 0) {
+                        // le sas change d'état
+                        stateSas = false;
+                        // la porte monte
+                        moveDoor(0.01,1, -0.02, -0.02);    
+                        // le sas change d'état
+                        stateSas = true;
+                        zCount=20;
+                    // sinon
+                    }    
+                     
+                } else {            
+                    console.log('Arrêtes, tu vas tout casser !!!');      
+                }  
+            });
+               
+    }
+})
+
+
+// gestion du sas couloir
+AFRAME.registerComponent('open-sas-couloir', {
+
+	init: function () {
+
+        // positions initiales
+        let xLeftState = -0.75;
+        let xRightState = 0.75;
+        let yState = 0;
+        // état du sas
+        let stateSas = true;
+        // compteur de position
+        let zCount = 0;
+        // on instancie les parties visuelle du sas 
+        let leftPart = document.querySelector('#left-part');
+        let rightPart = document.querySelector('#right-part');
+        let controlSas = document.getElementById('control-sas-couloir');
+
+        // fonction d'ouverture ou de fermeture de porte
+        function moveDoor(ySens, yValueFinal, xLeftValueInit, xRightValueInit, xLeftValueFinal, xRightValueFinal){
+            // systeme virtuel de balancier
+            let count = 0;
+            // toutes les 60 milisecondes
+            let myInterval = setInterval(() => {
+                // si les conditions sont remplies
+                if ( count < 200 ) {
+                    // on modifie les valeurs de positions
+                    xState = yState + ySens;
+                    xRightState = xRightValueInit;
+                    xLeftState = xLeftValueInit;
+                    // la balancier virtuel commence à bouger
+                    count += 1;
+                    // MAJ position du sas
+                    leftPart.setAttribute('position', {
+                        x: xLeftState,
+                        y: 1,
+                        z: yState
+                    });
+                    // MAJ position du sas
+                    rightPart.setAttribute('position', {
+                        x: xRightState,
+                        y: 1,
+                        z: yState
+                    });
+                // sinon
+                } else {
+                    // on stoppe la repetition
+                    clearInterval(myInterval);
+                    // MAJ position finale de la porte du sas
+                    leftPart.setAttribute('position', {
+                        x: xValueFinal,
+                        y: 1,
+                        z: yValueFinal
+                    });
+                    rightPart.setAttribute('position', {
+                        x: xValueFinal,
+                        y: 1,
+                        z: yValueFinal
+                    });
+                }
+            },0.4);  
+        }               
+
+            // on écoute les panneaux de controle du sas
+            controlSas.addEventListener('click', function() {
+                // si le sas opérationnel
+                if (stateSas === true) { 
+                    // le sas change d'état
+                    stateSas = false;
+                    if (zCount == 20) {
+                        console.log(zCount)
+                        // la porte bouge
+                        moveDoor(-0.01, -0.01, -0.75, 0.75, -2, 2);
                         // le sas change d'état
                         stateSas = true;
                         zCount=0;
@@ -65,8 +161,8 @@ AFRAME.registerComponent('open-sas', {
                         console.log(zCount)
                         // le sas change d'état
                         stateSas = false;
-                        // la porte monte
-                        moveDoor(0.01,1, -0.02, -0.02);    
+                        // la porte bouge
+                        moveDoor(0.01, 0, -0.1, 0.2);    
                         // le sas change d'état
                         stateSas = true;
                         zCount=20;
