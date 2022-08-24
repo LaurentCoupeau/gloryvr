@@ -39,8 +39,10 @@
                         <img id="plaster" src="assets/textures/plaster-white.jpg"></img>
                         <!---------------------texture marbre--------------------->
                         <img id="marbre" src="assets/textures/marbre.jpg"></img>
-                        <!---------------------texture bois--------------------->
+                        <!---------------------texture bois vieux--------------------->
                         <img id="bois" src="assets/textures/bois_crade.jpg"></img>
+                        <!---------------------texture bois jeune--------------------->
+                        <img id="bois-clair" src="assets/textures/wood.jpg"></img>
                         <!---------------------texture acier---------------------->
                         <img id="acier" src="assets/textures/acier.jpg"></img>
                         <!---------------------texture inox---------------------->
@@ -58,6 +60,8 @@
                         <img id="star-wars" src="assets/img/poster/star-wars.jpg"></img>
                         <img id="harry" src="assets/img/poster/harry-coupe-de-feu.jpg"></img>
                         <img id="got" src="assets/img/poster/game-of-throne.jpg"></img>
+                        <!---------------------photos--------------------->
+                        <img id="superman" src="assets/img/visuels/superman.png">
                         <!---------------------sucreries--------------------->
                         <img id="candys" src="assets/img/sugar/candys.png"></img>
                         <img id="twix" src="assets/img/sugar/twix.png"></img>
@@ -110,7 +114,7 @@
 			
 			<a-camera>
 				<!-- <a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image> -->
-                                <a-cursor></a-cursor>
+                                <a-cursor color="white"></a-cursor>
 			</a-camera>
                         <!--controlers-->
                         <a-entity>
@@ -146,7 +150,6 @@
                                         class="light">
                                 </a-light>
                         </a-entity>
-
                         <!-------------------MURS---------------------->
                         <a-entity position="0 2 0">
 
@@ -223,7 +226,7 @@
                                                 position="0 -1.95 0">
                                         </a-box>
                                         <!--logo de glorydev-->
-                                        <a-plane src="#logo" position="0 0 0.11" width="2.82" height="2.36"  opacity="0.9" static-body>
+                                        <a-plane src="#logo" position="0 0.5 0.11" width="2.42" height="2.36"  opacity="0.9" static-body>
                                         </a-plane>
                                 </a-entity>
 
@@ -338,7 +341,6 @@
                                 </a-entity>
 
                         </a-entity>
-
                         <!-------------------CONTROL DU SAS PIECE PRINCIPALE---------------------->                        
                         <a-box id="control-sas" position="-3.97 1.5 2" rotation="0 90 0"
                                class="clickable"  src="#handLeftSas"
@@ -357,13 +359,11 @@
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
-
                         <!-------------------REPERE FENETRE---------------------->
                         <a-image src="#footsteps" position="0 0.01 3" 
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="-90 180 0" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>                       
-
+                        </a-image>
                         <!-------------------BUREAU---------------------->
                         <a-entity static-body position="0 0.01 -3.7">
 
@@ -626,9 +626,8 @@
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
-
                         <!-------------------TABLE ET IMPRIMANTE 3D---------------------->
-                        <a-entity position="3 0 -3" rotation="0 90 0">
+                        <a-entity position="3.2 0 0" rotation="0 90 0">
                                 <!--plateau-->
                                 <a-box position="0 1 0" rotation="90 0 0" 
                                         width="2" height="1" depth="0.015" 
@@ -751,11 +750,10 @@
 
                         </a-entity>
                         <!-------------------REPERE TELEPORTATION TABLE IMPRIMANTE 3D---------------------->
-                        <a-image src="#footsteps" position="2.3 0.01 -3" 
+                        <a-image src="#footsteps" position="2.1 0.01 0" 
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="-90 -90 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
-
                         <!-------------------TV-------------------->
                         <a-entity position="-3.95 1.5 -3" rotation="0 -90 0">
                                 <a-box width="1.3" height="0.9" depth="0.05" color="black" metalness="3">
@@ -773,9 +771,114 @@
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
+                        <!-------------------ETAGERE DROITE---------------------->
+                        <a-entity position="3.7 0 2.9" rotation="0 90 0">
+                                <!--supports-->
+                                <a-entity>
+                                        <a-box position="-1.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4" side="double">
+                                        </a-box>
+                                        <a-box position="-0.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4">
+                                        </a-box>
+                                        <a-box position="0.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4">
+                                        </a-box>
+                                        <a-box position="1.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4">
+                                        </a-box>
+                                </a-entity>
+                                <!--étagères-->
+                                <a-entity>
+                                        <a-box position="0 0.025 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3"></a-box>
+                                        <a-box position="0 1 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 2 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 3 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 3.975 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                </a-entity>
 
-                                          
+                        </a-entity>
+                        <!-------------------REPERE ETAGERE DROITE---------------------->
+                        <a-image src="#footsteps" position="2.5 0.01 2.9" 
+                                checkpoint="offset: 0 0 0.1" class="clickable"
+                                rotation="-90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!-------------------ETAGERE GAUCHE---------------------->
+                        <a-entity position="3.7 0 -2.9" rotation="0 90 0">
 
+                                <!--supports-->
+                                <a-entity>
+                                        <a-box position="-1.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4" side="double">
+                                        </a-box>
+                                        <a-box position="-0.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4">
+                                        </a-box>
+                                        <a-box position="0.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4">
+                                        </a-box>
+                                        <a-box position="1.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="4" depth="0.05"
+                                                src="#bois-clair" repeat="1 4">
+                                        </a-box>
+                                </a-entity>
+                                <!--étagères-->
+                                <a-entity>
+                                        <a-box position="0 0.025 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3"></a-box>
+                                        <a-box position="0 1 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 2 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 3 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 3.975 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#bois-clair" repeat="1 3">
+                                        </a-box>
+                                </a-entity>
+                                <!--cadre photo superman-->
+                                <a-entity position="1.1 1.15 -0.05" rotation="-20 200 0">
+                                        <a-box width="0.40" height="0.26" depth="0.02" color="black">
+                                                <a-image src="#superman" position="0 0 0.011"
+                                                        width="0.32" height="0.18"></a-image>
+                                        </a-box>
+                                </a-entity>
+                        </a-entity>
+                        <!-------------------REPERE ETAGERE GAUCHE---------------------->
+                        <a-image src="#footsteps" position="2.5 0.01 -2.9" 
+                                checkpoint="offset: 0 0 0.1" class="clickable"
+                                rotation="90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>                        
+                                
                 </a-entity>
 
                 <!-------------------AILE GAUCHE------------------->
