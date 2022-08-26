@@ -55,7 +55,7 @@ AFRAME.registerComponent('open-sas', {
                     stateSas = false;
                     if (zCount == 20) {
                         // la porte descend
-                        moveDoor(-0.01,-1, -0.02, 0);
+                        moveDoor(-0.02,-1, -0.02, 0);
                         // le sas change d'état
                         stateSas = true;
                         zCount=0;
@@ -64,7 +64,7 @@ AFRAME.registerComponent('open-sas', {
                         // le sas change d'état
                         stateSas = false;
                         // la porte monte
-                        moveDoor(0.01,1, -0.02, -0.02);    
+                        moveDoor(0.02,1, -0.02, -0.02);    
                         // le sas change d'état
                         stateSas = true;
                         zCount=20;
@@ -104,7 +104,7 @@ AFRAME.registerComponent('open-sas-couloir', {
             // toutes les 60 milisecondes
             let myInterval = setInterval(() => {
                 // si les conditions sont remplies
-                if ( count < 200 ) {
+                if ( count < 100 ) {
                     // on modifie les valeurs de positions                    
                     xRightState = xRightState - xSens;
                     xLeftState = xLeftState + xSens;
@@ -149,7 +149,7 @@ AFRAME.registerComponent('open-sas-couloir', {
                     stateSas = false;
                     if (zCount == 20) {
                         // la porte bouge
-                        moveDoor(0.01);
+                        moveDoor(0.02);
                         // le sas change d'état
                         stateSas = true;
                         zCount=0;
@@ -158,7 +158,7 @@ AFRAME.registerComponent('open-sas-couloir', {
                         // le sas change d'état
                         stateSas = false;
                         // la porte bouge
-                        moveDoor(-0.01);    
+                        moveDoor(-0.02);    
                         // le sas change d'état
                         stateSas = true;
                         zCount=20;
