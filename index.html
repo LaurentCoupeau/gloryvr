@@ -27,10 +27,12 @@
 
 <body>
 
-        <a-scene renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats>
+        <a-scene renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats foo>
 
                 <a-assets>
                         <!---------------------IMAGES--------------------->
+                        <!---------------------titre--------------------->
+                        <img id="titre" src="assets/img/visuels/glorydev/titre.png"></img>
                         <!---------------------ciel--------------------->
                         <img id="plafond" src="assets/img/sky9.png"></img>
                         <!---------------------texture mars---------------------->
@@ -677,7 +679,11 @@
                                 
                                 <!--coussin dossier gauche-->
                                 <a-box position="-0.3 0.7 0.475" rotation="70 90 0"
-                                src="#tissu" width="0.92" height="0.15" depth="0.7"></a-box>
+                                src="#tissu" width="0.92" height="0.15" depth="0.7">
+                                        <!--titre du réalisateur-->
+                                        <a-image src="#titre" position="0 0.11 -0.1" rotation="-90 0 0"
+                                                scale="0.7 0.7 0.7"></a-image>
+                                </a-box>
                                 <!--coussin dossier droit-->
                                 <a-box position="-0.3 0.7 -0.475" rotation="70 90 0"
                                 src="#tissu" width="0.92" height="0.15" depth="0.7"></a-box>
