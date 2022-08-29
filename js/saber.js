@@ -12,11 +12,13 @@ AFRAME.registerComponent('open-saber', {
         let sabOn = document.getElementById('sabon');
         let sabOff = document.getElementById('saboff');
 
-        let speed = 0.01;
-        let yPosClose= 0;
-        let yPosOpen= 0.6;
-        let yHeightClose=0;
-        let yHeightOpen= 0.3;
+        let laserHeight = 0;
+        let speedHeight = 0.03
+        let laserPos = 0;
+        let speedPos = 0.015;
+        let laserOpacity = 0;
+        let speedOpacity = 0.02;
+        let count=0;
 
 
         button.addEventListener('click', function() {
@@ -25,39 +27,74 @@ AFRAME.registerComponent('open-saber', {
 
                         sabOff.play();
 
-                        laser.setAttribute('geometry', 'height', 0);
-                        laser.setAttribute('position', {
-                                x:0,
-                                y:0,
-                                z:0
-                        });
+                        let timing =  setInterval(() => {
+
+                                if (stateLaser) {
+                                        laser.setAttribute('geometry', 'height', laserHeight -= speedHeight);
+                                        laser.setAttribute('material', 'opacity', laserOpacity -= speedOpacity);
+                                        laser.setAttribute('position', {
+                                                x:0,
+                                                y:laserPos-=speedPos,
+                                                z:0
+                                        });
+                                        count -= 1;
+
+                                        if (count == 0) {
+                                                stateLaser = false;
+                                        }
+
+                                } else {
+                                        stateLaser = false;
+                                        laserHeight = 0;
+                                        laserPos = 0;
+                                        laserOpacity = 0;
+                                        laser.setAttribute('geometry', 'height', laserHeight);
+                                        laser.setAttribute('material', 'opacity', laserOpacity);
+                                        laser.setAttribute('position', {
+                                                x:0,
+                                                y:laserPos,
+                                                z:0
+                                        });
+                                        clearInterval(timing);
+                                }
+                        }, 0.6); 
 
                         stateSaber = false;
                         
                 } else {
 
                         sabOn.play();
+                        let timing =  setInterval(() => {
 
-
-                                let timing =  setInterval(() => {
-
-                                        if (stateLaser == false) {
-                                        
-                                        laser.setAttribute('geometry', 'height', yHeightClose += speed);
+                                if (stateLaser == false) {
+                                        laser.setAttribute('geometry', 'height', laserHeight += speedHeight);
+                                        laser.setAttribute('material', 'opacity', laserOpacity += speedOpacity);
                                         laser.setAttribute('position', {
                                                 x:0,
-                                                y:0.3,
+                                                y: laserPos+=speedPos,
                                                 z:0
                                         });
+                                        count += 1;
 
-                                        } else {
-
-                                                clearInterval(timing);
+                                        if (count == 20) {
+                                                stateLaser = true;
+                                                laserHeight = 0.6;
+                                                laserPos = 0.3;
+                                                laserOpacity = 1;
                                         }
-                                }, 60);
-                         
+                                } else {
 
-
+                                        stateLaser = true;
+                                        laser.setAttribute('geometry', 'height', laserHeight);
+                                        laser.setAttribute('material', 'opacity', laserOpacity);
+                                        laser.setAttribute('position', {
+                                                x:0,
+                                                y:laserPos,
+                                                z:0
+                                        });
+                                        clearInterval(timing);
+                                }
+                        }, 0.6);   
                         stateSaber = true;
 
                 }
