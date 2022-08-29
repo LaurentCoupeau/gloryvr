@@ -144,6 +144,9 @@
                         <!---------------------bruit starwars--------------------->
                         <audio id="laser" src="assets/sounds/laser.mp3"></audio>
                         <audio id="moteur" src="assets/sounds/moteur-vaisseau.mp3"></audio>
+                        <!---------------------bruit sabre--------------------->
+                        <audio id="sabon" src="assets/sounds/saber-on.mp3"></audio>
+                        <audio id="saboff" src="assets/sounds/saber-off.mp3"></audio>
 
                 </a-assets>
                 
@@ -1254,10 +1257,33 @@
                                                     segments-radial="5"
                                                     position="0 -0.4 0" metalness="0.5">
                                         </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04" class="clickable" 
-                                                position="0 0.428 0.1" emissive="red">
-                                        </a-box>
+                                        <!-----------SABRE LASER------------>
+                                        <a-entity id="sabre" geometry="primitive:sphere; radius:0.02" 
+                                        material="visible: false"
+                                        position="0 0.65 0">
+                                        <!--button-->
+                                        <a-box  id="button-saber" color="lime" width="0.02" height="0.02" depth="0.01" position="0 -0.03 0.015"
+                                                rotation="0 0 90" class="clickable" open-saber></a-box>
+                                        <!--laser-->
+                                        <a-cylinder id="laserOfSaber" color="green" height="0" radius="0.01" position="0 0 0" emissive="lime"
+                                                emissiveintensity="10"></a-cylinder>
+                                        <!--top of the body-->
+                                        <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
+                                                metalness="0.1"></a-cylinder>
+                                        <!--middle part-->
+                                        <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
+                                        <!--bottom-->
+                                        <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
+                                        <!--rings for decorations-->
+                                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                                position="0 0.05 0"></a-torus>
+                                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                                position="0 0.04 0"></a-torus>
+                                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                                position="0 0.03 0"></a-torus>
+                                        <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
+                                                position="0 0.02 0"></a-torus>
+                                        </a-entity>
                                 </a-entity>
 
                                 <!--repere téléportation-->
@@ -1266,62 +1292,7 @@
                                         scale="0.5 0.5 0.5">
                                 </a-image>
 
-                                <!-----------SABRE LASER------------>
-                                <a-entity id="sabre" geometry="primitive:sphere; radius:0.02" 
-                                material="visible: false"
-                                position="-2 0.65 1" rotation="0 90 0" dynamic-body grabbable>
-                                <!--button-->
-                                <a-cylinder  id="button-saber" color="lime" height="0.01" radius="0.007" position="0 -0.03 0.015"
-                                        rotation="0 -90 90" open-saber></a-cylinder>
-                                <!--laser-->
-                                <a-cylinder id="laserOfSaber" color="green" height="0.6" radius="0.01" position="0 0.3 0" emissive="lime"
-                                        emissiveintensity="10"></a-cylinder>
-                                <!--top of the body-->
-                                <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
-                                        metalness="0.1"></a-cylinder>
-                                <!--middle part-->
-                                <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
-                                <!--bottom-->
-                                <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
-                                <!--rings for decorations-->
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.05 0"></a-torus>
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.04 0"></a-torus>
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.03 0"></a-torus>
-                                <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                        position="0 0.02 0"></a-torus>
-                                </a-entity>
-
-                                <!---------piedestal 5--------->
-                                <a-entity static-body position="-2 0 -2" rotation="0 90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
-                                                segments-radial="5"
-                                                position="0 0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
-                                                segments-radial="5" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
-                                                segments-radial="5"
-                                                position="0 -0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04" class="clickable" 
-                                                position="0 0.428 0.1" emissive="red">
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="-1.2 -0.495 -2" checkpoint="offset: 0 0 0.1"
-                                        class="clickable" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5">
-                                </a-image>
+                                
                                 <!---------piedestal 4--------->
                                 <a-entity static-body position="-2 0 -5" rotation="0 90 0">
 
@@ -1349,84 +1320,6 @@
                                 <!--repere téléportation-->
                                 <a-image src="#footsteps" position="-1.2 -0.495 -5" checkpoint="offset: 0 0 0.1"
                                         class="clickable" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5">
-                                </a-image>
-                                <!---------piedestal 3--------->
-                                <a-entity static-body position="2 0 1" rotation="0 -90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
-                                                segments-radial="5" position="0 0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
-                                                segments-radial="5" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
-                                                segments-radial="5" position="0 -0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04"
-                                               position="0 0.428 0.1" emissive="red" class="clickable">
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="1.2 -0.495 1" checkpoint="offset: 0 0 0.1"
-                                        class="clickable" rotation="-90 -90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5">
-                                </a-image>
-                                <!---------piedestal 2--------->
-                                <a-entity static-body position="2 0 -2" rotation="0 -90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
-                                                segments-radial="5" position="0 0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
-                                                segments-radial="5" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
-                                                segments-radial="5" position="0 -0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04"
-                                               position="0 0.428 0.1" emissive="red" class="clickable">
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="1.2 -0.495 -2" checkpoint="offset: 0 0 0.1"
-                                        class="clickable" rotation="-90 -90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5">
-                                </a-image>
-                                <!---------piedestal 1--------->
-                                <a-entity static-body position="2 0 -5" rotation="0 -90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
-                                                segments-radial="5" position="0 0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
-                                                segments-radial="5" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
-                                                segments-radial="5" position="0 -0.4 0" metalness="0.5">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box width="0.04" height="0.01" depth="0.04" radius="0.13" color="red"
-                                                position="0 0.428 0.1" emissive="red">
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="1.2 -0.495 -5" checkpoint="offset: 0 0 0.1"
-                                        class="clickable" rotation="-90 -90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5">
                                 </a-image>
                         </a-entity>
@@ -1620,6 +1513,7 @@
         <script src="js/starwars.js"></script>
         <script src="js/forbiden.js"></script>
         <script src="js/time.js"></script>
+        <script src="js/saber.js"></script>
 
         <!-- <script src="js/ship-functions.js"></script> -->
 </body>
