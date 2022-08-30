@@ -19,10 +19,7 @@
 
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.js"></script>
-        <!-- <script src="https://unpkg.com/super-hands@^3.0.1/dist/super-hands.min.js"></script> -->
-        <!-- <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system/dist/aframe-physics-system.js"></script> -->
 	<script src="https://unpkg.com/aframe-animation-component@4.1.2/dist/aframe-animation-component.min.js"></script>
-        <!-- <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script> -->
 </head>
 
 <body>
@@ -49,6 +46,24 @@
                         <img id="groupe" src="assets/img/visuels/glorydev/groupe.jpg">
                         <img id="teknik" src="assets/img/visuels/glorydev/teknik.jpg">
                         <img id="afterwork" src="assets/img/visuels/glorydev/afterwork.jpg">
+                        <!---------------------arttech services--------------------->
+                        <img id="logo-art" src="assets/img/visuels/art_tech_services/logo.jpg">
+                        <img id="art1" src="assets/img/visuels/art_tech_services/1.jpg">
+                        <img id="art2" src="assets/img/visuels/art_tech_services/2.jpg">
+                        <img id="art3" src="assets/img/visuels/art_tech_services/3.jpg">
+                        <img id="art4" src="assets/img/visuels/art_tech_services/4.jpg">
+                        <!---------------------droneserpro--------------------->
+                        <img id="logo-drone" src="assets/img/visuels/droneserpro/logo.png">
+                        <img id="drone1" src="assets/img/visuels/droneserpro/1.jpg">
+                        <img id="drone2" src="assets/img/visuels/droneserpro/2.jpg">
+                        <img id="drone3" src="assets/img/visuels/droneserpro/3.jpg">
+                        <img id="drone4" src="assets/img/visuels/droneserpro/4.jpg">
+                        <!---------------------dr belter--------------------->
+                        <img id="logo-dr" src="assets/img/visuels/dr_belter/logo.png">
+                        <img id="dr1" src="assets/img/visuels/dr_belter/1.jpg">
+                        <img id="dr2" src="assets/img/visuels/dr_belter/2.jpg">
+                        <img id="dr3" src="assets/img/visuels/dr_belter/3.jpg">
+
                         <!---------------------sucreries--------------------->
                         <img id="candys" src="assets/img/sugar/candys.png"></img>
                         <img id="twix" src="assets/img/sugar/twix.png"></img>
@@ -163,7 +178,7 @@
 				  	  animation.to: 0">
 			
 			<a-camera>
-				<!-- <a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image> -->
+				<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
                                 <a-cursor color="white"></a-cursor>
 			</a-camera>
                         <!--controlers-->
@@ -193,13 +208,12 @@
                 <!-------------------PIECE PRINCIPALE------------------->
                 <a-entity id="first-room">                        
 
-                        <!-------------------LUMIERE PIECE PRINCIPALE---------------------->
-                        <a-entity id="lightroom">
-                                <a-light type="point" color="white" intensity="1.2" 
-                                        position="0 3.7 0" distance="30 0"
-                                        class="light">
-                                </a-light>
-                        </a-entity>
+                        <!-------------------LUMIERE PIECE PRINCIPALE---------------------->                        
+                        <a-light type="point" color="white" intensity="1.2" 
+                                position="0 3.7 0" distance="30 0"
+                                class="light">
+                        </a-light>
+                        
                         <!-------------------MURS---------------------->
                         <a-entity position="0 2 0">
 
@@ -214,7 +228,7 @@
                                 <!--mur de gauche-->
                                 <a-entity position="-4 0 0" rotation="0 90 0">
                                         <!--horloge-->
-                                        <a-entity position="0 1 0.05">
+                                        <a-entity position="0 1 0.07">
                                                 <a-cylinder width="1" height="0.1" radius="0.5"
                                                         color="black" rotation="-90 0 0"></a-cylinder>
                                                 <a-text id="heure" value="" position="-0.32 0 0.05"
@@ -740,49 +754,6 @@
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
-                        <!-------------------ETAGERE DROITE---------------------->
-                        <a-entity position="3.7 -1 2.85" rotation="0 90 0">
-
-                                <!--supports-->
-                                <a-entity position="0 -0.23 0">
-                                        <a-box position="-1.5 2 0" rotation="0 90 0" 
-                                                width="0.5" height="1.5" depth="0.05"
-                                                src="#acier" repeat="1 2" side="double">
-                                        </a-box>
-                                        <a-box position="-0.5 2 0" rotation="0 90 0" 
-                                                width="0.5" height="1.5" depth="0.05"
-                                                src="#acier" repeat="1 2">
-                                        </a-box>
-                                        <a-box position="0.5 2 0" rotation="0 90 0" 
-                                                width="0.5" height="1.5" depth="0.05"
-                                                src="#acier" repeat="1 2">
-                                        </a-box>
-                                        <a-box position="1.5 2 0" rotation="0 90 0" 
-                                                width="0.5" height="1.5" depth="0.05"
-                                                src="#acier" repeat="1 2">
-                                        </a-box>
-                                </a-entity>
-                                <!--étagères-->
-                                <a-entity>
-                                        <a-box position="0 1.05 0" rotation="90 90 0" 
-                                        width="0.5" height="3" depth="0.05"
-                                        src="#acier" repeat="1 3">
-                                        </a-box>
-                                        <a-box position="0 1.8 0" rotation="90 90 0" 
-                                        width="0.5" height="3" depth="0.05"
-                                        src="#acier" repeat="1 3">
-                                        </a-box>
-                                        <a-box position="0 2.495 0" rotation="90 90 0" 
-                                        width="0.5" height="3" depth="0.05"
-                                        src="#acier" repeat="1 3">
-                                        </a-box>
-                                </a-entity>
-                        </a-entity>
-                        <!-------------------REPERE ETAGERE DROITE---------------------->
-                        <a-image src="#footsteps" position="2.5 0.01 2.9" 
-                                checkpoint="offset: 0 0 0.1" class="clickable"
-                                rotation="-90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>
                         <!-------------------ETAGERE GAUCHE---------------------->
                         <a-entity position="3.7 -1 -2.85" rotation="0 90 0">
 
@@ -957,161 +928,161 @@
                                 <!--lumiere plante-->
                                 <a-light type="spot" position="1 1.8 0" rotation="-90 0 0" angle="20"></a-light>
                                 <!--livres-->
-                                <a-entity position="0.3 2.05 0">
+                                <a-entity position="0.3 2.05 0.1">
                                         <!--livres html-->
                                         <a-entity position="0 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#html" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#html" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>     
                                         <!--livres css-->
                                         <a-entity position="-0.1 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#css" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#css" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>   
                                         <!--livres wordpress-->
                                         <a-entity position="-0.2 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#wordpress" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#wordpress" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>  
                                         <!--livres linux-->
                                         <a-entity position="-0.3 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#linux" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#linux" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity> 
                                         <!--livres windows-->
                                         <a-entity position="-0.4 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#windows" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#windows" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity> 
                                         <!--livres bitcoin-->
                                         <a-entity position="-0.7 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#bitcoin" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#bitcoin" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>
                                         <!--livres active-->
                                         <a-entity position="-0.6 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#active" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#active" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity> 
                                         <!--livres servers-->
                                         <a-entity position="-0.5 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#servers" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#servers" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>    
                                 </a-entity>
                                 <!--livres-->
-                                <a-entity position="1.4 2.05 0">
+                                <a-entity position="1.4 2.05 0.1">
                                         <!--livres bootstrap-->
                                         <a-entity position="0 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#bootstrap" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#bootstrap" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>     
                                         <!--livres docker-->
                                         <a-entity position="-0.1 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#docker" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#docker" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>   
                                         <!--livres jquery-->
                                         <a-entity position="-0.2 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#jquery" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#jquery" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>  
                                         <!--livres kubernetes-->
                                         <a-entity position="-0.3 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#kubernetes" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#kubernetes" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity> 
                                         <!--livres reseaux-->
                                         <a-entity position="-0.4 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#reseaux" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#reseaux" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity> 
                                         <!--livres seo-->
                                         <a-entity position="-0.5 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#seo" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#seo" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>
                                         <!--livres symfony-->
                                         <a-entity position="-0.6 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#symfony" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#symfony" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity> 
                                         <!--livres vagrant-->
                                         <a-entity position="-0.7 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#vagrant" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#vagrant" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>   
                                         <!--livres virtualisation-->
                                         <a-entity position="-0.8 0 -0.14">
                                                 <a-box  rotation="" 
-                                                        width="0.08" height="0.44" depth="0.2"
+                                                        width="0.08" height="0.44" depth="0.3"
                                                         color="#ffd700">
                                                 </a-box>
-                                                <a-image src="#virtualisation" position="0 0 -0.101" rotation="0 180 0"
+                                                <a-image src="#virtualisation" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
                                         </a-entity>     
                                 </a-entity>
@@ -1121,6 +1092,89 @@
                         <a-image src="#footsteps" position="2.5 0.01 -2.9" 
                                 checkpoint="offset: 0 0 0.1" class="clickable"
                                 rotation="90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!-------------------ETAGERE DROITE---------------------->
+                        <a-entity position="3.7 -1 2.85" rotation="0 90 0">
+
+                                <!--supports-->
+                                <a-entity position="0 -0.23 0">
+                                        <a-box position="-1.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="1.5" depth="0.05"
+                                                src="#acier" repeat="1 2" side="double">
+                                        </a-box>
+                                        <a-box position="1.5 2 0" rotation="0 90 0" 
+                                                width="0.5" height="1.5" depth="0.05"
+                                                src="#acier" repeat="1 2">
+                                        </a-box>
+                                </a-entity>
+                                <!--étagères-->
+                                <a-entity>
+                                        <a-box position="0 1.05 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#acier" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 1.8 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#acier" repeat="1 3">
+                                        </a-box>
+                                        <a-box position="0 2.495 0" rotation="90 90 0" 
+                                        width="0.5" height="3" depth="0.05"
+                                        src="#acier" repeat="1 3">
+                                        </a-box>
+                                </a-entity>
+                                <!--droneserpro-->
+                                <a-entity position="1.1 2.7 -0.05">
+                                        <!--logo-->
+                                        <a-image src="#logo-drone" position="0.29 -0.09 -0.21" rotation="0 180 0"
+                                                width="0.27" height="0.27"></a-image>
+                                        <!--photo 1-->
+                                        <a-box width="0.40" height="0.40" depth="0.02" src="#acier" 
+                                                position="0 0.015 -0.05" rotation="-20 200 0">
+                                                <a-image src="#drone1" position="0 0 0.011"
+                                                        width="0.37" height="0.37"></a-image>
+                                        </a-box>
+                                        <!--photo 2-->
+                                        <a-box width="0.60" height="0.46" depth="0.02" src="#acier"
+                                                position="-0.6 0.05 -0.05" rotation="-10 180 0">
+                                                <a-image src="#drone2" position="0 0 0.011"
+                                                        width="0.56" height="0.42"></a-image>
+                                        </a-box>
+                                        <!--photo 3-->
+                                        <a-box width="0.60" height="0.46" depth="0.02" src="#acier"
+                                                position="-1.4 0.05 -0.05" rotation="-10 180 0">
+                                                <a-image src="#drone4" position="0 0 0.011"
+                                                        width="0.56" height="0.42"></a-image>
+                                        </a-box>
+                                        <!--photo 4-->
+                                        <a-box width="0.60" height="0.46" depth="0.02" src="#acier"
+                                                position="-2.2 0.05 -0.05" rotation="-20 160 0">
+                                                <a-image src="#drone3" position="0 0 0.011"
+                                                        width="0.56" height="0.42"></a-image>
+                                        </a-box>
+                                </a-entity>
+                                <!--dr Belter-->
+                                <a-entity position="1.1 1.85 -0.05">
+                                        <!--logo-->
+                                        <a-plane position="0.12 0.15 -0.21" width="0.6" height="0.42" color="white" side="double">
+                                                <a-image src="#logo-dr" position="0 0 -0.011" rotation="0 180 0"
+                                                        width="0.5" height="0.3"></a-image>
+                                        </a-plane>
+                                        <!--photo 1-->
+                                                <a-image src="#dr1" position="-0.30 0.17 0.011" rotation="340 180 0"
+                                                        width="0.86" height="0.413"></a-image>
+                                        <!--photo 2-->
+                                                <a-image src="#dr2" position="-1.21 0.17 0.011" rotation="340 180 0"
+                                                        width="0.86" height="0.413"></a-image>
+                                        <!--photo 3-->
+                                                <a-image src="#dr3" position="-2.11 0.17 0.011" rotation="340 180 0"
+                                                        width="0.86" height="0.413"></a-image>
+                                </a-entity>
+
+                        </a-entity>
+                        <!-------------------REPERE ETAGERE DROITE---------------------->
+                        <a-image src="#footsteps" position="2.5 0.01 2.9" 
+                                checkpoint="offset: 0 0 0.1" class="clickable"
+                                rotation="-90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>                        
                                 
                 </a-entity>
@@ -1129,7 +1183,7 @@
                 <a-entity id="aile-gauche" position="-7.02 0 0" rotation="0 90 0">
                         
                         <a-light type="point" color="white" intensity="1" 
-                                position="0 1.5 0" distance="5 0"
+                                position="0 1.5 0" distance="4 0"
                                 class="light">
                         </a-light>
 
@@ -1199,47 +1253,113 @@
 
                 </a-entity>
 
-                <!-------------------CHAMBRE DES SECRETS------------------->
+                <!-------------------CHAMBRE------------------->
                 <a-entity id="secret-room" position="-13 0 0" rotation="0 90 0">
 
                         <!--lumiere-->
                         <a-light type="point" color="white" intensity="1" 
-                                        position="0 1.9 0" distance="10 0"
+                                        position="0 1.9 -3" distance="6 0"
                                         class="light">
                         </a-light>
 
                         <!--mur de gauche-->
                         <a-entity position="-3.45 1.25 -2" rotation="0 90 0">
-                                <a-box static-body width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                                <a-box src="#plaster" width="9.8" height="2.5" depth="0.1" repeat="10 3"></a-box>
                         </a-entity>
                         <!--mur de droite-->
                         <a-entity position="3.45 1.25 -2" rotation="0 90 0">
-                                <a-box static-body width="9.8" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                                <a-box src="#plaster" width="9.8" height="2.5" depth="0.1" repeat="10 3"></a-box>
                         </a-entity>
                         <!--mur du fond-->
                         <a-entity position="0 1.25 -6.95" rotation="0 0 0">
-                                <a-box static-body width="7" height="2.5" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                                <a-box src="#plaster" width="7" height="2.5" depth="0.1" repeat="7 3"></a-box>
                         </a-entity>
                         <!--plafond-->
-                        <a-entity position="0  2.55 -2" rotation="90 90 0">
-                                <a-box static-body width="10" height="7" depth="0.1" color="aqua" opacity="0.7"></a-box>
+                        <a-entity position="0  2.55 -0.5" rotation="90 90 0">
+                                <a-box position="-1 0 0" 
+                                        width="5" height="7" depth="0.1" 
+                                        src="#plaster" repeat="5 7"></a-box>
+                                <a-box position="3 1 0" 
+                                        width="3" height="5" depth="0.1" 
+                                        src="#plaster" repeat="2 5"></a-box>
+                                <a-box position="5.5 1.75 0" 
+                                        width="2" height="3.5" depth="0.1" 
+                                        src="#plaster" repeat="2 5"></a-box>
                         </a-entity>
                         <!--mur de devant avec ouverture-->
                         <a-entity position="0 0 2.95">
-                                <a-box static-body position="0 2.25 0" width="3" height="0.5" depth="0.1" color="aqua">
+                                <a-box position="0 2.25 0" width="3" height="0.5" depth="0.1" src="#plaster" repeat="3 1">
                                 </a-box>
-                                <a-box static-body position="-2.5 1.25 0" width="2" height="2.5" depth="0.1" color="aqua">
+                                <a-box position="-2.5 1.25 0" width="2" height="2.5" depth="0.1" src="#plaster" repeat="2.5 3" >
                                 </a-box>
-                                <a-box static-body position="2.5 1.25 0" width="2" height="2.5" depth="0.1" color="aqua">
+                                <a-box position="2.5 1.25 0" width="2" height="2.5" depth="0.1" src="#plaster" repeat="2 3">
                                 </a-box>
-                                <a-box static-body id="left-part" position="-0.75 1 0" width="1.5" height="2" depth="0.1" color="aqua">
+                                <a-box id="left-part" position="-0.75 1 0" width="1.5" height="2" depth="0.1" src="#plaster" repeat="2 2.5">
                                 </a-box>
-                                <a-box static-body id="right-part" position="0.75 1 0" width="1.5" height="2" depth="0.1" color="aqua">
+                                <a-box id="right-part" position="0.75 1 0" width="1.5" height="2" depth="0.1" src="#plaster" repeat="2 2.5">
                                 </a-box>
 
                         </a-entity>
 
-                        <a-entity position="0 0.5 0">
+                        <!--escalier-->
+                        <a-entity position="-0.25 0 -6" rotation="0 90 0">
+                                <!--premiere marche-->
+                                <a-box src="#acier" position="0 0.125 0" rotation=""
+                                        width="1.9" height="0.25" depth="0.5"></a-box>
+                                <!--deuxieme marche-->
+                                <a-box src="#acier" position="0 0.25 -0.5" rotation=""
+                                        width="1.9" height="0.5" depth="0.5"></a-box>
+                                <!--troisieme marche-->
+                                <a-box src="#acier" position="0 0.375 -1" rotation=""
+                                        width="1.9" height="0.75" depth="0.5"></a-box>
+                                <!--palier-->
+                                <a-box src="#acier" position="0 0.5 -2.25" rotation=""
+                                        width="2" height="1" depth="2"></a-box>
+                                <!--quatrieme marche-->
+                                <a-box src="#acier" position="-1.25 0.625 -2.25" rotation="0 90 0"
+                                        width="1.9" height="1.25" depth="0.5"></a-box>
+                                <!--cinquieme marche marche-->
+                                <a-box src="#acier" position="-1.75 0.75 -2.25" rotation="0 90 0"
+                                        width="1.9" height="1.5" depth="0.5"></a-box>
+                                <!--sixieme marche-->
+                                <a-box src="#acier" position="-2.25 0.875 -2.25" rotation="0 90 0"
+                                        width="1.9" height="1.75" depth="0.5"></a-box>
+                                <!--septieme marche-->
+                                <a-box src="#acier" position="-2.75 1 -2.25" rotation="0 90 0"
+                                        width="1.9" height="2" depth="0.5"></a-box>
+                                <!--huitieme marche-->
+                                <a-box src="#acier" position="-3.25 1.125 -2.25" rotation="0 90 0"
+                                        width="1.9" height="2.25" depth="0.5"></a-box>
+                                <!--neuvieme marche-->
+                                <a-box src="#acier" position="-3.75 1.25 -2.25" rotation="0 90 0"
+                                        width="1.9" height="2.5" depth="0.5"></a-box>
+                                <!--mur des toilettes-->
+                                <a-box src="#plaster" position="-2.5 1.5 -1.25"
+                                        width="3.1" height="3" depth="0.1"
+                                        repeat="3 3"></a-box>
+                                <!--mur de la montée d'escalier-->
+                                <a-box src="#plaster" position="-1 1.5 -0.5" rotation="0 90 0"
+                                        width="1.5" height="3" depth="0.1"
+                                        repeat="1.5 3"></a-box>
+                                <!--mur porte des toilettes-->
+                                <a-box src="#plaster" position="-4 1.5 -2.2" rotation="0 90 0"
+                                        width="1.9" height="3" depth="0.1"
+                                        repeat="2 3"></a-box>
+
+
+                        </a-entity>
+
+                        
+                                
+                                <!--repere palier-->
+                                <a-image src="#footsteps" position="-2.25 1.01 -6" checkpoint="offset: 0 0 0.1"
+                                        class="clickable" rotation="-90 90 0" opacity="0.5"
+                                        scale="0.5 0.5 0.5">
+                                </a-image>
+
+
+                        <!--piedestal-->
+                        <a-entity position="3 0.5 0">
 
                                 <!---------piedestal sabre laser--------->
                                 <a-entity static-body position="-2 0 1" rotation="0 90 0">    
@@ -1322,6 +1442,27 @@
                                         class="clickable" rotation="-90 90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5">
                                 </a-image>
+                        </a-entity>
+
+                </a-entity>
+
+                <!-------------------TERASSE------------------->
+                <a-entity id="terasse" position="-13 1.75 0" rotation="0 90 0">
+                        <!--mur de gauche-->
+                        <a-entity position="-3.45 1.25 -2" rotation="0 90 0">
+                                <a-box src="#plaster" width="9.8" height="1" depth="0.1" repeat="10 1"></a-box>
+                        </a-entity>
+                        <!--mur de droite-->
+                        <a-entity position="3.45 1.25 -2" rotation="0 90 0">
+                                <a-box src="#plaster" width="9.8" height="1" depth="0.1" repeat="10 1"></a-box>
+                        </a-entity>
+                        <!--mur du fond-->
+                        <a-entity position="0 1.25 -6.95" rotation="0 0 0">
+                                <a-box src="#plaster" width="7" height="1" depth="0.1" repeat="7 1"></a-box>
+                        </a-entity>
+                        <!--mur de devant-->
+                        <a-entity position="0 1.25 2.95" rotation="0 0 0">
+                                <a-box src="#plaster" width="7" height="1" depth="0.1" repeat="7 1"></a-box>
                         </a-entity>
 
                 </a-entity>
