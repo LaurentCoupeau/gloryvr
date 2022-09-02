@@ -24,7 +24,7 @@
 
 <body>
 
-        <a-scene renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats foo>
+        <a-scene renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats foo day>
 
                 <a-assets>
                         <!---------------------IMAGES--------------------->
@@ -90,6 +90,7 @@
                         <!---------------------hand sas--------------------->
                         <img id="spokeHand" src="assets/img/sas/spoke-hand.png"></img>
                         <img id="handRightSas" src="assets/img/sas/handRight.png"></img>
+                        <img id="wcSas" src="assets/img/sas/wc.png"></img>
                         <!---------------------livre--------------------->
                         <img id="windows" src="assets/img/livres/windows.png"></img>
                         <img id="bitcoin" src="assets/img/livres/bitcoin.png"></img>
@@ -212,13 +213,13 @@
                 <!-------------------CIEL------------------->
                 <a-sky src="#plafond" rotation="0 -90 0"></a-sky>   
                 
-                <!--astres-->
+                <!-------------------ASTRES------------------->
                 <a-entity id="earth" position="0 0 0">
-                        <a-sphere position="0 450 0" src="#sun" radius="15">
+                        <a-sphere position="0 -490 0" src="#sun" radius="15">
                                 <a-light type="spot" color="#FDE5AD" intensity="3" position="0 100 0" rotation="90 0 0" castShadow="true"></a-light>
                                 <a-light type="spot" color="#FDE5AD" intensity="0.7" position="0 100 0" rotation="-90 0 0"></a-light>
                         </a-sphere>
-                        <a-sphere position="0 -450 0" src="#moon" radius="15">
+                        <a-sphere position="0 490 0" src="#moon" radius="15">
                                 <a-light type="spot" color="white" intensity="0.3" position="0 -100 0" rotation="90 0 0" castShadow="true"></a-light>
                         </a-sphere>
                 </a-entity>
@@ -232,10 +233,7 @@
                 <a-light type="ambient" color="white" intensity="0.2"></a-light>
 
                 <!-------------------PIECE PRINCIPALE------------------->
-                <a-entity id="first-room">                        
-
-                        
-                        
+                <a-entity id="first-room">
                         <!-------------------MURS---------------------->
                         <a-entity position="0 2 0">
 
@@ -782,8 +780,7 @@
                                 <!--coussin dossier droit-->
                                 <a-box position="-0.3 0.7 -0.475" rotation="70 90 0"
                                 src="#tissu" width="0.92" height="0.15" depth="0.7"></a-box>
-                        </a-entity>>
-
+                        </a-entity>
                         <!-------------------TV-------------------->
                         <a-entity position="-3.95 1.5 -3" rotation="0 -90 0">
                                 <a-box width="1.3" height="0.9" depth="0.05" color="black" metalness="3">
@@ -1321,7 +1318,6 @@
                                 </a-box>
 
                         </a-entity>
-
                         <!--mur de droite du couloir-->
                         <a-entity position="2 1 0" rotation="0 -90 0">
                                 <a-plane src="#plaster" repeat="6 2" side="double" width="6" height="2" shader="flat" >
@@ -1343,26 +1339,17 @@
                                 </a-box>
 
                         </a-entity>
-
                         <!--plafond du couloir-->
-                        <a-plane position="0 2 0" src="#plaster" repeat="4 6" side="double" s width="4" height="6"
-                                rotation="90 0 0" shader="flat" >
-                        </a-plane>
-                        
-                                <!--extérieur-->
-                                <a-box src="#plaster" repeat="4 6" position="0 2.1 0.06" rotation="90 0 0"
-                                        width="4.2" height="5.9" depth="0.1">
-                                </a-box>
+                        <a-plane position="0 2 0" src="#plaster" repeat="4 6" side="double" width="4" height="6" rotation="90 0 0" shader="flat"></a-plane>
+                        <!--extérieur-->
+                        <a-box src="#plaster" repeat="4 6" position="0 2.1 0.06" rotation="90 0 0" width="4.2" height="5.9" depth="0.1"></a-box>
                         <!--sol du couloir-->
-                        <a-plane position="0 0 0" src="#marbre-or" repeat="4 6" width="4" height="6.05"
-                                rotation="-90 0 0" shader="flat" >
-                        </a-plane>
-
+                        <a-plane position="0 0 0" src="#marbre-or" repeat="4 6" width="4" height="6.05" rotation="-90 0 0" shader="flat"></a-plane>
                         <!-------------------REPERE TELEPORTATION COULOIR AILE GAUCHE---------------------->
-                        <a-image src="#footsteps" position="0 0.01 0" checkpoint="offset: 0 0 0.1" class="clickable"
-                                 rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>
-                                                
+                        <a-image src="#footsteps" position="0 0.01 0" rotation="-90 0 0" 
+                                checkpoint="offset: 0 0 0.1" class="clickable"
+                                opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>                                                
                         <!-------------------CONTROL DU SAS PIECE PRINCIPALE---------------------->                        
                         <a-box id="control-sas-couloir" position="-1.75 1.5 -2.95" 
                                 class="clickable"  src="#spokeHand"
@@ -1384,15 +1371,29 @@
 
                         <!--mur de gauche-->
                         <a-entity position="-3.45 1.25 -2" rotation="0 90 0">
-                                <a-box src="#plaster" width="9.8" height="2.5" depth="0.1" repeat="10 3" shader="flat" ></a-box>
+
+                                <a-box src="#plaster" width="9.8" height="2.5" depth="0.1" repeat="10 2.5" shader="flat" ></a-box>                                
+                                <!--plainte mur gauche bas de la chambre-->
+                                <a-box width="5" height="0.1" depth="0.05" src="#bois" repeat="5 1" position="-2.5 -1.2 0.05" shader="flat"></a-box>   
+
                         </a-entity>
                         <!--mur de droite-->
                         <a-entity position="3.45 1.25 -2" rotation="0 90 0">
-                                <a-box src="#plaster" width="9.8" height="2.5" depth="0.1" repeat="10 3" shader="flat" ></a-box>
+
+                                <a-box position="0 1 0" src="#plaster" width="9.8" height="0.5" depth="0.1" repeat="10 0.5" shader="flat" ></a-box>   
+                                <a-plane width="9.8" height="1" position="0 0.25 0" color="aqua" transparent="true" opacity="0.6" side="double"></a-plane>  
+                                <a-box position="0 -0.75 0" src="#plaster" width="9.8" height="1" depth="0.1" repeat="10 1" shader="flat" ></a-box>                                 
+                                <!--plainte basse mur droit chambre-->
+                                <a-box width="9.8" height="0.1" depth="0.05" src="#bois" repeat="10 1" position="0 -1.2 -0.05" shader="flat"></a-box>                          
+                                <!--plainte basse haute fenetre-->
+                                <a-box width="9.8" height="0.1" depth="0.05" src="#bois" repeat="10 1" position="0 -0.25 -0.05" shader="flat"></a-box>                             
+                                <!--plainte basse basse fenetre-->
+                                <a-box width="9.8" height="0.1" depth="0.05" src="#bois" repeat="10 1" position="0 0.75 -0.05" shader="flat"></a-box>         
+
                         </a-entity>
                         <!--mur du fond-->
                         <a-entity position="0 1.25 -6.95" rotation="0 0 0">
-                                <a-box src="#plaster" width="7" height="2.5" depth="0.1" repeat="7 3" shader="flat" ></a-box>
+                                <a-box src="#plaster" width="7" height="2.5" depth="0.1" repeat="7 2.5" shader="flat" ></a-box>
                         </a-entity>
                         <!--plafond-->
                         <a-entity position="0  2.55 -0.5" rotation="90 90 0">
@@ -1415,19 +1416,26 @@
                         </a-entity>
                         <!--mur de devant avec ouverture-->
                         <a-entity position="0 0 2.95">
-                                <a-box position="0 2.25 0" width="3" height="0.5" depth="0.1" src="#plaster" repeat="3 1"shader="flat" >
+                                <a-box position="0 2.25 0" width="3" height="0.5" depth="0.1" src="#plaster" repeat="3 1" shader="flat" >
                                 </a-box>
-                                <a-box position="-2.5 1.25 0" width="2" height="2.5" depth="0.1" src="#plaster" repeat="2.5 3" shader="flat" >
+                                <a-box position="-2.5 1.25 0" width="2" height="2.5" depth="0.1" src="#plaster" repeat="2.5 2.5" shader="flat" >
                                 </a-box>
-                                <a-box position="2.5 1.25 0" width="2" height="2.5" depth="0.1" src="#plaster" repeat="2 3"shader="flat" >
+                                <a-box position="2.5 1.25 0" width="2" height="2.5" depth="0.1" src="#plaster" repeat="2 2.5" shader="flat" >
                                 </a-box>
-                                <a-box id="left-part" position="-0.75 1 0" width="1.5" height="2" depth="0.1" src="#plaster" repeat="2 2.5"shader="flat" >
-                                </a-box>
-                                <a-box id="right-part" position="0.75 1 0" width="1.5" height="2" depth="0.1" src="#plaster" repeat="2 2.5"shader="flat" >
-                                </a-box>
+                                <a-plane id="door-room" position="0 1 0.025" width="3" height="2" src="#plaster" repeat="3 2" shader="flat" >
+                                </a-plane>     
+                                <!--plainte dessus porte -->
+                                <a-box width="3.1" height="0.1" depth="0.05" src="#bois" repeat="3 1" position="0 1.95 -0.05" shader="flat"></a-box>
+                                <!--plainte basse gauche mur d'entree-->
+                                <a-box width="1.925" height="0.1" depth="0.05" src="#bois" repeat="2 1" position="-2.412 0.05 -0.05" shader="flat"></a-box>
+                                <!--plainte cote porte gauche -->
+                                <a-box width="0.1" height="1.8" depth="0.05" src="#bois" repeat="1 2" position="-1.5 1 -0.05" shader="flat"></a-box>
+                                <!--plainte basse gauche mur d'entree-->
+                                <a-box width="1.925" height="0.1" depth="0.05" src="#bois" repeat="2 1" position="2.412 0.05 -0.05" shader="flat"></a-box>
+                                <!--plainte cote porte droite -->
+                                <a-box width="0.1" height="1.8" depth="0.05" src="#bois" repeat="1 2" position="1.5 1 -0.05" shader="flat"></a-box>
 
                         </a-entity>
-
                         <!--escalier-->
                         <a-entity position="-0.25 0 -6" rotation="0 90 0">
                                 <!--premiere marche-->
@@ -1460,49 +1468,45 @@
                                 <!--neuvieme marche-->
                                 <a-box src="#acier" position="-3.75 1.25 -2.25" rotation="0 90 0"
                                         width="1.9" height="2.5" depth="0.5"></a-box>
+
                                 <!--mur des toilettes-->
-                                <a-box src="#plaster" position="-2.5 1.5 -1.25"
-                                        width="3.1" height="3" depth="0.1"
-                                        repeat="3 3"></a-box>
+                                <a-box src="#plaster" position="-2.5 1.25 -1.25"
+                                        width="3" height="2.5" depth="0.1"
+                                        repeat="3 2.5" shader="flat"></a-box>
                                 <!--mur de la montée d'escalier-->
-                                <a-box src="#plaster" position="-1 1.5 -0.5" rotation="0 90 0"
-                                        width="1.5" height="3" depth="0.1"
-                                        repeat="1.5 3"></a-box>
+                                <a-box src="#plaster" position="-1 1.25 -0.5" rotation="0 90 0"
+                                        width="1.5" height="2.5" depth="0.1"
+                                        repeat="1.5 2.5" shader="flat"></a-box>
                                 <!--mur porte des toilettes-->
-                                <a-box src="#plaster" position="-4 1.5 -2.2" rotation="0 90 0"
-                                        width="1.9" height="3" depth="0.1"
-                                        repeat="2 3"></a-box>
+                                <a-box src="#plaster" position="-4 1.25 -2.2" rotation="0 90 0"
+                                        width="2" height="2.5" depth="0.1"
+                                        repeat="2 2.5" shader="flat"></a-box>
 
 
-                        </a-entity>
-
-                        
-                                
-                                <!--repere palier-->
-                                <a-image src="#footsteps" position="-2.25 1.01 -6" checkpoint="offset: 0 0 0.1"
+                        </a-entity> 
+                        <!--repere palier-->
+                        <a-image src="#footsteps" position="-2.25 1.01 -6" checkpoint="offset: 0 0 0.1"
                                         class="clickable" rotation="-90 90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5">
-                                </a-image>
-
-
+                        </a-image>
                         <!--piedestal-->
-                        <a-entity position="3 0.5 0">
+                        <a-entity position="3 0.5 -4">
 
                                 <!---------piedestal sabre laser--------->
-                                <a-entity position="-2 0 1" rotation="0 90 0">    
+                                <a-entity position="-2 0 -0.5" rotation="0 90 0">    
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.2" 
                                                     segments-radial="5"
-                                                    position="0 0.4 0" metalness="0.5">
+                                                    position="0 0.4 0" metalness="0.5" shader="flat">
                                         </a-cylinder>
                                         <!--CORPS-->
                                         <a-cylinder src="#marbre" height="0.8" radius="0.15"  segments-radial="5"
-                                                    metalness="0.5">
+                                                    metalness="0.5" shader="flat">
                                         </a-cylinder>
                                         <!--BOTTOM-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.18" 
                                                     segments-radial="5"
-                                                    position="0 -0.4 0" metalness="0.5">
+                                                    position="0 -0.4 0" metalness="0.5" shader="flat">
                                         </a-cylinder>
                                         <!-----------SABRE LASER------------>
                                         <a-entity id="sabre" geometry="primitive:sphere; radius:0.02" 
@@ -1510,26 +1514,26 @@
                                         position="0 0.65 0">
                                         <!--button-->
                                         <a-box  id="button-saber" color="lime" width="0.02" height="0.02" depth="0.01" position="0 -0.03 0.015"
-                                                rotation="0 0 90" class="clickable" open-saber></a-box>
+                                                rotation="0 0 90" class="clickable" shader="flat" open-saber></a-box>
                                         <!--laser-->
                                         <a-cylinder id="laserOfSaber" color="green" height="0" radius="0.01" position="0 0 0" emissive="lime"
                                                 emissiveintensity="10"></a-cylinder>
                                         <!--top of the body-->
                                         <a-cylinder color="grey" height="0.15" radius="0.015" emissiveintensity="0.5"
-                                                metalness="0.1"></a-cylinder>
+                                                metalness="0.1" shader="flat"></a-cylinder>
                                         <!--middle part-->
-                                        <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0"></a-cylinder>
+                                        <a-cylinder color="black" height="0.04" radius="0.01" position="0 -0.09 0" shader="flat"></a-cylinder>
                                         <!--bottom-->
-                                        <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0"></a-cylinder>
+                                        <a-cylinder color="grey" height="0.04" radius="0.015" position="0 -0.12 0" shader="flat"></a-cylinder>
                                         <!--rings for decorations-->
                                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                                position="0 0.05 0"></a-torus>
+                                                position="0 0.05 0" shader="flat"></a-torus>
                                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                                position="0 0.04 0"></a-torus>
+                                                position="0 0.04 0" shader="flat"></a-torus>
                                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                                position="0 0.03 0"></a-torus>
+                                                position="0 0.03 0" shader="flat"></a-torus>
                                         <a-torus color="black" radius="0.016" radius-tubular="0.002" rotation="90 0 0"
-                                                position="0 0.02 0"></a-torus>
+                                                position="0 0.02 0" shader="flat"></a-torus>
                                         </a-entity>
                                 </a-entity>
 
@@ -1541,7 +1545,7 @@
 
                                 
                                 <!---------piedestal 4--------->
-                                <a-entity position="-2 0 -5" rotation="0 90 0">
+                                <a-entity position="-2 0 0.5" rotation="0 90 0">
 
                                         <!--TOP-->
                                         <a-cylinder src="#marbre" height="0.05" radius="0.2" 
@@ -1570,6 +1574,23 @@
                                         scale="0.5 0.5 0.5">
                                 </a-image>
                         </a-entity>
+                        <!--lit-->
+                        <a-entity position="-2.25 0 1" rotation="0 90 0">
+                                <!--sommier-->
+                                <a-box position="0 0.15 0" rotation="90 0 0" width="1.6" height="2.1" depth="0.05"
+                                        src="#acier"></a-box>
+                                <!--pied du lit-->
+                                <a-entity position="0 0.03 0">
+                                        <a-box position="-0.8 0 -1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                        <a-box position="0.8 0 -1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                        <a-box position="-0.8 0 1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                        <a-box position="0.8 0 1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                </a-entity>
+                                <!--matelas-->
+                                <a-box position="0 0.2 0" rotation="90 0 0" width="1.4" height="2" depth="0.2" repeat=""
+                                        src="#tissu" shader="flat"></a-box>
+                        </a-entity>
+
 
                 </a-entity>
 
@@ -1782,7 +1803,7 @@
         <script src="js/forbiden.js"></script>
         <script src="js/time.js"></script>
         <script src="js/saber.js"></script>
-        <script src="js/earth-rotation.js"></script>
+        <!-- <script src="js/earth-rotation.js"></script> -->
 
         <!-- <script src="js/ship-functions.js"></script> -->
 </body>

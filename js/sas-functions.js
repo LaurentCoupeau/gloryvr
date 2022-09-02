@@ -86,15 +86,13 @@ AFRAME.registerComponent('open-sas-couloir', {
 	init: function () {
 
         // positions initiales
-        let xLeftState = -0.75;
-        let xRightState = 0.75;
+        let xDoorState = 0;
         // état du sas
         let stateSas = true;
         // compteur de position
         let zCount = 0;
         // on instancie les parties visuelle du sas 
-        let leftPart = document.querySelector('#left-part');
-        let rightPart = document.querySelector('#right-part');
+        let door = document.querySelector('#door-room');
         let controlSas = document.getElementById('control-sas-couloir');
 
         // fonction d'ouverture ou de fermeture de porte
@@ -104,38 +102,26 @@ AFRAME.registerComponent('open-sas-couloir', {
             // toutes les 60 milisecondes
             let myInterval = setInterval(() => {
                 // si les conditions sont remplies
-                if ( count < 100 ) {
+                if ( count < 300 ) {
                     // on modifie les valeurs de positions                    
-                    xRightState = xRightState - xSens;
-                    xLeftState = xLeftState + xSens;
+                    xDoorState = xDoorState + xSens;
                     // la balancier virtuel commence à bouger
                     count += 1;
                     // MAJ position du sas
-                    leftPart.setAttribute('position', {
-                        x: xLeftState,
+                    door.setAttribute('position', {
+                        x: xDoorState,
                         y: 1,
-                        z: 0
-                    });
-                    // MAJ position du sas
-                    rightPart.setAttribute('position', {
-                        x: xRightState,
-                        y: 1,
-                        z: 0
+                        z: 0.025
                     });
                 // sinon
                 } else {
                     // on stoppe la repetition
                     clearInterval(myInterval);
                     // MAJ position finale de la porte du sas
-                    leftPart.setAttribute('position', {
-                        x: xLeftState,
+                    door.setAttribute('position', {
+                        x: xDoorState,
                         y: 1,
-                        z: 0
-                    });
-                    rightPart.setAttribute('position', {
-                        x: xRightState,
-                        y: 1,
-                        z: 0
+                        z: 0.025
                     });
                 }
             },0.4);  
@@ -147,9 +133,9 @@ AFRAME.registerComponent('open-sas-couloir', {
                 if (stateSas === true) { 
                     // le sas change d'état
                     stateSas = false;
-                    if (zCount == 20) {
+                    if (zCount == 23) {
                         // la porte bouge
-                        moveDoor(0.02);
+                        moveDoor(0.01);
                         // le sas change d'état
                         stateSas = true;
                         zCount=0;
@@ -158,10 +144,10 @@ AFRAME.registerComponent('open-sas-couloir', {
                         // le sas change d'état
                         stateSas = false;
                         // la porte bouge
-                        moveDoor(-0.02);    
+                        moveDoor(-0.01);    
                         // le sas change d'état
                         stateSas = true;
-                        zCount=20;
+                        zCount=23;
                     // sinon
                     }                     
                 } else {            

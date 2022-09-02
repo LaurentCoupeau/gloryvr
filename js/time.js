@@ -1,5 +1,4 @@
 let screenHeure = document.getElementById('heure');
-
 function showDate() {
     setInterval(() => {
         let laDate = new Date();
