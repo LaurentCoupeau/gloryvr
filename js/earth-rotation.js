@@ -1,4 +1,3 @@
-let positionOfRotation = 
 
 AFRAME.registerComponent('day', {
 
@@ -21,9 +20,6 @@ AFRAME.registerComponent('day', {
             y:0,
             z: translateTime * 0.004
         })
-
-        console.log(earth.getAttribute('rotation'))
-
     }
 
 
