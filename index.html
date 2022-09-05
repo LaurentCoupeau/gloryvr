@@ -150,8 +150,10 @@
                         <!---------------------texture tissu--------------------->
                         <img id="tissu" src="assets/textures/turquoise.jpg"></img>
 
-                        <!---------------------VIDEO--------------------->
+                        <!---------------------VIDEO GLORYDEV--------------------->
                         <video id="video" src="assets/video/pub-glorydev.mp4"></video>
+                        <!---------------------VIDEO EKLEIPSI--------------------->
+                        <video id="video-ekleipsi" src="assets/video/pub-ekleipsi.mp4"></video>
 
                         <!---------------------OBJETS 3D--------------------->
                         <!---------------------plante-------------------->
@@ -1590,7 +1592,19 @@
                                 <a-box position="0 0.2 0" rotation="90 0 0" width="1.4" height="2" depth="0.2" repeat=""
                                         src="#tissu" shader="flat"></a-box>
                         </a-entity>
-
+                        
+                        <!-------------------TV-------------------->
+                        <a-entity position="3.2 1.5 0.9" rotation="0 90 0">
+                                <a-box width="2.6" height="1.8" depth="0.05" color="black">
+                                        <a-entity id="tv" position="0 0.1 -0.026" rotation="0 180 0">
+                                                <a-video id="pub" src="#video-ekleipsi" width="2.56" height="1.48"></a-video>
+                                                <a-box id="buttonTvRoom" class="clickable" width="0.1" height="0.06" depth="0.05"
+                                                        position="0 -0.86 0"
+                                                        emissive="aqua" emissive-intensity="1" play-ekleipsi>
+                                                </a-box>
+                                        </a-entity>                                
+                                </a-box>
+                        </a-entity>
 
                 </a-entity>
 
