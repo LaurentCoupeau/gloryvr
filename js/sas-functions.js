@@ -157,3 +157,5 @@ AFRAME.registerComponent('open-sas-couloir', {
                
     }
 })
+
+

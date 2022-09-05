@@ -70,7 +70,6 @@
                         <img id="dm1" src="assets/img/visuels/dm66/1.jpg">
                         <img id="dm2" src="assets/img/visuels/dm66/2.jpg">
                         <img id="dm3" src="assets/img/visuels/dm66/3.jpg">
-
                         <!---------------------sucreries--------------------->
                         <img id="candys" src="assets/img/sugar/candys.png"></img>
                         <img id="twix" src="assets/img/sugar/twix.png"></img>
@@ -92,7 +91,7 @@
                         <!---------------------hand sas--------------------->
                         <img id="spokeHand" src="assets/img/sas/spoke-hand.png"></img>
                         <img id="handRightSas" src="assets/img/sas/handRight.png"></img>
-                        <img id="wcSas" src="assets/img/sas/wc.png"></img>
+                        <img id="sasWc" src="assets/img/sas/wc-sas.png"></img>
                         <!---------------------livre--------------------->
                         <img id="windows" src="assets/img/livres/windows.png"></img>
                         <img id="bitcoin" src="assets/img/livres/bitcoin.png"></img>
@@ -171,6 +170,8 @@
                         <audio id="ambiant" src="assets/sounds/wild-heart.mp3"></audio>
                         <!---------------------bruit sas--------------------->
                         <audio id="sas-sound" src="assets/sounds/sas.mp3"></audio>
+                        <audio id="wc-sound" src="assets/sounds/wc.mp3"></audio>
+
                         <!---------------------bruit starwars--------------------->
                         <audio id="laser" src="assets/sounds/laser.mp3"></audio>
                         <audio id="moteur" src="assets/sounds/moteur-vaisseau.mp3"></audio>
@@ -1591,8 +1592,7 @@
                                 <!--matelas-->
                                 <a-box position="0 0.2 0" rotation="90 0 0" width="1.4" height="2" depth="0.2" repeat=""
                                         src="#tissu" shader="flat"></a-box>
-                        </a-entity>
-                        
+                        </a-entity>                        
                         <!-------------------TV-------------------->
                         <a-entity position="3.2 1.5 0.9" rotation="0 90 0">
                                 <a-box width="2.6" height="1.8" depth="0.05" color="black">
@@ -1605,6 +1605,19 @@
                                         </a-entity>                                
                                 </a-box>
                         </a-entity>
+                        <!-------------------CONTROL DU SAS WC---------------------->                        
+                        <a-box id="sas-wc" position="-2.5 1.5 -1.5" rotation="0 0 0"
+                               class="clickable"  src="#sasWc"
+                               width="0.3" height="0.4" depth="0.05"
+                               emissive="aqua" emissive-intensity="0.1" 
+                               sound=  "src: url(assets/sounds/wc.mp3); 
+                                        on: click; 
+                                        distanceModel: exponential; 
+                                        volume:1;
+                                        refDistance: 3;
+                                        rolloffFactor: 4" 
+                                open-sas>
+                        </a-box>
 
                 </a-entity>
 
