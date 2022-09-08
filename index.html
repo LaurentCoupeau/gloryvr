@@ -15,16 +15,22 @@
         <meta property="og:description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://laurentcoupeau.github.io/gloryvr/assets/img/logo-glorydev.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
 
 
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.js"></script>
 	<script src="https://unpkg.com/aframe-animation-component@4.1.2/dist/aframe-animation-component.min.js"></script>
 </head>
-
 <body>
+        <div id="first-screen">
+                <img src="assets/logo.png"><br/><br/>
+                <p>SALUT !!!</p><br/><br/>
+                <button onclick="launch()"> lancer l'experience</button>
+        </div>
 
-        <a-scene renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats foo day>
+        <a-scene id="scene" renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats foo day>
 
                 <a-assets>
                         <!---------------------IMAGES--------------------->
@@ -42,6 +48,7 @@
                         <img id="harry" src="assets/img/poster/harry-coupe-de-feu.jpg"></img>
                         <img id="got" src="assets/img/poster/game-of-throne.jpg"></img>
                         <img id="commandements" src="assets/img/poster/10commandements.png"></img>
+                        <img id="fullmetal" src="assets/img/poster/full-metal-alchemist.jpg"></img>
                         <!---------------------GLORYDEV--------------------->
                         <img id="superman" src="assets/img/visuels/glorydev/superman.png">
                         <img id="groupe" src="assets/img/visuels/glorydev/groupe.jpg">
@@ -81,6 +88,8 @@
                         <img id="tirets" src="assets/img/chantier/tirets.png"></img>
                         <!---------------------logo glorydev--------------------->
                         <img id="logo" src="assets/img/logo-glorydev.png"></img>
+                        <!---------------------logo glorydev--------------------->
+                        <img id="carte-ekleipsi" src="assets/img/visuels/ekleipsi/cartedevisite.jpg"></img>
                         <!---------------------png pads--------------------->
                         <img id="presentation" src="assets/img/pads/presentation.png"></img>
                         <img id="engagements" src="assets/img/pads/engagements.png"></img>
@@ -148,11 +157,14 @@
                         <img id="black" src="assets/img/black.png"></img>
                         <!---------------------texture tissu--------------------->
                         <img id="tissu" src="assets/textures/turquoise.jpg"></img>
+                        <!---------------------texture matelas--------------------->
+                        <img id="matelas" src="assets/textures/matelas.jpg"></img>
+                        <!---------------------texture oreillet--------------------->
+                        <img id="oreillet" src="assets/textures/coussin.jpg"></img>
 
                         <!---------------------VIDEO GLORYDEV--------------------->
                         <video id="video" src="assets/video/pub-glorydev.mp4"></video>
-                        <!---------------------VIDEO EKLEIPSI--------------------->
-                        <video id="video-ekleipsi" src="assets/video/pub-ekleipsi.mp4"></video>
+                        <video id="video2" src="assets/video/glorydev-droner.mp4"></video>
 
                         <!---------------------OBJETS 3D--------------------->
                         <!---------------------plante-------------------->
@@ -228,8 +240,8 @@
                 </a-entity>
 
                 <!-------------------SOL------------------->
-                <a-plane src="#floor" height="100" width="100" position="0 -0.5 0"
-                        rotation="-90 0 0" repeat="100 100" transparent="true" opacity="0.9">
+                <a-plane src="#marbre-or" height="20" width="30" position="-10 -0.5 0"
+                        rotation="-90 0 0" repeat="20 40" transparent="true" opacity="0.9">
                 </a-plane>
                 
                 <!-------------------LUMIERE PIECE PRINCIPALE---------------------->                        
@@ -1434,6 +1446,90 @@
                                 <a-box width="0.1" height="1.8" depth="0.05" src="#bois" repeat="1 2" position="1.5 1 -0.05" shader="flat"></a-box>
 
                         </a-entity>
+                        <!--piedestal starwars-->
+                        <a-entity position="1 3 -4" rotation="0 180 0">
+
+                                
+                                <!---------piedestal 4--------->
+                                <a-entity position="-2 0 0.5" rotation="0 90 0">
+
+                                        <!--TOP-->
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
+                                                segments-radial="5"
+                                                position="0 0.4 0">
+                                        </a-cylinder>
+                                        <!--CORPS-->
+                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
+                                                segments-radial="5">
+                                        </a-cylinder>
+                                        <!--BOTTOM-->
+                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
+                                                segments-radial="5" position="0 -0.4 0">
+                                        </a-cylinder>
+                                        <!--BOUTON-->
+                                        <a-box id="button-starwars"  class="clickable" 
+                                                width="0.04" height="0.01" depth="0.04"
+                                                position="0 0.428 0.1" emissive="red"
+                                                starwars>
+                                        </a-box>
+
+                                </a-entity>
+                                <!--repere téléportation-->
+                                <a-image src="#footsteps" position="-1.2 -0.495 -5" checkpoint="offset: 0 0 0.1"
+                                        class="clickable" rotation="-90 90 0" opacity="0.5"
+                                        scale="0.5 0.5 0.5">
+                                </a-image>
+                        </a-entity>
+                        <!--lit-->
+                        <a-entity position="-2.25 0.05 1" rotation="0 90 0">
+                                <!--pied du lit-->
+                                <a-entity position="0 0.08 0">
+                                        <a-box position="-0.8 0 -1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                        <a-box position="0.8 0 -1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                        <a-box position="-0.8 0 1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                        <a-box position="0.8 0 1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
+                                </a-entity>
+                                <!--sommier-->
+                                <a-box position="0 0.2 0" rotation="90 0 0" width="1.6" height="2.1" depth="0.05"
+                                        src="#acier"></a-box>
+                                <!--matelas-->
+                                <a-box position="0 0.3 0" rotation="90 0 0" width="1.4" height="2" depth="0.2" repeat="1 2"
+                                        src="#matelas" shader="flat"></a-box>
+                                <!--couverture-->
+                                <a-box position="0 0.3 0.21" rotation="90 0 0" width="1.42" height="1.6" depth="0.22"
+                                src="#tissu" shader="flat"></a-box>
+                                <!--coussin gauche-->
+                                <a-box position="-0.35 0.44 -0.7" rotation="90 0 0" width="0.6" height="0.4" depth="0.05"
+                                src="#tissu"></a-box>
+                                <!--cousiin droit-->
+                                <a-box position="0.35 0.44 -0.7" rotation="90 0 0" width="0.6" height="0.4" depth="0.05"
+                                src="#tissu"></a-box>
+                        </a-entity>                        
+                        <!-------------------TV ROOM-------------------->
+                        <a-entity position="3.2 1.5 0.9" rotation="0 90 0">
+                                <a-box width="2.6" height="1.8" depth="0.05" color="black">
+                                        <a-entity id="tv" position="0 0.1 -0.026" rotation="0 180 0">
+                                                <a-video id="pub2" src="#video2" width="2.56" height="1.48"></a-video>
+                                                <a-box id="buttonTvRoom" class="clickable" width="0.1" height="0.06" depth="0.05"
+                                                        position="0 -0.86 0"
+                                                        emissive="aqua" emissive-intensity="1" play-room>
+                                                </a-box>
+                                        </a-entity>                                
+                                </a-box>
+                        </a-entity>
+                        <!-------------------CONTROL DU SAS WC---------------------->                        
+                        <a-box id="sas-wc" position="-3 1.5 -1.95" rotation="0 0 0"
+                               class="clickable"  src="#sasWc"
+                               width="0.3" height="0.4" depth="0.05"
+                               emissive="aqua" emissive-intensity="0.1" 
+                               sound=  "src: url(assets/sounds/wc.mp3); 
+                                        on: click; 
+                                        distanceModel: exponential; 
+                                        volume:1;
+                                        refDistance: 3;
+                                        rolloffFactor: 4" 
+                                open-sas>
+                        </a-box>
                         <!--escalier-->
                         <a-entity position="-0.25 0 -6" rotation="0 90 0">
                                 <!--premiere marche-->
@@ -1466,17 +1562,24 @@
                                 <!--neuvieme marche-->
                                 <a-box src="#acier" position="-3.75 1.25 -2.25" rotation="0 90 0"
                                         width="1.9" height="2.5" depth="0.5"></a-box>
-
-                                <!--mur des toilettes-->
+                                <!--paroi interne des wc-->
                                 <a-box src="#plaster" position="-2.5 1.25 -1.25"
                                         width="3" height="2.5" depth="0.1"
                                         repeat="3 2.5" shader="flat">
+                                </a-box>
+                                
+                                <!--murs des toilettes-->
+                                <a-box src="#plaster" position="-2.5 1.25 0"
+                                        width="3" height="2.5" depth="0.1"
+                                        repeat="3 2.5" shader="flat">
                                         <!--poster 10 commandements-->
-                                        <a-image src="#commandements" side="double" width="1.2" height="1.6" position="0.5 0 0.06" shader="flat">
+                                        <a-image src="#commandements" side="double" width="1.2" height="1.6" position="0.8 0 0.06">
                                         </a-image>
-
+                                        <!--poster full metal alchemist-->
+                                        <a-image src="#fullmetal" side="double" width="1.2" height="1.6" position="-0.8 0 0.06">
+                                        </a-image>
                                         <!---------piedestal sabre laser--------->
-                                        <a-entity position="-1 -0.8 0.6">    
+                                        <a-entity position="0 -0.8 0.6">    
                                                 <!--TOP-->
                                                 <a-cylinder src="#marbre" height="0.05" radius="0.2" 
                                                             segments-radial="5"
@@ -1519,22 +1622,40 @@
                                                         position="0 0.02 0" shader="flat"></a-torus>
                                                 </a-entity>
                                         </a-entity>
-        
-                                        <!--repere téléportation-->
-                                        <a-image src="#footsteps" position="-1 -1.24 1.3" checkpoint="offset: 0 0 0.1"
-                                                class="clickable" rotation="-90 0 0" opacity="0.5"
-                                                scale="0.5 0.5 0.5">
-                                        </a-image>
-
                                 </a-box>
+
+                                <!--repere téléportation-->
+                                <a-image src="#footsteps" position="-1 -1.24 1.3" checkpoint="offset: 0 0 0.1"
+                                        class="clickable" rotation="-90 0 0" opacity="0.5"
+                                        scale="0.5 0.5 0.5">
+                                </a-image>
                                 <!--mur de la montée d'escalier-->
                                 <a-box src="#plaster" position="-1 1.25 -0.5" rotation="0 90 0"
                                         width="1.5" height="2.5" depth="0.1"
                                         repeat="1.5 2.5" shader="flat"></a-box>
                                 <!--mur porte des toilettes-->
-                                <a-box src="#plaster" position="-4 1.25 -2.2" rotation="0 90 0"
-                                        width="2" height="2.5" depth="0.1"
-                                        repeat="2 2.5" shader="flat"></a-box>
+                                <a-box src="#plaster" position="-4 1.25 -1.6" rotation="0 90 0"
+                                        width="3.3" height="2.5" depth="0.1"
+                                        repeat="3 2.5" shader="flat">
+                                        <!--plainte bas droite-->                                        
+                                        <a-box width="1.1" height="0.1" depth="0.05" src="#bois" repeat="1 2"
+                                        position="-1.1 -1.2 -0.05" shader="flat"></a-box>
+                                        <!--plainte bas gauche-->                                        
+                                        <a-box width="1.1" height="0.1" depth="0.05" src="#bois" repeat="1 2"
+                                        position="1.1 -1.2 -0.05" shader="flat"></a-box>
+                                        <!--plainte gauche-->                                        
+                                        <a-box width="0.1" height="1.95" depth="0.05" src="#bois" repeat="1 2"
+                                        position="0.6 -0.175 -0.05" shader="flat"></a-box>
+                                        <!--plainte droite-->                                        
+                                        <a-box width="0.1" height="1.95" depth="0.05" src="#bois" repeat="1 2"
+                                        position="-0.6 -0.175 -0.05" shader="flat"></a-box>
+                                        <!--plainte haut-->                                        
+                                        <a-box width="1.1" height="0.1" depth="0.05" src="#bois"
+                                        position="0 0.75 -0.05" shader="flat"></a-box>
+                                </a-box>
+                                
+                                
+                                </a-box>
 
 
                         </a-entity> 
@@ -1543,102 +1664,40 @@
                                         class="clickable" rotation="0 90 0" opacity="0.5"
                                         scale="0.5 0.5 0.5">
                         </a-image>
-                        <!--piedestal-->
-                        <a-entity position="3 0.5 -4">
-
-                                
-                                <!---------piedestal 4--------->
-                                <a-entity position="-2 0 0.5" rotation="0 90 0">
-
-                                        <!--TOP-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.2" 
-                                                segments-radial="5"
-                                                position="0 0.4 0">
-                                        </a-cylinder>
-                                        <!--CORPS-->
-                                        <a-cylinder src="#marbre" height="0.8" radius="0.15" 
-                                                segments-radial="5">
-                                        </a-cylinder>
-                                        <!--BOTTOM-->
-                                        <a-cylinder src="#marbre" height="0.05" radius="0.18" 
-                                                segments-radial="5" position="0 -0.4 0">
-                                        </a-cylinder>
-                                        <!--BOUTON-->
-                                        <a-box id="button-starwars"  class="clickable" 
-                                                width="0.04" height="0.01" depth="0.04"
-                                                position="0 0.428 0.1" emissive="red"
-                                                starwars>
-                                        </a-box>
-
-                                </a-entity>
-                                <!--repere téléportation-->
-                                <a-image src="#footsteps" position="-1.2 -0.495 -5" checkpoint="offset: 0 0 0.1"
-                                        class="clickable" rotation="-90 90 0" opacity="0.5"
-                                        scale="0.5 0.5 0.5">
-                                </a-image>
-                        </a-entity>
-                        <!--lit-->
-                        <a-entity position="-2.25 0 1" rotation="0 90 0">
-                                <!--sommier-->
-                                <a-box position="0 0.15 0" rotation="90 0 0" width="1.6" height="2.1" depth="0.05"
-                                        src="#acier"></a-box>
-                                <!--pied du lit-->
-                                <a-entity position="0 0.03 0">
-                                        <a-box position="-0.8 0 -1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
-                                        <a-box position="0.8 0 -1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
-                                        <a-box position="-0.8 0 1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
-                                        <a-box position="0.8 0 1.05" width="0.06" height="0.3" depth="0.06" src="#acier"></a-box>
-                                </a-entity>
-                                <!--matelas-->
-                                <a-box position="0 0.2 0" rotation="90 0 0" width="1.4" height="2" depth="0.2" repeat=""
-                                        src="#tissu" shader="flat"></a-box>
-                        </a-entity>                        
-                        <!-------------------TV-------------------->
-                        <a-entity position="3.2 1.5 0.9" rotation="0 90 0">
-                                <a-box width="2.6" height="1.8" depth="0.05" color="black">
-                                        <a-entity id="tv" position="0 0.1 -0.026" rotation="0 180 0">
-                                                <a-video id="pub" src="#video-ekleipsi" width="2.56" height="1.48"></a-video>
-                                                <a-box id="buttonTvRoom" class="clickable" width="0.1" height="0.06" depth="0.05"
-                                                        position="0 -0.86 0"
-                                                        emissive="aqua" emissive-intensity="1" play-ekleipsi>
-                                                </a-box>
-                                        </a-entity>                                
-                                </a-box>
-                        </a-entity>
-                        <!-------------------CONTROL DU SAS WC---------------------->                        
-                        <a-box id="sas-wc" position="-2.5 1.5 -1.5" rotation="0 0 0"
-                               class="clickable"  src="#sasWc"
-                               width="0.3" height="0.4" depth="0.05"
-                               emissive="aqua" emissive-intensity="0.1" 
-                               sound=  "src: url(assets/sounds/wc.mp3); 
-                                        on: click; 
-                                        distanceModel: exponential; 
-                                        volume:1;
-                                        refDistance: 3;
-                                        rolloffFactor: 4" 
-                                open-sas>
-                        </a-box>
 
                 </a-entity>
 
                 <!-------------------TERASSE------------------->
-                <a-entity id="terasse" position="-13 1.75 0" rotation="0 90 0">
+                <a-entity id="terasse" position="-13 1.85 0" rotation="0 90 0">
                         <!--mur de gauche-->
-                        <a-entity position="-3.45 1.25 -2" rotation="0 90 0">
-                                <a-box color="aqua" opacity="0.3" width="9.8" height="1" depth="0.1" repeat="10 1"></a-box>
-                        </a-entity>
+                                <a-box position="-3.45 1.2 -2" rotation="0 90 0"
+                                        color="aqua" opacity="0.6" width="9.8" 
+                                        height="1.1" depth="0.1"></a-box>
                         <!--mur de droite-->
-                        <a-entity position="3.45 1.25 -2" rotation="0 90 0">
-                                <a-box color="aqua" opacity="0.3" width="9.8" height="1" depth="0.1" repeat="10 1"></a-box>
-                        </a-entity>
+                                <a-box position="3.45 1.25 -2" rotation="0 90 0"
+                                        color="aqua" opacity="0.6" width="9.8" 
+                                        height="1" depth="0.1"></a-box>
                         <!--mur du fond-->
-                        <a-entity position="0 1.25 -6.95" rotation="0 0 0">
-                                <a-box color="aqua" opacity="0.3" width="7" height="1" depth="0.1" repeat="7 1"></a-box>
-                        </a-entity>
+                                <a-box position="0 1.2 -6.95"
+                                        color="aqua" opacity="0.6" width="7" 
+                                        height="1.1" depth="0.1"></a-box>
                         <!--mur de devant-->
-                        <a-entity position="0 1.25 2.95" rotation="0 0 0">
-                                <a-box color="aqua" opacity="0.3" width="7" height="1" depth="0.1" repeat="7 1"></a-box>
-                        </a-entity>
+                                <a-box position="0 1.25 2.95"
+                                        color="aqua" opacity="0.6" width="7" 
+                                        height="1" depth="0.1"></a-box>
+                        <!--rambarde escalier-->
+                                <a-box position="-1.45 1.25 -3.5" rotation="0 90 0"
+                                color="aqua" opacity="0.6" width="3" 
+                                height="1" depth="0.1"></a-box>
+                        <!--rambarde escalier-->
+                                <a-box position="0.05 1.25 -5.9" rotation="0 90 0"
+                                color="aqua" opacity="0.6" width="2" 
+                                height="1" depth="0.1"></a-box>
+                        <!--rambarde escalier-->
+                                <a-box position="-0.7 1.25 -4.95"
+                                color="aqua" opacity="0.6" width="1.4" 
+                                height="1" depth="0.1"></a-box>
+
 
                 </a-entity>
 
@@ -1819,7 +1878,25 @@
                 <!-------------------UN PEU DE MUSIQUE D'AMBIANCE-------------------->
                 <!-- <a-sound src="#ambiant" volume="0.1" sound="autoplay: true; rollofFactor:1; refDistance:20"></a-sound> -->
 
+                <!-- parcelles à vendre-->
+                <a-entity position="-10 0 30" rotation="0 90 0">
+                        <a-box width="20" height="0.5" depth="30"
+                                color="aqua" transparent="true" opacity="0.3"></a-box>                        
+                        <a-entity>
+                                <!--mat du panneau publicitaire-->
+                                <a-box position="0 5 0" width="0.5" height="10" depth="0.5"></a-box>
+                                <!--panneau publicitaire-->
+                                <a-box position="0 14 0" rotation="0 90 0"
+                                width="20" height="10" depth="0.5">
+                                        <a-image src="#carte-ekleipsi" position="0 0 0.28"
+                                                width="19.5" height="9.5"></a-image>
+                                </a-box>
+                        </a-entity>
+                </a-entity>
+
         </a-scene>
+
+        <script src="js/main.js"></script>
 
         <script src="js/functions.js"></script>
         <script src="js/tv-functions.js"></script>

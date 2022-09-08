@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+#first-screen {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#first-screen img {
+    width: 401px;
+    height:164 px;
+    margin: auto;
+}
+
+#fisrt-screen button {
+    width: 150px;
+}
+
+#scene {
+    display: none;
+}
+
