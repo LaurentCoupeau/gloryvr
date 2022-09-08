@@ -22,25 +22,25 @@ AFRAME.registerComponent('play-pause', {
 	}
 });
 
-// TV EKLEIPSI
-AFRAME.registerComponent('play-ekleipsi', {
+// TV ROOM
+AFRAME.registerComponent('play-room', {
 	init: function () {
     let buttonTvRoom = document.querySelector('#buttonTvRoom');
-    let pubEkleipsi = document.getElementById('video-ekleipsi');
+    let pubGlory = document.getElementById('video2');
     let stateTv = false;
     buttonTvRoom.setAttribute('material', 'src', 'assets/icones/play.png');
 
     buttonTvRoom.addEventListener('click', function() {
       if (stateTv == false){
         buttonTvRoom.setAttribute('material', 'src', 'assets/icones/pause.png');      
-        pubEkleipsi.volume='0.4';  
-        pubEkleipsi.play();
+        pubGlory.volume='0.4';  
+        pubGlory.play();
         stateTv = true;
       } else {        
-        let curent = pubEkleipsi.currentTime;
+        let curent = pubGlory.currentTime;
         buttonTvRoom.setAttribute('material', 'src', 'assets/icones/play.png');
-        pubEkleipsi.currentTime=curent;
-        pubEkleipsi.pause();
+        pubGlory.currentTime=curent;
+        pubGlory.pause();
         stateTv = false;
       } 
     });
