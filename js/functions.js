@@ -30,6 +30,6 @@ for (let i=0; i<clickableObjects.length; i++){
   });
 
   clickableObjects[i].addEventListener('mouseleave', function() {
-    clickableObjects[i].setAttribute('material', 'color', 'lime');
+    clickableObjects[i].setAttribute('material', 'color', 'aqua');
   });
 }
