@@ -2,7 +2,7 @@
 AFRAME.registerComponent('play-pause', {
 	init: function () {
     let buttonTv = document.querySelector('#buttonTv');
-    let pub = document.getElementById('video');
+    let pub = document.getElementById('video1');
     let stateTv = false;
     buttonTv.setAttribute('material', 'src', 'assets/icones/play.png');
     buttonTv.addEventListener('click', function() {
