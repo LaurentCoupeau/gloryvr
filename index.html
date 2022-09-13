@@ -12,7 +12,7 @@
         <meta property="og:title" content="GLORYDEV VR">
         <meta property="og:site_name" content="GLORYDEV VR">
         <meta property="og:url" content="https://laurentcoupeau.github.io/gloryvr/">
-        <meta property="og:description" content="Bienvenue dans le métaverse de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
+        <meta property="og:description" content="Bienvenue sur le site VR de GLORYDEV. Visite virtuelle, accompagnement à la digitalisation de votre entreprise, formation, Wordpress, SEO...">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://laurentcoupeau.github.io/gloryvr/assets/img/logo-glorydev.png">
         <link rel="stylesheet" href="style.css">
@@ -26,16 +26,40 @@
 <body>
         <div class="content">
 
-                <img src="assets/logo.png"><br/><br/>
-                <p>SALUT !!!</p><br/><br/>
-                <button onclick="launch()"> lancer l'experience</button>
-
+                <img id="logo" src="assets/logo.png">
                 <div>
-                        <h2><a href='https://glorydev.fr/gloryvr/mentions-legales.html'>Mentions légales</a></h2>
+                        <h2>Bienvenue dans la béta test du site VR de GLORYDEV</h2>
+
+                        <p>Pour vivre une <strong>expérience optimale</strong>,
+                                 merci d'utiliser un <strong>casque de réalité virtuelle</strong> de type Oculus, 
+                                HTC Vive, Google daydream, Samsung GearVR, Vive focus, etc... </p><br/>
+                        <p>Cependant, il est tout à fait <strong>possible de tester</strong> le site VR de Glorydev avec <strong>votre ordinateur</strong>. 
+                                Pour cela utilisez le curseur au milieu de l'écran et cliquez avec le bouton gauche de votre souris. 
+                                Vous pourrez ainsi utiliser les socle de téléportation et actionner les différents éléments avec 
+                                lesquels vous pouvez intéragir</p><br/>
+
+                        <div id="gifs-screen">
+
+                                <div>
+                                        <h3>Avec le curseur et la souris</h3>
+                                        <img id="cursor" src="assets/gifs/gif-cursor.gif" alt="gif de présentation de l'utilisation du curseur">
+
+                                </div>
+                                <button id="lancement" onclick="launch()"> lancer l'experience</button>
+                                <div>
+                                        <h3>Avec votre casque de réalité virtuelle</h3>
+                                        <img id="lasers" src="assets/gifs/gif-laser.gif" alt="gif de présentation de l'utilisation des lasers">
+
+                                </div>
+                        </div>
+                </div>
+
+                <div class="footer">
+                        <p><a href='https://glorydev.fr/gloryvr/mentions-legales.html'>Mentions légales</a> - Site web VR créé par <a href="https://ekleipsi-medias.fr" target="_blank">Ekleipsi Médias</a></p>
                 </div>
         </div>
 
-        <a-scene id="scene" renderer="antialias: true" physics="gravity: 0" fog="type: exponential; color: black" stats foo day>
+        <a-scene id="scene" renderer="antialias: true" fog="type: exponential; color: black" vr-mode-ui="enabled: true" foo day>
 
                 <a-assets>
                         <!-----------------------TITRE---------------------->
@@ -52,7 +76,7 @@
                         <img id="commandements" src="assets/img/poster/10commandements.png"></img>
                         <img id="fullmetal" src="assets/img/poster/full-metal-alchemist.jpg"></img>
                         <!-----------------------GLORYDEV---------------------->
-                        <img id="logo" src="assets/img/logo-glorydev.png"></img>
+                        <img id="logoglory" src="assets/img/logo-glorydev.png"></img>
                         <img id="superman" src="assets/img/visuels/glorydev/superman.png">
                         <img id="groupe" src="assets/img/visuels/glorydev/groupe.jpg">
                         <img id="teknik" src="assets/img/visuels/glorydev/teknik.jpg">
@@ -162,7 +186,7 @@
                 
                 <!---------------------CAMERA RIG-------------------->
                 <a-entity id="cam-rig" progressive-controls 
-                          movement-controls="fly: true"
+                          movement-controls="controls: checkpoint"
                           checkpoint-controls="mode: animate; animateSpeed: 13.0"
                           event-set__start="_target: #blink; _event: navigation-start;
 				  	    animation.property: opacity;
@@ -231,9 +255,9 @@
                                         <!--------------------horloge-------------------->
                                         <a-entity position="0 1 0.07">
                                                 <a-cylinder width="1" height="0.1" radius="0.5"
-                                                        color="black" rotation="-90 0 0" shader="flat"></a-cylinder>
+                                                        src="#acier" rotation="-90 0 0"></a-cylinder>
                                                 <a-text id="heure" value="" position="-0.32 0 0.05"
-                                                        width="4" color="#FFFFFF" font="kelsonsans"></a-text>
+                                                        width="4" color="#000000" font="kelsonsans"></a-text>
                                         </a-entity>   
 
                                         <!--------------------partie gauche-------------------->
@@ -309,7 +333,7 @@
                                                 position="0 -1.95 0" shader="flat">
                                         </a-box>
                                         <!--------------------logo de glorydev-------------------->
-                                        <a-plane src="#logo" position="0 0.8 0.011" width="2" height="1.96"  opacity="0.9">
+                                        <a-plane src="#logoglory" position="0 0.8 0.011" width="2" height="1.96"  opacity="0.9">
                                         </a-plane>
                                         <!---------------------CADRE PHOTO FACE----------------------->     
                                         <a-plane  position="0 -0.6 0.1" rotation="0 0 0"

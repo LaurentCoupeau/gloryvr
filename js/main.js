@@ -3,7 +3,7 @@ let fisrtScreen = document.getElementById('first-screen');
 
 function launch() {
 
-    world.style.display = 'block';
+    world.style.display = 'inline';
     fisrtScreen.style.display= 'none';
 
 }
