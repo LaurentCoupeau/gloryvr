@@ -55,7 +55,7 @@
 
 
                 
-                <a-scene id="scene" renderer="antialias: true" fog="type: exponential; color: black" embedded foo day>
+                <a-scene id="scene" renderer="antialias: true" fog="type: exponential; color: black" embedded stats foo day>
 
                 <a-assets>
                         <!-----------------------TITRE---------------------->
@@ -248,7 +248,7 @@
                                         <!--------------------horloge-------------------->
                                         <a-entity position="0 1 0.07">
                                                 <a-cylinder width="1" height="0.1" radius="0.5"
-                                                        src="#acier" rotation="-90 0 0"></a-cylinder>
+                                                        src="#acier" rotation="-90 0 0" shader="flat"></a-cylinder>
                                                 <a-text id="heure" value="" position="-0.32 0 0.05"
                                                         width="4" color="#ffffff" font="kelsonsans"></a-text>
                                         </a-entity>   
@@ -326,24 +326,24 @@
                                                 position="0 -1.95 0" shader="flat">
                                         </a-box>
                                         <!--------------------logo de glorydev-------------------->
-                                        <a-plane src="#logoglory" position="0 0.8 0.011" width="2" height="1.96"  opacity="0.9">
-                                        </a-plane>
+                                        <a-image src="#logoglory" position="0 0.8 0.011" width="2" height="1.96"  opacity="0.9">
+                                        </a-image>
                                         <!---------------------CADRE PHOTO FACE----------------------->     
                                         <a-plane  position="0 -0.6 0.1" rotation="0 0 0"
                                                 width="1.2" height="0.864" src="#acier"
-                                                side="double">
+                                                side="double" shader="flat">
                                                 <!---------------------gauche----------------------->
                                                 <a-box width="0.08" height="0.864" depth="0.08" src="#acier"
-                                                        position="-0.56 0 0"></a-box>
+                                                        position="-0.56 0 0" shader="flat"></a-box>
                                                 <!---------------------droite----------------------->
                                                 <a-box width="0.08" height="0.864" depth="0.08" src="#acier"
-                                                        position="0.56 0 0"></a-box>
+                                                        position="0.56 0 0" shader="flat"></a-box>
                                                 <!---------------------haute----------------------->
                                                 <a-box width="1.2" height="0.08" depth="0.08" src="#acier"
-                                                        position="0 -0.392 0"></a-box>
+                                                        position="0 -0.392 0" shader="flat"></a-box>
                                                 <!---------------------bas----------------------->
                                                 <a-box width="1.12" height="0.08" depth="0.08" src="#acier"
-                                                        position="0 0.392 0"></a-box>
+                                                        position="0 0.392 0" shader="flat"></a-box>
                                                 <!---------------------image face----------------------->
                                                 <a-image position="0 0 0.0088" src="#face" width="1.04" height="0.68"></a-image>
                                         </a-plane>
@@ -392,7 +392,7 @@
                                         <a-box width="6" height="3" depth="0.02" 
                                                 position="0 0 0"
                                                 color="aqua" transparent="true"
-                                                opacity="0.6"></a-box>
+                                                opacity="0.6" shader="flat"></a-box>
                                         <!--------------------plainte sol-------------------->
                                         <a-box width="8" height="0.1" depth="0.05" src="#bois" repeat="1 2"
                                                 position="0 -1.95 0" shader="flat">
@@ -471,12 +471,12 @@
                                         volume:1;
                                         refDistance: 5;
                                         rolloffFactor: 4" 
-                                open-sas>
+                                open-sas shader="flat">
                         </a-box>
                         <!---------------------REPERE TELEPORTATION SAS----------------------->
                         <a-image src="#footsteps" position="-3 0.01 0" 
                                 checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
-                                rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5">
+                                rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5" shader="flat">
                         </a-image>
                         <!---------------------BUREAU----------------------->
                         <a-entity position="0 0.01 -3.7">
@@ -846,7 +846,7 @@
 
                                 </a-entity>
                                 <!--------------------rubik's cube-------------------->
-                                <a-obj-model src="#rubik-obj" mtl="#rubik-mtl" scale="2 2 2" position="0.9 1.15 -0.1" rotation="90 135 0"></a-obj-model>                                
+                                <a-obj-model src="#rubik-obj" mtl="#rubik-mtl" scale="2 2 2" position="0.9 1.15 -0.1" rotation="90 135 0" shader="flat"></a-obj-model>                                
                                 <!--------------------imprimante 3D-------------------->
                                 <a-entity position="-1.1 1.15 0" rotation="0 180 0" scale="1.5 1.5 1.5">
 
@@ -938,15 +938,13 @@
 
                                 </a-entity>
                                 <!--------------------plante-------------------->
-                                <a-obj-model src="#plante-obj" mtl="#plante-mtl" scale="0.1 0.1 0.1" position="1.1 1.05 0"></a-obj-model>
-                                <!--------------------lumiere plante-------------------->
-                                <a-light type="spot" position="1.1 1.8 0" rotation="-90 0 0" angle="10"></a-light>
+                                <a-obj-model src="#plante-obj" mtl="#plante-mtl" scale="0.1 0.1 0.1" position="1.1 1.05 0" shader="flat"></a-obj-model>
                                 <!--------------------livres-------------------->
                                 <a-entity position="0.7 1.3 0.1" scale="0.9 0.9 0.9">
                                         <!--------------------livres bootstrap-------------------->
                                         <a-entity position="0 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#bootstrap" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -954,7 +952,7 @@
                                         <!--------------------livres docker-------------------->
                                         <a-entity position="-0.1 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#docker" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -962,7 +960,7 @@
                                         <!--------------------livres jquery-------------------->
                                         <a-entity position="-0.2 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#jquery" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -970,7 +968,7 @@
                                         <!--------------------livres kubernetes-------------------->
                                         <a-entity position="-0.3 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#kubernetes" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -978,7 +976,7 @@
                                         <!--------------------livres reseaux-------------------->
                                         <a-entity position="-0.4 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#reseaux" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -986,7 +984,7 @@
                                         <!--------------------livres seo-------------------->
                                         <a-entity position="-0.5 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#seo" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -994,7 +992,7 @@
                                         <!--------------------livres symfony-------------------->
                                         <a-entity position="-0.6 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#symfony" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1002,7 +1000,7 @@
                                         <!--------------------livres vagrant-------------------->
                                         <a-entity position="-0.7 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#vagrant" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1010,7 +1008,7 @@
                                         <!--------------------livres virtualisation-------------------->
                                         <a-entity position="-0.8 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#virtualisation" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1018,7 +1016,7 @@
                                          <!--------------------livres html-------------------->
                                         <a-entity position="-0.9 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#html" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1026,7 +1024,7 @@
                                         <!--------------------livres css-------------------->
                                         <a-entity position="-1 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#css" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1034,7 +1032,7 @@
                                         <!--------------------livres wordpress-------------------->
                                         <a-entity position="-1.1 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#wordpress" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1042,7 +1040,7 @@
                                         <!--------------------livres linux-------------------->
                                         <a-entity position="-1.2 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#linux" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1050,7 +1048,7 @@
                                         <!--------------------livres windows-------------------->
                                         <a-entity position="-1.3 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#windows" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1058,7 +1056,7 @@
                                         <!--------------------livres bitcoin-------------------->
                                         <a-entity position="-1.4 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#bitcoin" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1066,7 +1064,7 @@
                                         <!--------------------livres active-------------------->
                                         <a-entity position="-1.5 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#active" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
@@ -1074,7 +1072,7 @@
                                         <!--------------------livres servers-------------------->
                                         <a-entity position="-1.6 0 -0.14">
                                                 <a-box  width="0.08" height="0.44" depth="0.3"
-                                                        color="#ffd700">
+                                                        color="#ffd700" shader="flat">
                                                 </a-box>
                                                 <a-image src="#servers" position="0 0 -0.151" rotation="0 180 0"
                                                         width="0.070" height="0.430"></a-image>
