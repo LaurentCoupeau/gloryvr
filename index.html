@@ -45,7 +45,6 @@
                                         <img id="cursor" src="assets/gifs/gif-cursor.gif" alt="gif de présentation de l'utilisation du curseur">
 
                                 </div>
-                                <button id="lancement" onclick="launch()"> lancer l'experience</button>
                                 <div>
                                         <h3>Avec votre casque de réalité virtuelle</h3>
                                         <img id="lasers" src="assets/gifs/gif-laser.gif" alt="gif de présentation de l'utilisation des lasers">
@@ -54,12 +53,9 @@
                         </div>
                 </div>
 
-                <div class="footer">
-                        <p><a href='https://glorydev.fr/gloryvr/mentions-legales.html'>Mentions légales</a> - Site web VR créé par <a href="https://ekleipsi-medias.fr" target="_blank">Ekleipsi Médias</a></p>
-                </div>
-        </div>
 
-        <a-scene id="scene" renderer="antialias: true" fog="type: exponential; color: black" vr-mode-ui="enabled: true" foo day>
+                
+                <a-scene id="scene" renderer="antialias: true" fog="type: exponential; color: black" embedded foo day>
 
                 <a-assets>
                         <!-----------------------TITRE---------------------->
@@ -1913,9 +1909,13 @@
                         </a-entity>
                 </a-entity>
 
-        </a-scene>
+                </a-scene>
 
-        <script src="js/main.js"></script>
+
+                <div class="footer">
+                        <p><a href='https://glorydev.fr/gloryvr/mentions-legales.html'>Mentions légales</a> - Site web VR créé par <a href="https://ekleipsi-medias.fr" target="_blank">Ekleipsi Médias</a></p>
+                </div>
+        </div>
 
         <script src="js/functions.js"></script>
         <script src="js/tv-functions.js"></script>
