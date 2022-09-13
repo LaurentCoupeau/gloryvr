@@ -1,6 +1,6 @@
 // fonction panneau d'affichage sous controller gauche
 
-let leftHand = document.getElementById('left-hand');
+let leftHand = document.querySelector('#left-hand');
 let plan = document.createElement('a-plane');
 let textValue = "hello !!!";
 let text = document.createElement('a-text');
@@ -17,7 +17,7 @@ plan.setAttribute('position', {
 })
 plan.setAttribute('rotation', {
   x:45,
-  y:180,
+  y:0,
   z:0
 })
 

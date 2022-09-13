@@ -1,11 +1,11 @@
 // interaction pour les tiroirs du bureau
 let bureau = [];
-let tiroir1 = document.getElementById('tiroir1');
-let tiroir2 = document.getElementById('tiroir2');
-let tiroir3 = document.getElementById('tiroir3');
-let tiroir4 = document.getElementById('tiroir4');
-let tiroir5 = document.getElementById('tiroir5');
-let tiroir6 = document.getElementById('tiroir6');
+let tiroir1 = document.querySelector('#tiroir1');
+let tiroir2 = document.querySelector('#tiroir2');
+let tiroir3 = document.querySelector('#tiroir3');
+let tiroir4 = document.querySelector('#tiroir4');
+let tiroir5 = document.querySelector('#tiroir5');
+let tiroir6 = document.querySelector('#tiroir6');
 
 bureau.push(tiroir1, tiroir2, tiroir3, tiroir4, tiroir5, tiroir6);
 
