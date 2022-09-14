@@ -169,6 +169,8 @@
                         <!-----------------------SONS--------------------->
                         <!-----------------------AMBIANCE---------------------->
                         <audio id="ambiant" src="assets/sounds/wild-heart.mp3"></audio>
+                        <!-----------------------TELEPORTATION---------------------->
+                        <audio id="teleport" src="assets/sounds/telep.mp3"></audio>
                         <!-----------------------SAS---------------------->
                         <audio id="sas-sound" src="assets/sounds/sas.mp3"></audio>
                         <audio id="wc-sound" src="assets/sounds/wc.mp3"></audio>
@@ -183,7 +185,7 @@
                 
                 <!---------------------CAMERA RIG-------------------->
                 <a-entity id="cam-rig" progressive-controls 
-                          movement-controls>
+                          movement-controls="fly:true">
 			
 			<a-camera position="0 1.6 0">
 				<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
@@ -465,11 +467,6 @@
                                         rolloffFactor: 4" 
                                 open-sas>
                         </a-box>
-                        <!---------------------REPERE TELEPORTATION SAS----------------------->
-                        <a-image src="#footsteps" position="-3 0.01 0" 
-                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
-                                rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>
                         <!---------------------BUREAU----------------------->
                         <a-entity position="0 0.01 -3.7">
 
@@ -721,11 +718,6 @@
                                 </a-entity>
 
                         </a-entity>
-                        <!---------------------REPERE TELEPORTATION BUREAU----------------------->
-                        <a-image src="#footsteps" position="0 0.01 -2.2" 
-                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
-                                rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>
                         <!---------------------CANAPE----------------------->
                         <a-entity position="3.3 0 0" rotation="0 180 0">
                                 <!--------------------bras gauche-------------------->
@@ -771,11 +763,6 @@
                                         </a-entity>                                
                                 </a-box>
                         </a-entity>
-                        <!---------------------REPERE TELEPORTATION TV----------------------->
-                        <a-image src="#footsteps" position="-2.8 0.01 -3" 
-                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
-                                rotation="90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>
                         <!---------------------ETAGERE GAUCHE----------------------->
                         <a-entity position="3.7 -0.5 -2.85" rotation="0 90 0">
 
@@ -1074,11 +1061,6 @@
                                 </a-entity>
 
                         </a-entity>
-                        <!---------------------REPERE ETAGERE GAUCHE----------------------->
-                        <a-image src="#footsteps" position="2.5 0.01 -2.9" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
-                                rotation="90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>
                         <!---------------------ETAGERE DROITE----------------------->
                         <a-entity position="3.7 -0.5 2.85" rotation="0 90 0">
                                 <!--------------------etiquette-------------------->
@@ -1157,12 +1139,7 @@
                                                         width="0.86" height="0.413"></a-image>
                                 </a-entity>
 
-                        </a-entity>
-                        <!---------------------REPERE ETAGERE DROITE----------------------->
-                        <a-image src="#footsteps" position="2.5 0.01 2.9" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
-                                rotation="-90 180 90" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>                        
+                        </a-entity>                      
                         <!---------------------ETAGERE SAS----------------------->
                         <a-entity position="-3.65 -0.5 3" rotation="0 90 0">
                                 
@@ -1245,11 +1222,6 @@
                                 </a-entity>
 
                         </a-entity>
-                        <!---------------------REPERE ETAGERE SAS----------------------->
-                        <a-image src="#footsteps" position="-2.6 0.01 2.9" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
-                                rotation="-90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image> 
                 </a-entity>
 
                 <!---------------------AILE GAUCHE-------------------->
@@ -1301,12 +1273,7 @@
                         <!--------------------extérieur-------------------->
                         <a-box src="#plaster" repeat="4 6" position="0 2.1 0.06" rotation="90 0 0" width="4.2" height="5.9" depth="0.1"></a-box>
                         <!--------------------sol du couloir-------------------->
-                        <a-plane position="0 0 0" src="#marbre-or" repeat="4 6" width="4" height="6.05" rotation="-90 0 0" shader="flat"></a-plane>
-                        <!---------------------REPERE TELEPORTATION COULOIR AILE GAUCHE----------------------->
-                        <a-image src="#footsteps" position="0 0.01 0" rotation="-90 0 0" 
-                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
-                                opacity="0.5" scale="0.5 0.5 0.5">
-                        </a-image>                                                
+                        <a-plane position="0 0 0" src="#marbre-or" repeat="4 6" width="4" height="6.05" rotation="-90 0 0" shader="flat"></a-plane>                                          
                         <!---------------------CONTROL DU SAS PIECE PRINCIPALE----------------------->                        
                         <a-box id="control-sas-couloir" position="-1.75 1.5 -2.95" 
                                 class="clickable"  src="#spokeHand"
@@ -1440,16 +1407,6 @@
                                                 position="0 0.02 0" shader="flat"></a-torus>
                                         </a-entity>
                         </a-entity>
-                        <!---------------------TELEPORTATION SABRE LASER-------------------->
-                        <a-image src="#footsteps" position="1.7 0.011 -3.5" checkpoint="offset:0 0 0.1"
-                                class="teleport" rotation="90 -90 0" opacity="0.5" color="aqua"
-                                scale="0.5 0.5 0.5">
-                        </a-image>
-                        <!---------------------TELEPORTATION DEBUT ESCALIER-------------------->
-                        <a-image src="#footsteps" position="1.5 0.011 -6" checkpoint="offset:0 0 0"
-                                class="teleport" rotation="90 -90 0" opacity="0.5" color="aqua"
-                                scale="0.5 0.5 0.5">
-                        </a-image>
                         <!---------------------LIT-------------------->
                         <a-entity position="-2.25 0.05 1" rotation="0 90 0">
                                 <!--------------------pied du lit-------------------->
@@ -1474,12 +1431,7 @@
                                 <!--------------------cousiin droit-------------------->
                                 <a-box position="0.35 0.44 -0.7" rotation="90 0 0" width="0.6" height="0.4" depth="0.05"
                                 src="#tissu"></a-box>
-                        </a-entity>                  
-                        <!---------------------TELEPORTATION LIT-------------------->
-                        <a-image src="#footsteps" position="0 0.011 1" checkpoint="offset: 0 0 0.1"
-                                class="teleport" rotation="-90 90 0" opacity="0.5" color="aqua"
-                                scale="0.5 0.5 0.5">
-                        </a-image>      
+                        </a-entity>         
                         <!---------------------TV ROOM--------------------->
                         <a-entity position="3.2 1.5 0.9" rotation="0 90 0">
                                 <a-box width="2.6" height="1.8" depth="0.05" color="black">
@@ -1584,21 +1536,6 @@
 
 
                         </a-entity> 
-                        <!---------------------TELEPORTATION PALIER VERTICAL-------------------->
-                        <a-image src="#footsteps" position="-3.398 1.4 -6" checkpoint="offset: -0.5 0 -0.5"
-                                        class="teleport" rotation="0 90 0" opacity="0.5" color="aqua"
-                                        scale="0.5 0.5 0.5">
-                        </a-image>
-                        <!---------------------TELEPORTATION PALIER HORIZONTAL-------------------->
-                        <a-image src="#footsteps" position="-2.5 1.011 -6" checkpoint="offset: 0 0 0"
-                                        class="teleport" opacity="0.5" color="aqua" rotation="90 90 0"
-                                        scale="0.5 0.5 0.5">
-                        </a-image>
-                        <!---------------------TELEPORTATION HAUT DES ESCALIERS-------------------->
-                        <a-image src="#footsteps" position="-2.5 3 -1.5" checkpoint="offset: 0.5 0 0"
-                                        class="teleport" opacity="0.5" color="aqua" rotation="0 0 0"
-                                        scale="0.5 0.5 0.5">
-                        </a-image>
                 </a-entity>
 
                 <!---------------------TERASSE-------------------->
@@ -1655,16 +1592,6 @@
                                 </a-box>
 
                         </a-entity>
-                        <!--------------------TELEPORTATION CANAPE-------------------->
-                        <a-image src="#footsteps" position="1.7 -0.11 -1.8" checkpoint="offset: 0 0 0.1"
-                                class="teleport" rotation="-90 90 0" opacity="0.5" color="aqua"
-                                scale="0.5 0.5 0.5">
-                        </a-image>
-                        <!--------------------repere téléportation-------------------->
-                        <a-image src="#footsteps" position="-2 -0.3 0.5" checkpoint="offset: 0 0 0.1"
-                                class="teleport" rotation="-90 90 0" opacity="0.5" color="aqua"
-                                scale="0.5 0.5 0.5">
-                        </a-image>
                         <!---------------------CANAPE----------------------->
                         <a-entity position="0 0.7 2.1" rotation="0 90 0">
                                 <!--------------------bras gauche-------------------->
@@ -1872,8 +1799,86 @@
 
                 </a-entity>
 
+                <!---------------------REPERES DE TELEPORTATION-------------------->
+
+                        <!---------------------REPERE TELEPORTATION BUREAU----------------------->
+                        <a-image src="#footsteps" position="0 0.01 -2.2" rotation="-90 0 0"
+                                class="teleport" color="aqua"
+                                opacity="0.5" scale="0.5 0.5 0.5" sound="#teleport">
+                        </a-image>
+                        <!---------------------REPERE TELEPORTATION SAS----------------------->
+                        <a-image src="#footsteps" position="-3 0.01 0" rotation="-90 90 0" 
+                                class="teleport" color="aqua"
+                                opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!---------------------REPERE TELEPORTATION TV----------------------->
+                        <a-image src="#footsteps" position="-2.8 0.01 -3" rotation="90 0 90" 
+                                class="teleport" color="aqua"
+                                opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!---------------------REPERE ETAGERE GAUCHE----------------------->
+                        <a-image src="#footsteps" position="2.5 0.01 -2.9" rotation="90 180 90" 
+                                class="teleport" color="aqua"
+                                opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!---------------------REPERE ETAGERE DROITE----------------------->
+                        <a-image src="#footsteps" position="2.5 0.01 2.9" rotation="90 90 0"
+                                class="teleport" color="aqua"
+                                opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>  
+                        <!---------------------REPERE ETAGERE SAS----------------------->
+                        <a-image src="#footsteps" position="-2.6 0.01 2.9" rotation="-90 180 90" 
+                                class="teleport" color="aqua"
+                                rotation="-90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image> 
+                        <!---------------------REPERE TELEPORTATION COULOIR----------------------->
+                        <a-image src="#footsteps" position="-7 0.01 0" rotation="-90 90 0" 
+                                class="teleport" color="aqua"
+                                opacity="0.5" scale="0.5 0.5 0.5">
+                        </a-image>      
+                        <!---------------------TELEPORTATION SABRE LASER-------------------->
+                        <a-image src="#footsteps" position="-16.5 0.01 -1.5" rotation="90 0 0" 
+                                class="teleport" opacity="0.5" color="aqua"
+                                scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!---------------------TELEPORTATION DEBUT ESCALIER-------------------->
+                        <a-image src="#footsteps" position="-19 0.01 -1.5" rotation="90 0 0"
+                                class="teleport" opacity="0.5" color="aqua"
+                                scale="0.5 0.5 0.5">
+                        </a-image>         
+                        <!---------------------TELEPORTATION LIT-------------------->
+                        <a-image src="#footsteps" position="-12 0.01 -1" rotation="-90 90 0"
+                                class="teleport" opacity="0.5" color="aqua"
+                                scale="0.5 0.5 0.5">
+                        </a-image>   
+                        <!---------------------TELEPORTATION PALIER VERTICAL-------------------->
+                        <a-image src="#footsteps" position="-19 1.4 2.5" rotation="0 00 0" 
+                                        class="teleport" opacity="0.5" color="aqua"
+                                        scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!---------------------TELEPORTATION PALIER HORIZONTAL-------------------->
+                        <a-image src="#footsteps" position="-19 1.01 2.5" rotation="90 180 0"
+                                        class="teleport" opacity="0.5" color="aqua"
+                                        scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!---------------------TELEPORTATION HAUT DES ESCALIERS VERTICAL-------------------->
+                        <a-image src="#footsteps" position="-15 3 2.5" rotation="0 90 0"
+                                        class="teleport" opacity="0.5" color="aqua"
+                                        scale="0.5 0.5 0.5">
+                        </a-image> 
+                        <!--------------------TELEPORTATION CANAPE-------------------->
+                        <a-image src="#footsteps" position="-12 2.61 0" rotation="-90 -90 0"
+                                class="teleport"  opacity="0.5" color="aqua"
+                                scale="0.5 0.5 0.5">
+                        </a-image>
+                        <!--------------------TELEPORTATION STARWARS-------------------->
+                        <a-image src="#footsteps" position="-14.8 2.61 -1" rotation="-90 0 0"
+                                class="teleport" opacity="0.5" color="aqua"
+                                scale="0.5 0.5 0.5">
+                        </a-image>  
+
                 <!---------------------UN PEU DE MUSIQUE D'AMBIANCE--------------------->
-                <!-------------------- <a-sound src="#ambiant" volume="0.1" sound="autoplay: true; rollofFactor:1; refDistance:20"></a-sound> -------------------->
+                <a-sound src="#ambiant" volume="0.05" sound="autoplay: true; rollofFactor:1; refDistance:20"></a-sound>
 
                 <!-------------------- parcelles à vendre-------------------->
                 <a-entity position="-10 0 30" rotation="0 90 0">
