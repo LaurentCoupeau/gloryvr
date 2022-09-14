@@ -21,7 +21,7 @@
 
         <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.0/dist/aframe-extras.min.js"></script>
-	<script src="https://unpkg.com/aframe-animation-component@4.1.2/dist/aframe-animation-component.min.js"></script>
+	<!-- <script src="https://unpkg.com/aframe-animation-component@4.1.2/dist/aframe-animation-component.min.js"></script> -->
 </head>
 <body>
         <div class="content">
@@ -183,15 +183,7 @@
                 
                 <!---------------------CAMERA RIG-------------------->
                 <a-entity id="cam-rig" progressive-controls 
-                          movement-controls="controls: checkpoint"
-                          checkpoint-controls="mode: animate; animateSpeed: 13.0"
-                          event-set__start="_target: #blink; _event: navigation-start;
-				  	    animation.property: opacity;
-				  	    animation.to: 1;
-				  	    animation.dur: 250;
-				  	    animation.easing: easeOutQuart"
-			  event-set__end="_target: #blink; _event: navigation-end;
-				  	  animation.to: 0">
+                          movement-controls>
 			
 			<a-camera position="0 1.6 0">
 				<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
@@ -475,7 +467,7 @@
                         </a-box>
                         <!---------------------REPERE TELEPORTATION SAS----------------------->
                         <a-image src="#footsteps" position="-3 0.01 0" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
+                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
                                 rotation="-90 90 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------BUREAU----------------------->
@@ -731,7 +723,7 @@
                         </a-entity>
                         <!---------------------REPERE TELEPORTATION BUREAU----------------------->
                         <a-image src="#footsteps" position="0 0.01 -2.2" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
+                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
                                 rotation="-90 0 0" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------CANAPE----------------------->
@@ -781,7 +773,7 @@
                         </a-entity>
                         <!---------------------REPERE TELEPORTATION TV----------------------->
                         <a-image src="#footsteps" position="-2.8 0.01 -3" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
+                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
                                 rotation="90 0 90" opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------ETAGERE GAUCHE----------------------->
@@ -1312,7 +1304,7 @@
                         <a-plane position="0 0 0" src="#marbre-or" repeat="4 6" width="4" height="6.05" rotation="-90 0 0" shader="flat"></a-plane>
                         <!---------------------REPERE TELEPORTATION COULOIR AILE GAUCHE----------------------->
                         <a-image src="#footsteps" position="0 0.01 0" rotation="-90 0 0" 
-                                checkpoint="offset: 0 0 0.1" class="clickable" color="aqua"
+                                checkpoint="offset: 0 0 0.1" class="teleport" color="aqua"
                                 opacity="0.5" scale="0.5 0.5 0.5">
                         </a-image>                                                
                         <!---------------------CONTROL DU SAS PIECE PRINCIPALE----------------------->                        
@@ -1450,12 +1442,12 @@
                         </a-entity>
                         <!---------------------TELEPORTATION SABRE LASER-------------------->
                         <a-image src="#footsteps" position="1.7 0.011 -3.5" checkpoint="offset:0 0 0.1"
-                                class="clickable" rotation="90 -90 0" opacity="0.5" color="aqua"
+                                class="teleport" rotation="90 -90 0" opacity="0.5" color="aqua"
                                 scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------TELEPORTATION DEBUT ESCALIER-------------------->
                         <a-image src="#footsteps" position="1.5 0.011 -6" checkpoint="offset:0 0 0"
-                                class="clickable" rotation="90 -90 0" opacity="0.5" color="aqua"
+                                class="teleport" rotation="90 -90 0" opacity="0.5" color="aqua"
                                 scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------LIT-------------------->
@@ -1485,7 +1477,7 @@
                         </a-entity>                  
                         <!---------------------TELEPORTATION LIT-------------------->
                         <a-image src="#footsteps" position="0 0.011 1" checkpoint="offset: 0 0 0.1"
-                                class="clickable" rotation="-90 90 0" opacity="0.5" color="aqua"
+                                class="teleport" rotation="-90 90 0" opacity="0.5" color="aqua"
                                 scale="0.5 0.5 0.5">
                         </a-image>      
                         <!---------------------TV ROOM--------------------->
@@ -1594,17 +1586,17 @@
                         </a-entity> 
                         <!---------------------TELEPORTATION PALIER VERTICAL-------------------->
                         <a-image src="#footsteps" position="-3.398 1.4 -6" checkpoint="offset: -0.5 0 -0.5"
-                                        class="clickable" rotation="0 90 0" opacity="0.5" color="aqua"
+                                        class="teleport" rotation="0 90 0" opacity="0.5" color="aqua"
                                         scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------TELEPORTATION PALIER HORIZONTAL-------------------->
                         <a-image src="#footsteps" position="-2.5 1.011 -6" checkpoint="offset: 0 0 0"
-                                        class="clickable" opacity="0.5" color="aqua" rotation="90 90 0"
+                                        class="teleport" opacity="0.5" color="aqua" rotation="90 90 0"
                                         scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------TELEPORTATION HAUT DES ESCALIERS-------------------->
                         <a-image src="#footsteps" position="-2.5 3 -1.5" checkpoint="offset: 0.5 0 0"
-                                        class="clickable" opacity="0.5" color="aqua" rotation="0 0 0"
+                                        class="teleport" opacity="0.5" color="aqua" rotation="0 0 0"
                                         scale="0.5 0.5 0.5">
                         </a-image>
                 </a-entity>
@@ -1665,12 +1657,12 @@
                         </a-entity>
                         <!--------------------TELEPORTATION CANAPE-------------------->
                         <a-image src="#footsteps" position="1.7 -0.11 -1.8" checkpoint="offset: 0 0 0.1"
-                                class="clickable" rotation="-90 90 0" opacity="0.5" color="aqua"
+                                class="teleport" rotation="-90 90 0" opacity="0.5" color="aqua"
                                 scale="0.5 0.5 0.5">
                         </a-image>
                         <!--------------------repere téléportation-------------------->
                         <a-image src="#footsteps" position="-2 -0.3 0.5" checkpoint="offset: 0 0 0.1"
-                                class="clickable" rotation="-90 90 0" opacity="0.5" color="aqua"
+                                class="teleport" rotation="-90 90 0" opacity="0.5" color="aqua"
                                 scale="0.5 0.5 0.5">
                         </a-image>
                         <!---------------------CANAPE----------------------->
@@ -1917,6 +1909,7 @@
         <script src="js/time.js"></script>
         <script src="js/saber.js"></script>
         <script src="js/earth-rotation.js"></script>
+        <script src="js/teleportation.js"></script>
 
         <!-------------------- <script src="js/ship-functions.js"></script> -------------------->
 </body>
