@@ -61,15 +61,18 @@ AFRAME.registerComponent('starwars', {
                 // si stateWars est false
                 if (! stateWars) {
                     // si la salve est vide
-                    if (gun.childNodes.length < 20) {
+                    if (gun.childNodes.length <= 18) {
 
                         //on instancie un tir (cylindre)
                         let shot = document.createElement('a-cylinder');
+                        shot.name = 'tir';
                         // setting des parametres du tir
                         shot.setAttribute('geometry', { height:0.5, radius: 0.09 });
                         shot.setAttribute('position', { x: 0, y: 0, z: 0 })
+                        shot.setAttribute('segmentsRadial', 6 )
                         shot.setAttribute('emissive', 'red');
                         shot.setAttribute('emissive-intensity', 1);
+                        shot.className='shot';
                         //on ajoute le tir à l'arme
                         gun.append(shot);
                         // I think I heard a shot...     
@@ -81,7 +84,7 @@ AFRAME.registerComponent('starwars', {
                         // pour chacun des tir de la salve
                         for (let i=0;i<gun.childNodes.length; i++) {
                             // on retire la douille de l'arme
-                            gun.removeChild(gun.childNodes[i]);
+                            removeShots()
                         }
                     }            
                 } else {
@@ -89,8 +92,6 @@ AFRAME.registerComponent('starwars', {
                 }    
             }, 120);
         }
-
-        
         
         //faire bouger les projectiles
         function moveShot(el) {
@@ -102,9 +103,15 @@ AFRAME.registerComponent('starwars', {
             }, 200); 
         }
 
+        //supprimer les projectiles
+        function removeShots() {
+            let shots = document.querySelectorAll('.shot');
+            console.log(shots)
 
-        
-
+            for (let i=0;i<shots.length;i++) {
+                gun.removeChild(shots[i]);
+            }
+        }
      
         button.addEventListener('click', function() {
 
@@ -115,8 +122,6 @@ AFRAME.registerComponent('starwars', {
             } else {
                 console.log('attend!')
             }
-
-
 	    })
 }
 })
