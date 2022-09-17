@@ -33,3 +33,4 @@ for (let i=0; i<clickableObjects.length; i++){
     clickableObjects[i].setAttribute('material', 'color', 'aqua');
   });
 }
+

@@ -79,6 +79,10 @@ p{
     line-height: 75px;
 }
 
+#myEnterVRButton {
+    z-index: 9999;
+}
+
 /**********PAGE DES MENTIONS LEGALES**********/
 .mentions {
     padding: 20px 100px;
