@@ -55,7 +55,7 @@
 
 
                 
-                <a-scene id="scene" renderer="antialias: true"  embedded stats foo day>
+                <a-scene id="scene" renderer="antialias: true" embedded stats foo day>
 
                 <a-assets>
                         <!-----------------------TITRE---------------------->
@@ -186,12 +186,10 @@
                 </a-assets>
                 
                 <!---------------------CAMERA RIG-------------------->
-                <a-entity id="cam-rig" progressive-controls 
-                          movement-controls="fly:true">
+                <a-entity id="cam-rig">
 			
-			<a-camera position="0 1.6 0">
-				<a-image id="blink" src="#black" position="0 0 -0.3" opacity="0" visible="false"></a-image>
-                                <a-cursor color="#000000"></a-cursor>
+			<a-camera id="cam" position="0 1.6 0" wasd-controls="enabled:false">
+                                <a-cursor id="curseur" color="#000000"></a-cursor>
 			</a-camera>
                         <!--------------------controlers-------------------->
                         <a-entity>
