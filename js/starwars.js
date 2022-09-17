@@ -106,7 +106,6 @@ AFRAME.registerComponent('starwars', {
         //supprimer les projectiles
         function removeShots() {
             let shots = document.querySelectorAll('.shot');
-            console.log(shots)
 
             for (let i=0;i<shots.length;i++) {
                 gun.removeChild(shots[i]);
