@@ -79,8 +79,8 @@ img {
     line-height:75px;
     text-decoration: none;
     color:black;
-    margin:3em auto;    
-    padding: 0px 15px ;
+    margin: 3em auto;    
+    padding: 15px ;
 }
 .lancement:hover {
     background-color: aqua;
