@@ -66,8 +66,12 @@ img {
 #lasers{
     height: 350px !important;
 }
+#boutons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 .lancement {
-    width: 300px;
     height: 75px;
     background-color: white;
     border-radius: 5px;
@@ -76,6 +80,7 @@ img {
     text-decoration: none;
     color:black;
     margin:3em auto;    
+    padding: 0px 15px ;
 }
 .lancement:hover {
     background-color: aqua;
@@ -91,10 +96,13 @@ img {
 .mentions {
     padding: 20px 100px;
 }
+
+
 /*SUR SMARTPHONE ET TABLETTE*/
-@media all and (min-width: 320px) and (max-width: 1600px) {
-    #gifs-screen{
+@media all and (min-width: 769px) and (max-width: 1600px) {
+    #gifs-screen, #boutons{
         flex-direction: column;
     }
 }
+
 
