@@ -7,6 +7,9 @@ let tiroir4 = document.querySelector('#tiroir4');
 let tiroir5 = document.querySelector('#tiroir5');
 let tiroir6 = document.querySelector('#tiroir6');
 
+let sonOuvert = document.querySelector('#tiroir-ouvert');
+let sonFerme = document.querySelector('#tiroir-ferme'); 
+
 bureau.push(tiroir1, tiroir2, tiroir3, tiroir4, tiroir5, tiroir6);
 
 bureau.forEach(element => {
@@ -20,6 +23,7 @@ bureau.forEach(element => {
         let posZ= pos['z'];
 
         if (stateTiroir) {    
+            sonFerme.play();
 
             element.setAttribute('position', {
 
@@ -31,6 +35,7 @@ bureau.forEach(element => {
             stateTiroir = false;
 
         } else {
+            sonOuvert.play();
             element.setAttribute('position', {
 
                 x: posX,
